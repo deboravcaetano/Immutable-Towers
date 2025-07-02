@@ -37,4 +37,4 @@ mapaNivel1 =
         a = Agua
 
 portal1 :: Portal
-portal1 = Portal (50, 50) [] True
+portal1 = Portal (-350, 200) [] True

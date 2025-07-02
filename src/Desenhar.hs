@@ -37,11 +37,11 @@ desenhaEscolhaNivel estado = pictures [
     ]
 
 desenhaJogo :: EstadoJanela -> Jogo -> Picture
-desenhaJogo estado jogo = pictures
+desenhaJogo estado jogo = pictures $
     [ desenhaMapa (mapaJogo jogo) [imagemRelva estado, imagemTerra estado, imagemAgua estado]
     , desenhaBase (baseJogo jogo) (imagemBase estado)
-    , desenhaPortal (portaisJogo jogo) (imagemPortal estado)
     ]
+    ++ map (\p -> desenhaPortal p (imagemPortal estado)) (portaisJogo jogo)
 
 
 desenhaMapa :: Mapa -> [Picture] -> Picture 

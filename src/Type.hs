@@ -183,9 +183,9 @@ type Semente = Int
 geraAleatorios :: Semente -> Int -> [Int]
 geraAleatorios s c = take c $ System.Random.randoms (System.Random.mkStdGen s)
 
+
 dimensaoBotaoJogar :: (Float, Float)
 dimensaoBotaoJogar = (381, 36)
-
 
 dimensaoBotaoVoltar :: (Float, Float)
 dimensaoBotaoVoltar = (301, 29)
