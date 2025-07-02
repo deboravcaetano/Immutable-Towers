@@ -2,6 +2,7 @@ module Menu where
 import Graphics.Gloss.Interface.Pure.Game
 import Type
 import Desenhar
+import Game
 
 render :: EstadoJanela -> Picture
 render estado = desenhar estado
@@ -21,7 +22,7 @@ handleInput (EventKey (MouseButton LeftButton) Down _ (x, y)) jogo =
       if estaDentro (x, y) (0, -350) dimensaoBotaoVoltar then
         jogo { estadoJanela = Menu }
       else if estaDentro (x, y) (-350, 0) dimensaoBotaoNivel1 then
-        jogo { estadoJanela = Menu }
+        jogo { estadoJanela = Game (iniciarJogo 1) }
       else if estaDentro (x, y) (0, 0) dimensaoBotaoNivel2 then
         jogo { estadoJanela = Menu }
       else if estaDentro (x, y) (350, 0) dimensaoBotaoNivel3 then

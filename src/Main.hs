@@ -4,6 +4,7 @@ import CarregarImagens
 import Menu
 import Type
 
+
 main :: IO ()
 main = do
 
@@ -17,6 +18,14 @@ main = do
   imgBotaoNivel2 <- carregarImgNivel2
   imgBotaoNivel3 <- carregarImgNivel3
 
+  relva <- carregarImgRelva
+  terra <- carregarImgTerra
+  agua  <- carregarImgAgua
+
+  imgBase <- carregarImgBase
+  imgPortal <- carregarImgPortal
+    
+
   let estadoInicial = EstadoJanela
         { estadoJanela = Menu
         , imagemJanelaPrincipal = imgMenu
@@ -28,6 +37,11 @@ main = do
         , imagemBotaoNivel1 = imgBotaoNivel1
         , imagemBotaoNivel2 = imgBotaoNivel2
         , imagemBotaoNivel3 = imgBotaoNivel3
+        , imagemRelva = relva    
+        , imagemTerra = terra    
+        , imagemAgua = agua  
+        , imagemBase = imgBase
+        , imagemPortal = imgPortal
         , jogoatual = Menu
         }
 

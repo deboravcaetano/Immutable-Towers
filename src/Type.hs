@@ -2,7 +2,7 @@ module Type where
 import Graphics.Gloss.Interface.Pure.Game
 import System.Random 
 
-data Janela = Menu | EscolhaNivel | Regras | Game Jogo| Ganhou Jogo | Perdeu Jogo | Pausa Jogo 
+data Janela = Menu | EscolhaNivel | Regras | Game Jogo -- | Ganhou Jogo | Perdeu Jogo | Pausa Jogo 
 
 data EstadoJanela = EstadoJanela
   { estadoJanela :: Janela              
@@ -14,7 +14,12 @@ data EstadoJanela = EstadoJanela
   , imagemBotaoVoltar :: Picture        
   , imagemBotaoNivel1 :: Picture         
   , imagemBotaoNivel2 :: Picture        
-  , imagemBotaoNivel3 :: Picture       
+  , imagemBotaoNivel3 :: Picture
+  , imagemRelva :: Picture
+  , imagemTerra :: Picture
+  , imagemAgua :: Picture   
+  , imagemBase :: Picture 
+  , imagemPortal :: Picture   
   , jogoatual :: Janela       
   }
 
@@ -28,10 +33,10 @@ data Portal = Portal {
 data Jogo = Jogo { 
     baseJogo :: Base,
     portaisJogo :: [Portal],
-    torresJogo :: [Torre],
-    mapaJogo :: Mapa,
-    inimigosJogo :: [Inimigo],
-    lojaJogo :: Loja
+    --torresJogo :: [Torre],
+    mapaJogo :: Mapa--,
+    --inimigosJogo :: [Inimigo],
+    --lojaJogo :: Loja
   }
   deriving (Show)
 

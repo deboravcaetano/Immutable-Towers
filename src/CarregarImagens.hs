@@ -29,6 +29,21 @@ carregarImgNivel3 = loadBMP "assets/Botoes/Nivel3.bmp"
 carregarImgBotaoRegras :: IO Picture
 carregarImgBotaoRegras = loadBMP "assets/Botoes/BotaoRegras.bmp"
 
+carregarImgRelva :: IO Picture
+carregarImgRelva = loadBMP "assets/Terrenos/Relva.bmp"
+
+carregarImgTerra :: IO Picture
+carregarImgTerra = loadBMP "assets/Terrenos/Terra.bmp"
+
+carregarImgAgua :: IO Picture
+carregarImgAgua = loadBMP "assets/Terrenos/Agua.bmp"
+
+carregarImgBase :: IO Picture
+carregarImgBase = loadBMP "assets/Base/Torre/Base.bmp"
+
+carregarImgPortal :: IO Picture
+carregarImgPortal = loadBMP "assets/Portal/Portal.bmp"
+
 carregarImgFlora :: IO [Picture]
 carregarImgFlora = do
     imgEsq <- loadBMP "assets/Personagens/FloraEsquerda.bmp" 
