@@ -99,7 +99,7 @@ desenhaLoja imgLoja imgBotaoGelo imgBotaoResina imgBotaoFogo _estado = pictures 
     ]
     
 
-desenhaMapa :: Mapa -> [Picture] -> Picture 
+desenhaMapa :: [[Terreno]] -> [Picture] -> Picture 
 desenhaMapa mapa imagens = 
     Translate offsetX offsetY $ 
     Pictures [desenhaTile (fromIntegral x, fromIntegral y) terreno imagens | 

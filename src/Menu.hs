@@ -3,6 +3,7 @@ import Graphics.Gloss.Interface.Pure.Game
 import Type
 import Desenhar
 import Game
+import EventosLoja
 
 render :: EstadoJanela -> Picture
 render estado = desenhar estado
@@ -73,8 +74,10 @@ handleInput (EventKey (MouseButton LeftButton) Down _ (x, y)) jogo =
         jogo { estadoJanela = TorreGeloInfo }
       else 
         jogo
-    Game jogoI->
-      if estaDentro (x, y) (526 ,130) dimensaoBotaoTorre then
+    Game jogoI ->
+      if clicouRelva (x,y) jogoI then 
+        jogo { estadoJanela = EscolhaNivel }
+      else if estaDentro (x, y) (526 ,130) dimensaoBotaoTorre then
         jogo { estadoJanela = Menu }
       else if estaDentro (x, y) (526 ,-10) dimensaoBotaoTorre then
         jogo { estadoJanela = TorreGeloInfo }

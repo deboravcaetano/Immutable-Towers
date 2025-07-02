@@ -10,6 +10,8 @@ iniciarJogo nivel = case nivel of
         , mapaJogo = mapaNivel1
         --, inimigosJogo = []
         --, lojaJogo = lojaBasica
+        , nLinhas = 14
+        , nColunas = 14
         }
     _ -> iniciarJogo 1
 
