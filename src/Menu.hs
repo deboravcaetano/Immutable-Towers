@@ -7,9 +7,6 @@ render :: EstadoJanela -> Picture
 render estado = desenhar estado
 
 
-{-|
-'handleInput' trata os eventos de entrada, como cliques nos botões utilizando 'estaDentro' para verificar se é um clique numa "posição válida".
--}
 handleInput :: Event -> EstadoJanela -> EstadoJanela
 handleInput (EventKey (MouseButton LeftButton) Down _ (x, y)) jogo =
   case estadoJanela jogo of
@@ -41,8 +38,6 @@ handleInput (EventKey (MouseButton LeftButton) Down _ (x, y)) jogo =
 handleInput _ jogo = jogo
 
 
-
--- | Verifica se um ponto está dentro de uma área retangular definida por um centro e dimensões.
 estaDentro :: (Float, Float) -> (Float, Float) -> (Float, Float) -> Bool
 estaDentro (x, y) (bx, by) (width, height) =
   abs (x - bx) < (width / 2) && abs (y - by) < (height / 2)

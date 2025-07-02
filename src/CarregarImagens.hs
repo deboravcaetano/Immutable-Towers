@@ -1,4 +1,3 @@
--- Este módulo contêm todas as funções para carregar imagens
 module CarregarImagens where
 import Graphics.Gloss
 
@@ -13,7 +12,7 @@ carregarImgBotaoJogar :: IO Picture
 carregarImgBotaoJogar = loadBMP "assets/Botoes/BotaoJogar.bmp"
 
 carregarImgFundoRegras :: IO Picture
-carregarImgFundoRegras = loadBMP "assets/Botoes/FundoRegras.bmp"
+carregarImgFundoRegras = loadBMP "assets/Fundos/FundoRegras.bmp"
 
 carregarImgBotaoVoltar :: IO Picture
 carregarImgBotaoVoltar = loadBMP "assets/Botoes/BotaoVoltar.bmp"

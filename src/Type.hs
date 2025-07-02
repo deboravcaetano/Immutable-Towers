@@ -4,6 +4,20 @@ import System.Random
 
 data Janela = Menu | EscolhaNivel | Regras | Game Jogo| Ganhou Jogo | Perdeu Jogo | Pausa Jogo 
 
+data EstadoJanela = EstadoJanela
+  { estadoJanela :: Janela              
+  , imagemJanelaPrincipal :: Picture     
+  , imagemJanelaEscolhaNivel :: Picture  
+  , imagemFundoRegras :: Picture         
+  , imagemBotaoJogar :: Picture          
+  , imagemBotaoRegras :: Picture        
+  , imagemBotaoVoltar :: Picture        
+  , imagemBotaoNivel1 :: Picture         
+  , imagemBotaoNivel2 :: Picture        
+  , imagemBotaoNivel3 :: Picture       
+  , jogoatual :: Janela       
+  }
+
 data Portal = Portal {
     posicaoPortal :: Posicao,
     ondasPortal :: [Onda],
@@ -146,21 +160,6 @@ data Onda = Onda
     entradaOnda :: Tempo
   }
   deriving (Show)
-
-
-data EstadoJanela = EstadoJanela
-  { estadoJanela :: Janela              
-  , imagemJanelaPrincipal :: Picture     
-  , imagemJanelaEscolhaNivel :: Picture  
-  , imagemFundoRegras :: Picture         
-  , imagemBotaoJogar :: Picture          
-  , imagemBotaoRegras :: Picture        
-  , imagemBotaoVoltar :: Picture        
-  , imagemBotaoNivel1 :: Picture         
-  , imagemBotaoNivel2 :: Picture        
-  , imagemBotaoNivel3 :: Picture       
-  , jogoatual :: Janela       
-  }
 
 
 -- | Valor inicial que determina a sequência de números pseudo-aleatórios.
