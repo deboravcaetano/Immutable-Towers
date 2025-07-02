@@ -44,19 +44,15 @@ desenhaJogo estado jogo = pictures $
     ++ map (\p -> desenhaPortal p (imagemPortal estado)) (portaisJogo jogo)
 
 
-desenhaMapa :: Mapa -> [Picture] -> Picture 
-desenhaMapa mapa imagens = 
-    Translate offsetX offsetY $ 
-    Pictures [desenhaTile (fromIntegral x, fromIntegral y) terreno imagens | 
-              (y, linha) <- zip [0..] (reverse mapa), 
-              (x, terreno) <- zip [0..] linha]
-  where
-    numLinhas = fromIntegral $ length mapa
-    numColunas = fromIntegral $ length (head mapa)
-    
 
-    offsetX = - (numColunas * 50) / 2
-    offsetY = - (numLinhas * 50) / 2
+desenhaMapa :: Mapa -- ^ Mapa que vai ser desenhado
+            -> [Picture] -- ^ Lista dos diferentes tipos de terreno
+            -> Picture -- ^ Combinação de todas as imagens em uma única imagem, o mapa
+desenhaMapa mapa imagens = 
+    Translate (-325) (-325) $ Pictures [desenhaTile (fromIntegral x, fromIntegral y) terreno imagens | 
+                                        (y, linha) <- zip [0..] (reverse mapa), 
+                                        (x, terreno) <- zip [0..] linha]
+
 
 
 desenhaTile :: (Float, Float) -> Terreno -> [Picture] -> Picture

@@ -4,7 +4,7 @@ import Type
 iniciarJogo :: Int -> Jogo
 iniciarJogo nivel = case nivel of
     1 -> Jogo
-        { baseJogo = Base 100 (300.0, 175.0) 500
+        { baseJogo = Base 100 (325.0, 200.0) 500
         , portaisJogo = [portal1]
         --, torresJogo = []
         , mapaJogo = mapaNivel1
@@ -37,4 +37,4 @@ mapaNivel1 =
         a = Agua
 
 portal1 :: Portal
-portal1 = Portal (-350, 200) [] True
+portal1 = Portal (-325, 225) [] True

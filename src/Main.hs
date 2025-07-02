@@ -48,7 +48,7 @@ main = do
 
   let atualizar _ = id
 
-  play (InWindow "ImmutableTowers" (1550, 900) (300, 70)) 
+  play (InWindow "ImmutableTowers" (1600, 900) (300, 70)) 
        white
        60
        estadoInicial
