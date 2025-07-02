@@ -14,7 +14,6 @@ iniciarJogo nivel = case nivel of
     _ -> iniciarJogo 1
 
 
-
 mapaNivel1 =
     [[r, r, r, r, r, r, r, r, r, r, r, r, r, r],
      [r, t, t, t, r, r, r, r, r, r, r, r, r, r],
@@ -38,3 +37,5 @@ mapaNivel1 =
 
 portal1 :: Portal
 portal1 = Portal (-325, 225) [] True
+
+

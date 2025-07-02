@@ -10,7 +10,10 @@ main = do
 
   imgMenu <- carregarImgMenu
   imgEscolhaNivel <- carregarImgFundoNivel
-  imgFundoRegras <- carregarImgFundoRegras
+  imgFundoGoal <- carregarImgGoal
+  imgFireTowerInfo <- carregarImgFirePage
+  imgIceTowerInfo <- carregarImgIcePage
+  imgResinTowerInfo <- carregarImgResinPage
   imgBotaoJogar <- carregarImgBotaoJogar
   imgBotaoRegras <- carregarImgBotaoRegras
   imgBotaoVoltar <- carregarImgBotaoVoltar
@@ -25,23 +28,46 @@ main = do
   imgBase <- carregarImgBase
   imgPortal <- carregarImgPortal
     
+  imgAbaAberta <- carregarImgAbaAberta
+  imgAbaFechada <- carregarImgAbaFechada
+
+  imgFundoMapa <- carregarImgFundoMapa
+
+  imgLoja <- carregarImgLoja
+
+  imgBotaoFogo <- carregarImgBotaoTorreFogo
+  imgBotaoGelo <- carregarImgBotaoTorreGelo
+  imgBotaoResina <- carregarImgBotaoTorreResina
 
   let estadoInicial = EstadoJanela
         { estadoJanela = Menu
         , imagemJanelaPrincipal = imgMenu
         , imagemJanelaEscolhaNivel = imgEscolhaNivel
-        , imagemFundoRegras = imgFundoRegras
+        , imagemFundoGoal = imgFundoGoal
+        , imagemFundoFogo = imgFireTowerInfo
+        , imagemFundoGelo = imgIceTowerInfo
+        , imagemFundoResina = imgResinTowerInfo
+        , imagemFundoMapa = imgFundoMapa
         , imagemBotaoJogar = imgBotaoJogar
         , imagemBotaoRegras = imgBotaoRegras
         , imagemBotaoVoltar = imgBotaoVoltar
         , imagemBotaoNivel1 = imgBotaoNivel1
         , imagemBotaoNivel2 = imgBotaoNivel2
         , imagemBotaoNivel3 = imgBotaoNivel3
+        , imagemBotao1 = imgAbaAberta
+        , imagemBotao2 = imgAbaFechada
+        , imagemBotao3 = imgAbaFechada
+        , imagemBotao4 = imgAbaFechada
+        , imagemBotao5 = imgAbaFechada
         , imagemRelva = relva    
         , imagemTerra = terra    
         , imagemAgua = agua  
         , imagemBase = imgBase
         , imagemPortal = imgPortal
+        , imagemLoja = imgLoja
+        , imagemBotaoFogo = imgBotaoFogo
+        , imagemBotaoGelo = imgBotaoGelo
+        , imagemBotaoResina = imgBotaoResina
         , jogoatual = Menu
         }
 

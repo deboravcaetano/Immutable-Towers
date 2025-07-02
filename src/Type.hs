@@ -2,24 +2,37 @@ module Type where
 import Graphics.Gloss.Interface.Pure.Game
 import System.Random 
 
-data Janela = Menu | EscolhaNivel | Regras | Game Jogo -- | Ganhou Jogo | Perdeu Jogo | Pausa Jogo 
+data Janela = Menu | EscolhaNivel | Goal | TorreFogoInfo | TorreGeloInfo | TorreResinaInfo | Game Jogo -- | Ganhou Jogo | Perdeu Jogo | Pausa Jogo 
 
 data EstadoJanela = EstadoJanela
   { estadoJanela :: Janela              
   , imagemJanelaPrincipal :: Picture     
   , imagemJanelaEscolhaNivel :: Picture  
-  , imagemFundoRegras :: Picture         
+  , imagemFundoGoal :: Picture  
+  , imagemFundoFogo :: Picture   
+  , imagemFundoGelo :: Picture 
+  , imagemFundoResina :: Picture 
+  , imagemFundoMapa :: Picture     
   , imagemBotaoJogar :: Picture          
   , imagemBotaoRegras :: Picture        
   , imagemBotaoVoltar :: Picture        
   , imagemBotaoNivel1 :: Picture         
   , imagemBotaoNivel2 :: Picture        
   , imagemBotaoNivel3 :: Picture
+  , imagemBotao1 :: Picture
+  , imagemBotao2 :: Picture
+  , imagemBotao3 :: Picture
+  , imagemBotao4 :: Picture
+  , imagemBotao5 :: Picture
   , imagemRelva :: Picture
   , imagemTerra :: Picture
   , imagemAgua :: Picture   
   , imagemBase :: Picture 
-  , imagemPortal :: Picture   
+  , imagemPortal :: Picture 
+  , imagemLoja :: Picture
+  , imagemBotaoFogo :: Picture
+  , imagemBotaoGelo :: Picture
+  , imagemBotaoResina :: Picture  
   , jogoatual :: Janela       
   }
 
@@ -188,16 +201,25 @@ dimensaoBotaoJogar :: (Float, Float)
 dimensaoBotaoJogar = (381, 36)
 
 dimensaoBotaoVoltar :: (Float, Float)
-dimensaoBotaoVoltar = (301, 29)
+dimensaoBotaoVoltar = (86, 80)
 
 dimensaoBotaoNivel1 :: (Float, Float)
-dimensaoBotaoNivel1 = (268, 263)
+dimensaoBotaoNivel1 = (235, 225)
 
 dimensaoBotaoNivel2 :: (Float, Float)
-dimensaoBotaoNivel2 = (268, 263)
+dimensaoBotaoNivel2 = (235, 225)
 
 dimensaoBotaoNivel3 :: (Float, Float)
-dimensaoBotaoNivel3 = (268, 263)
+dimensaoBotaoNivel3 = (235, 225)
 
 dimensaoBotaoRegras :: (Float, Float)
 dimensaoBotaoRegras = (112, 145)
+
+dimensaoBotaoAbaAberta :: (Float, Float)
+dimensaoBotaoAbaAberta = (169, 43)
+
+dimensaoBotaoAbaFechada :: (Float, Float)
+dimensaoBotaoAbaFechada = (169, 26)
+
+dimensaoBotaoTorre :: (Float, Float)
+dimensaoBotaoTorre = (92, 136)

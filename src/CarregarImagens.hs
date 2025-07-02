@@ -11,8 +11,17 @@ carregarImgFundoNivel = loadBMP "assets/Fundos/JanelaNivel.bmp"
 carregarImgBotaoJogar :: IO Picture
 carregarImgBotaoJogar = loadBMP "assets/Botoes/BotaoJogar.bmp"
 
-carregarImgFundoRegras :: IO Picture
-carregarImgFundoRegras = loadBMP "assets/Fundos/FundoRegras.bmp"
+carregarImgGoal :: IO Picture
+carregarImgGoal = loadBMP "assets/Fundos/GoalPage.bmp"
+
+carregarImgFirePage :: IO Picture
+carregarImgFirePage = loadBMP "assets/Fundos/FireTowerPage.bmp"
+
+carregarImgIcePage :: IO Picture
+carregarImgIcePage = loadBMP "assets/Fundos/IceTowerPage.bmp"
+
+carregarImgResinPage :: IO Picture
+carregarImgResinPage = loadBMP "assets/Fundos/ResinTowerPage.bmp"
 
 carregarImgBotaoVoltar :: IO Picture
 carregarImgBotaoVoltar = loadBMP "assets/Botoes/BotaoVoltar.bmp"
@@ -43,6 +52,27 @@ carregarImgBase = loadBMP "assets/Base/Torre/Base.bmp"
 
 carregarImgPortal :: IO Picture
 carregarImgPortal = loadBMP "assets/Portal/Portal.bmp"
+
+carregarImgAbaAberta:: IO Picture
+carregarImgAbaAberta = loadBMP "assets/Botoes/BotaoAbaAberta.bmp"
+
+carregarImgAbaFechada:: IO Picture
+carregarImgAbaFechada = loadBMP "assets/Botoes/BotaoAbaFechada.bmp"
+
+carregarImgFundoMapa:: IO Picture
+carregarImgFundoMapa = loadBMP "assets/Fundos/FundoMapa.bmp"
+
+carregarImgLoja :: IO Picture
+carregarImgLoja = loadBMP "assets/Loja/Loja.bmp"
+
+carregarImgBotaoTorreFogo :: IO Picture
+carregarImgBotaoTorreFogo = loadBMP "assets/Botoes/TorreFogoBotao.bmp"
+
+carregarImgBotaoTorreGelo :: IO Picture
+carregarImgBotaoTorreGelo = loadBMP "assets/Botoes/TorreGeloBotao.bmp"
+
+carregarImgBotaoTorreResina :: IO Picture
+carregarImgBotaoTorreResina = loadBMP "assets/Botoes/TorreResinaBotao.bmp"
 
 carregarImgFlora :: IO [Picture]
 carregarImgFlora = do
