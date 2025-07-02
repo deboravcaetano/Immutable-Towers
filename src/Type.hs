@@ -2,7 +2,7 @@ module Type where
 import Graphics.Gloss.Interface.Pure.Game
 import System.Random 
 
-data ImmutableTowers = Menu | EscolhaNivel | Regras | Game Jogo| Ganhou Jogo | Perdeu Jogo | Pausa Jogo 
+data Janela = Menu | EscolhaNivel | Regras | Game Jogo| Ganhou Jogo | Perdeu Jogo | Pausa Jogo 
 
 data Portal = Portal {
     posicaoPortal :: Posicao,
@@ -148,17 +148,19 @@ data Onda = Onda
   deriving (Show)
 
 
--- | Estado da janela do jogo, contendo informações sobre o estado atual e as imagens.
 data EstadoJanela = EstadoJanela
-  { estadoJanela :: Estado              -- ^ O estado atual do jogo (Menu, Escolha de Nível, Jogo).
-  , imagemJanelaPrincipal :: Picture     -- ^ Imagem do fundo da janela inicial.
-  , imagemJanelaEscolhaNivel :: Picture  -- ^ Imagem do fundo da janela de escolha de nível.
-  , imagemBotaoJogar :: Picture          -- ^ Imagem do botão "Jogar".
-  , imagemBotaoSair :: Picture           -- ^ Imagem do botão "Sair".
-  , imagemBotaoVoltar :: Picture         -- ^ Imagem do botão "Voltar".
-  , imagemBotaoNivel1 :: Picture         -- ^ Imagem do botão para escolher o Nível 1.
-  , jogoatual :: ImmutableTowers        -- ^ O jogo a jogar.
-}
+  { estadoJanela :: Janela              
+  , imagemJanelaPrincipal :: Picture     
+  , imagemJanelaEscolhaNivel :: Picture  
+  , imagemFundoRegras :: Picture         
+  , imagemBotaoJogar :: Picture          
+  , imagemBotaoRegras :: Picture        
+  , imagemBotaoVoltar :: Picture        
+  , imagemBotaoNivel1 :: Picture         
+  , imagemBotaoNivel2 :: Picture        
+  , imagemBotaoNivel3 :: Picture       
+  , jogoatual :: Janela       
+  }
 
 
 -- | Valor inicial que determina a sequência de números pseudo-aleatórios.
@@ -176,3 +178,22 @@ type Semente = Int
 -}
 geraAleatorios :: Semente -> Int -> [Int]
 geraAleatorios s c = take c $ System.Random.randoms (System.Random.mkStdGen s)
+
+dimensaoBotaoJogar :: (Float, Float)
+dimensaoBotaoJogar = (381, 36)
+
+
+dimensaoBotaoVoltar :: (Float, Float)
+dimensaoBotaoVoltar = (301, 29)
+
+dimensaoBotaoNivel1 :: (Float, Float)
+dimensaoBotaoNivel1 = (268, 263)
+
+dimensaoBotaoNivel2 :: (Float, Float)
+dimensaoBotaoNivel2 = (268, 263)
+
+dimensaoBotaoNivel3 :: (Float, Float)
+dimensaoBotaoNivel3 = (268, 263)
+
+dimensaoBotaoRegras :: (Float, Float)
+dimensaoBotaoRegras = (112, 145)

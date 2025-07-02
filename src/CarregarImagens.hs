@@ -1,33 +1,34 @@
 -- Este módulo contêm todas as funções para carregar imagens
+module CarregarImagens where
 import Graphics.Gloss
 
 
 carregarImgMenu :: IO Picture
-carregarImgMenu = loadBMP "imagens/fundos/MenuPrincipal.bmp"
+carregarImgMenu = loadBMP "assets/Fundos/MenuPrincipal.bmp"
 
 carregarImgFundoNivel :: IO Picture
-carregarImgFundoNivel = loadBMP "imagens/fundos/JanelaNivel.bmp"
+carregarImgFundoNivel = loadBMP "assets/Fundos/JanelaNivel.bmp"
 
 carregarImgBotaoJogar :: IO Picture
-carregarImgBotaoJogar = loadBMP "imagens/botoes/BotaoJogar.bmp"
+carregarImgBotaoJogar = loadBMP "assets/Botoes/BotaoJogar.bmp"
 
 carregarImgFundoRegras :: IO Picture
-carregarImgFundoRegras = loadBMP "imagens/fundos/FundoRegras.bmp"
+carregarImgFundoRegras = loadBMP "assets/Botoes/FundoRegras.bmp"
 
 carregarImgBotaoVoltar :: IO Picture
-carregarImgBotaoVoltar = loadBMP "imagens/botoes/BotaoVoltar.bmp"
+carregarImgBotaoVoltar = loadBMP "assets/Botoes/BotaoVoltar.bmp"
 
 carregarImgNivel1 :: IO Picture
-carregarImgNivel1 = loadBMP "imagens/botoes/Nivel1.bmp"
+carregarImgNivel1 = loadBMP "assets/Botoes/Nivel1.bmp"
 
 carregarImgNivel2 :: IO Picture
-carregarImgNivel2 = loadBMP "imagens/botoes/Nivel2.bmp"
+carregarImgNivel2 = loadBMP "assets/Botoes/Nivel2.bmp"
 
 carregarImgNivel3 :: IO Picture
-carregarImgNivel3 = loadBMP "imagens/botoes/Nivel3.bmp"
+carregarImgNivel3 = loadBMP "assets/Botoes/Nivel3.bmp"
 
 carregarImgBotaoRegras :: IO Picture
-carregarImgBotaoRegras = loadBMP "imagens/botoes/BotaoRegras.bmp"
+carregarImgBotaoRegras = loadBMP "assets/Botoes/BotaoRegras.bmp"
 
 carregarImgFlora :: IO [Picture]
 carregarImgFlora = do

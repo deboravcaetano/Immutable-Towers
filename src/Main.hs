@@ -1,6 +1,8 @@
-import Graphics.Gloss
-
-
+module Main where
+import Graphics.Gloss.Interface.Pure.Game
+import CarregarImagens
+import Menu
+import Type
 
 main :: IO ()
 main = do
@@ -15,6 +17,22 @@ main = do
   imgBotaoNivel2 <- carregarImgNivel2
   imgBotaoNivel3 <- carregarImgNivel3
 
+  let estadoInicial = EstadoJanela
+        { estadoJanela = Menu
+        , imagemJanelaPrincipal = imgMenu
+        , imagemJanelaEscolhaNivel = imgEscolhaNivel
+        , imagemFundoRegras = imgFundoRegras
+        , imagemBotaoJogar = imgBotaoJogar
+        , imagemBotaoRegras = imgBotaoRegras
+        , imagemBotaoVoltar = imgBotaoVoltar
+        , imagemBotaoNivel1 = imgBotaoNivel1
+        , imagemBotaoNivel2 = imgBotaoNivel2
+        , imagemBotaoNivel3 = imgBotaoNivel3
+        , jogoatual = Menu
+        }
+
+
+  let atualizar _ = id
 
   play (InWindow "ImmutableTowers" (1550, 900) (300, 70)) 
        white
@@ -22,7 +40,8 @@ main = do
        estadoInicial
        render
        handleInput
-       update
+       atualizar 
+
 
 
 
