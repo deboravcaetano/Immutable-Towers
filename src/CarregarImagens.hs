@@ -74,6 +74,15 @@ carregarImgBotaoTorreGelo = loadBMP "assets/Botoes/TorreGeloBotao.bmp"
 carregarImgBotaoTorreResina :: IO Picture
 carregarImgBotaoTorreResina = loadBMP "assets/Botoes/TorreResinaBotao.bmp"
 
+carregarImgTorreResina :: IO Picture
+carregarImgTorreResina = loadBMP "assets/Torres/TorreResina.bmp"
+
+carregarImgTorreGelo :: IO Picture
+carregarImgTorreGelo = loadBMP "assets/Torres/TorreGelo.bmp"
+
+carregarImgTorreFogo :: IO Picture
+carregarImgTorreFogo = loadBMP "assets/Torres/TorreFogo.bmp"
+
 carregarImgFlora :: IO [Picture]
 carregarImgFlora = do
     imgEsq <- loadBMP "assets/Personagens/FloraEsquerda.bmp" 

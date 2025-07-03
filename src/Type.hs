@@ -2,7 +2,7 @@ module Type where
 import Graphics.Gloss.Interface.Pure.Game
 import System.Random 
 
-data Janela = Menu | EscolhaNivel | Goal | TorreFogoInfo | TorreGeloInfo | TorreResinaInfo | Game Jogo -- | Ganhou Jogo | Perdeu Jogo | Pausa Jogo 
+data Janela = Menu | EscolhaNivel | Goal | TorreFogoInfo | TorreGeloInfo | TorreResinaInfo | Game  -- | Ganhou Jogo | Perdeu Jogo | Pausa Jogo 
 
 data EstadoJanela = EstadoJanela
   { estadoJanela :: Janela              
@@ -33,7 +33,11 @@ data EstadoJanela = EstadoJanela
   , imagemBotaoFogo :: Picture
   , imagemBotaoGelo :: Picture
   , imagemBotaoResina :: Picture  
-  , jogoatual :: Janela       
+  , jogoatual :: Jogo 
+  , relvaSelecionada :: Maybe (Float, Float) 
+  , imagemTorreFogo :: Picture
+  , imagemTorreGelo:: Picture
+  , imagemTorreResina :: Picture     
   }
 
 data Portal = Portal {
@@ -46,7 +50,7 @@ data Portal = Portal {
 data Jogo = Jogo { 
     baseJogo :: Base,
     portaisJogo :: [Portal],
-    --torresJogo :: [Torre],
+    torresJogo :: [Torre],
     mapaJogo :: [[Terreno]]--,
     --inimigosJogo :: [Inimigo],
     --lojaJogo :: Loja
@@ -103,15 +107,15 @@ data Torre = Torre
   { -- | Posição da torre no mapa.
     posicaoTorre :: Posicao,
     -- | Redução de vida no inimigo pelo impacto do projétil.
-    danoTorre :: Float,
+    --danoTorre :: Float,
     -- | Alcance circular da torre.
-    alcanceTorre :: Float,
+    --alcanceTorre :: Float,
     -- | Número de máximo de inimigos simultaneamente atingidos por uma rajada de tiros.
-    rajadaTorre :: Int,
+    --rajadaTorre :: Int,
     -- | Ciclo de tempo entre rajadas de tiros.
-    cicloTorre :: Tempo,
+    --cicloTorre :: Tempo,
     -- | Tempo restante para a próxima rajada de tiros.
-    tempoTorre :: Tempo,
+    --tempoTorre :: Tempo,
     -- | Efeito secundário associado ao tipo de projétil da torre.
     projetilTorre :: Projetil
   }
@@ -127,9 +131,9 @@ data TipoProjetil = Fogo | Gelo | Resina
 -- | Projétil aplicado por uma torre.
 data Projetil = Projetil
   { -- | Tipo de projétil.
-    tipoProjetil :: TipoProjetil,
+    tipoProjetil :: TipoProjetil--,
     -- | Duração do efeito do projétil no inimigo.
-    duracaoProjetil :: Duracao
+    --duracaoProjetil :: Duracao
   }
   deriving (Show)
 

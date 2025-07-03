@@ -1,6 +1,7 @@
 module EventosLoja where
 import Type
 
+
 -- Objetivo: Transformar coordenadas do clique do rato em píxeis (x,y) num índice da matriz do tabuleiro Just (linha,coluna)
 -- Exemplo: (125, -75)  -->  Just (2,3)
 
@@ -19,8 +20,49 @@ pixelParaIndice nCols nRows (x,y) =
         then Just (row,col)
         else Nothing -- Fora do tabuleiro
 
-clicouRelva :: (Float,Float) -> Jogo -> Bool
-clicouRelva pxy jogo =
-  case pixelParaIndice (nColunas jogo) (nLinhas  jogo) pxy of
-    Just (r,c) -> mapaJogo jogo !! r !! c == Relva -- xs !! i  “dá‑me o elemento da lista xs na posição i”
-    Nothing    -> False
+
+clicouRelva :: (Float,Float) -> EstadoJanela -> Bool
+clicouRelva pxy estado =
+  let jogo = jogoatual estado
+  in case pixelParaIndice (nColunas jogo) (nLinhas jogo) pxy of
+        Just (r,c) -> 
+            let linha = mapaJogo jogo !! r
+            in if c < length linha then linha !! c == Relva else False
+        Nothing -> False
+
+
+tileParaPosicaoCentral :: (Float, Float) -> (Int, Int) -> Maybe (Float, Float)
+tileParaPosicaoCentral (x, y) (nCols, nRows) = do
+    (r, c) <- pixelParaIndice nCols nRows (x, y)
+    let tile = 50
+        metadeLargura = (fromIntegral nCols * tile) / 2
+        metadeAltura = (fromIntegral nRows * tile) / 2
+
+        centX = fromIntegral c * tile - metadeLargura + tile / 2
+        centY = metadeAltura - fromIntegral r * tile - tile/ 2
+
+        posX = centX
+        posY = centY + 12 -- Ajuste para não ficar parte no bloco abaixo
+    return (posX, posY)
+
+
+-- EventosLoja.hs
+adicionarTorre :: EstadoJanela -> (Float, Float) -> TipoProjetil -> EstadoJanela
+adicionarTorre estado posicao tipo = 
+    let jogo = jogoatual estado
+        nCols = nColunas jogo
+        nRows = nLinhas jogo
+        
+        posCentral = case tileParaPosicaoCentral posicao (nCols, nRows) of
+            Just pos -> pos
+            Nothing -> posicao  
+            
+        novaTorre = Torre {
+            posicaoTorre = posCentral,
+            projetilTorre = Projetil {
+              tipoProjetil = tipo
+            }
+        } 
+        novasTorres = novaTorre : torresJogo jogo
+        novoJogo = jogo { torresJogo = novasTorres }
+    in estado { jogoatual = novoJogo }

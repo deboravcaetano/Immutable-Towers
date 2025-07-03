@@ -3,6 +3,8 @@ import Graphics.Gloss.Interface.Pure.Game
 import CarregarImagens
 import Menu
 import Type
+import Game
+import Type (EstadoJanela(relvaSelecionada, imagemTorreFogo))
 
 
 main :: IO ()
@@ -39,6 +41,10 @@ main = do
   imgBotaoGelo <- carregarImgBotaoTorreGelo
   imgBotaoResina <- carregarImgBotaoTorreResina
 
+  imgTorreFogo <- carregarImgTorreFogo
+  imgTorreGelo <- carregarImgTorreGelo
+  imgTorreResina <- carregarImgTorreResina
+
   let estadoInicial = EstadoJanela
         { estadoJanela = Menu
         , imagemJanelaPrincipal = imgMenu
@@ -68,7 +74,11 @@ main = do
         , imagemBotaoFogo = imgBotaoFogo
         , imagemBotaoGelo = imgBotaoGelo
         , imagemBotaoResina = imgBotaoResina
-        , jogoatual = Menu
+        , relvaSelecionada = Nothing
+        , jogoatual = jogoInicial
+        , imagemTorreFogo = imgTorreFogo
+        , imagemTorreGelo = imgTorreGelo 
+        , imagemTorreResina = imgTorreResina
         }
 
 

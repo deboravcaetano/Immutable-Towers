@@ -1,12 +1,26 @@
 module Game where
 import Type 
 
+
+
+jogoInicial :: Jogo
+jogoInicial = Jogo {
+    baseJogo = Base 100 (325.0, 200.0) 500,
+    portaisJogo = [],
+    torresJogo = [],
+    mapaJogo = [[]],
+    nLinhas = 0,
+    nColunas = 0         
+}
+
+
+
 iniciarJogo :: Int -> Jogo
 iniciarJogo nivel = case nivel of
     1 -> Jogo
         { baseJogo = Base 100 (325.0, 200.0) 500
         , portaisJogo = [portal1]
-        --, torresJogo = []
+        , torresJogo = []
         , mapaJogo = mapaNivel1
         --, inimigosJogo = []
         --, lojaJogo = lojaBasica

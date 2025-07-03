@@ -1,8 +1,9 @@
 module Desenhar where
 import Type 
 import Graphics.Gloss 
-import Type (EstadoJanela, Portal (posicaoPortal), Jogo (portaisJogo))
+import Type 
 import Graphics.Gloss (Picture)
+import Type (Torre(projetilTorre))
 
 
 
@@ -14,7 +15,7 @@ desenhar estado = case estadoJanela estado of
     TorreFogoInfo -> desenhaFogoInfo estado
     TorreGeloInfo -> desenhaGeloInfo estado
     TorreResinaInfo -> desenhaResinaInfo estado
-    Game jogo -> desenhaJogo estado jogo
+    Game -> desenhaJogo estado (jogoatual estado)  
 
 
 desenhaMenu :: EstadoJanela -> Picture
@@ -85,6 +86,15 @@ desenhaJogo estado jogo = pictures $
     , desenhaLoja (imagemLoja estado) (imagemBotaoGelo estado) (imagemBotaoResina estado) (imagemBotaoFogo estado) estado
     ]
     ++ map (\p -> desenhaPortal p (imagemPortal estado)) (portaisJogo jogo)
+    ++ map (\t -> desenhaTorre t (escolherImagemTorre estado t)) (torresJogo jogo)
+  where
+    escolherImagemTorre :: EstadoJanela -> Torre -> Picture
+    escolherImagemTorre estado torre = 
+        case tipoProjetil (projetilTorre torre) of
+            Fogo    -> imagemTorreFogo estado    
+            Gelo    -> imagemTorreGelo estado
+            Resina  -> imagemTorreResina estado
+
 
 desenhaFundoMapa :: Picture -> EstadoJanela -> Picture
 desenhaFundoMapa imgFundo _estado =
@@ -92,13 +102,12 @@ desenhaFundoMapa imgFundo _estado =
 
 desenhaLoja :: Picture -> Picture -> Picture -> Picture -> EstadoJanela -> Picture
 desenhaLoja imgLoja imgBotaoGelo imgBotaoResina imgBotaoFogo _estado = pictures [
-    translate 80 0 imgLoja,
-    translate 526 130 imgBotaoGelo,
-    translate 526 (-10) imgBotaoResina,
-    translate 526 (-150) imgBotaoFogo
+    translate (-5) 0 imgLoja,
+    translate 535 150 imgBotaoGelo,
+    translate 535 10 imgBotaoResina,
+    translate 535 (-130) imgBotaoFogo
     ]
     
-
 desenhaMapa :: [[Terreno]] -> [Picture] -> Picture 
 desenhaMapa mapa imagens = 
     Translate offsetX offsetY $ 
@@ -134,3 +143,9 @@ desenhaPortal portal imgPortal =
     translate x y imgPortal
   where
     (x, y) = posicaoPortal portal
+
+desenhaTorre :: Torre -> Picture -> Picture  
+desenhaTorre torre imgTorre = 
+    let (x, y) = posicaoTorre torre
+    in translate x y imgTorre
+
