@@ -2,7 +2,7 @@ module Type where
 import Graphics.Gloss.Interface.Pure.Game
 import System.Random 
 
-data Janela = Menu | EscolhaNivel | Goal | TorreFogoInfo | TorreGeloInfo | TorreResinaInfo | Game  -- | Ganhou Jogo | Perdeu Jogo | Pausa Jogo 
+data Janela = Menu | EscolhaNivel | Goal | TorreFogoInfo | TorreGeloInfo | TorreResinaInfo | Game  
 
 data EstadoJanela = EstadoJanela
   { estadoJanela :: Janela              
@@ -53,7 +53,7 @@ data Jogo = Jogo {
     torresJogo :: [Torre],
     mapaJogo :: [[Terreno]]--,
     --inimigosJogo :: [Inimigo],
-    --lojaJogo :: Loja
+    ,lojaJogo :: Loja
     ,nLinhas     :: Int
     ,nColunas    :: Int
   }

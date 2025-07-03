@@ -4,7 +4,7 @@ import CarregarImagens
 import Menu
 import Type
 import Game
-import Type (EstadoJanela(relvaSelecionada, imagemTorreFogo))
+
 
 
 main :: IO ()

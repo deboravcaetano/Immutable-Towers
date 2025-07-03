@@ -18,17 +18,29 @@ jogoInicial = Jogo {
 iniciarJogo :: Int -> Jogo
 iniciarJogo nivel = case nivel of
     1 -> Jogo
-        { baseJogo = Base 100 (325.0, 200.0) 500
+        { baseJogo = Base {vidaBase = 100 , posicaoBase = (325.0, 200.0) , creditosBase = 500}
         , portaisJogo = [portal1]
         , torresJogo = []
         , mapaJogo = mapaNivel1
         --, inimigosJogo = []
-        --, lojaJogo = lojaBasica
+        ,lojaJogo = [ 
+        (100, criarTorre Fogo), 
+        (150, criarTorre Gelo), 
+        (200, criarTorre Resina)
+        ]
         , nLinhas = 14
         , nColunas = 14
         }
     _ -> iniciarJogo 1
 
+
+criarTorre :: TipoProjetil -> Torre
+criarTorre tipo = Torre {
+    posicaoTorre = (-1650, -950), 
+    projetilTorre = Projetil {
+        tipoProjetil = tipo
+    }
+}
 
 mapaNivel1 =
     [[r, r, r, r, r, r, r, r, r, r, r, r, r, r],

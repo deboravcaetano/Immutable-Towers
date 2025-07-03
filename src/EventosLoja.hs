@@ -46,7 +46,12 @@ tileParaPosicaoCentral (x, y) (nCols, nRows) = do
     return (posX, posY)
 
 
--- EventosLoja.hs
+procurarCustoTorre :: TipoProjetil -> Loja -> Maybe Creditos
+procurarCustoTorre tipo loja = 
+    case filter (\(_, torre) -> tipoProjetil (projetilTorre torre) == tipo) loja of
+        ((cost, _):_) -> Just cost
+        _ -> Nothing
+
 adicionarTorre :: EstadoJanela -> (Float, Float) -> TipoProjetil -> EstadoJanela
 adicionarTorre estado posicao tipo = 
     let jogo = jogoatual estado
@@ -57,12 +62,29 @@ adicionarTorre estado posicao tipo =
             Just pos -> pos
             Nothing -> posicao  
             
-        novaTorre = Torre {
-            posicaoTorre = posCentral,
-            projetilTorre = Projetil {
-              tipoProjetil = tipo
-            }
-        } 
-        novasTorres = novaTorre : torresJogo jogo
-        novoJogo = jogo { torresJogo = novasTorres }
-    in estado { jogoatual = novoJogo }
+        custo = case procurarCustoTorre tipo (lojaJogo jogo) of
+            Just cost -> cost
+            Nothing   -> 1000  -- Valor alto padrão se não encontrar
+            
+        creditosAtuais = creditosBase (baseJogo jogo)
+        
+    in if creditosAtuais >= custo
+        then
+            let novaTorre = Torre {
+                    posicaoTorre = posCentral,
+                    projetilTorre = Projetil {
+                      tipoProjetil = tipo
+                    }
+                } 
+                
+                novasTorres = novaTorre : torresJogo jogo
+                
+                baseAtual = baseJogo jogo
+                novaBase = baseAtual { creditosBase = creditosAtuais - custo }
+                
+                novoJogo = jogo { 
+                    baseJogo = novaBase,
+                    torresJogo = novasTorres 
+                }
+            in estado { jogoatual = novoJogo }
+        else estado  
