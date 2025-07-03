@@ -37,7 +37,13 @@ data EstadoJanela = EstadoJanela
   , relvaSelecionada :: Maybe (Float, Float) 
   , imagemTorreFogo :: Picture
   , imagemTorreGelo:: Picture
-  , imagemTorreResina :: Picture     
+  , imagemTorreResina :: Picture 
+  , imagensFlora :: [Picture]
+  --, imagensStella :: [Picture]
+  --, imagensInimigo3 :: [Picture]
+  --, imagensInimigo4 :: [Picture]
+  --, imagensInimigo5 :: [Picture]
+  --, imagensInimigo6 :: [Picture] 
   }
 
 data Portal = Portal {
@@ -122,21 +128,21 @@ data Inimigo = Inimigo {
     -- | Direção do último movimento do inimigo.
     direcaoInimigo :: Direcao,
     -- | Vida do inimigo.
-    vidaInimigo :: Float,
+   -- vidaInimigo :: Float,
     -- | Velocidade do inimigo.
-    velocidadeInimigo :: Float,
+    --velocidadeInimigo :: Float,
     -- | Dano causado pelo inimigo na base do jogador.
-    ataqueInimigo :: Float,
+    --ataqueInimigo :: Float,
     -- | Créditos que o jogador recebe ao derrotar o inimigo.
-    butimInimigo :: Creditos,
+    --butimInimigo :: Creditos,
     -- | Efeitos secundários ativos no inimigo.
-    projeteisInimigo :: [Projetil]
-    --tipoInimigo :: TipoInimigo
+    --projeteisInimigo :: [Projetil],
+    tipoInimigo :: TipoInimigo
   }
   deriving (Show)
 
 
--- data TipoInimigo = Flora  deriving (Show,Eq)
+data TipoInimigo = Flora  deriving (Show,Eq)
 
 
 data Onda = Onda { 

@@ -45,6 +45,8 @@ main = do
   imgTorreGelo <- carregarImgTorreGelo
   imgTorreResina <- carregarImgTorreResina
 
+  imgsFlora <- carregarImgsFlora
+
   let estadoInicial = EstadoJanela
         { estadoJanela = Menu
         , imagemJanelaPrincipal = imgMenu
@@ -79,6 +81,7 @@ main = do
         , imagemTorreFogo = imgTorreFogo
         , imagemTorreGelo = imgTorreGelo 
         , imagemTorreResina = imgTorreResina
+        , imagensFlora = imgsFlora
         }
 
 

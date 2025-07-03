@@ -83,10 +83,10 @@ carregarImgTorreGelo = loadBMP "assets/Torres/TorreGelo.bmp"
 carregarImgTorreFogo :: IO Picture
 carregarImgTorreFogo = loadBMP "assets/Torres/TorreFogo.bmp"
 
-carregarImgFlora :: IO [Picture]
-carregarImgFlora = do
-    imgEsq <- loadBMP "assets/Personagens/FloraEsquerda.bmp" 
-    imgDir  <- loadBMP "assets/Personagens/FloraDireita.bmp"
-    imgN    <- loadBMP "assets/Personagens/FloraTras.bmp"
-    imgS      <- loadBMP "assets/Personagens/FloraFrente.bmp"
+carregarImgsFlora :: IO [Picture]
+carregarImgsFlora = do
+    imgEsq <- loadBMP "assets/Personagens/Flora/FloraEsquerda.bmp" 
+    imgDir  <- loadBMP "assets/Personagens/Flora/FloraDireita.bmp"
+    imgN    <- loadBMP "assets/Personagens/Flora/FloraTras.bmp"
+    imgS      <- loadBMP "assets/Personagens/Flora/FloraFrente.bmp"
     return [imgEsq, imgDir, imgN, imgS]

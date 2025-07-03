@@ -87,6 +87,7 @@ desenhaJogo estado jogo = pictures $
     ]
     ++ map (\p -> desenhaPortal p (imagemPortal estado)) (portaisJogo jogo)
     ++ map (\t -> desenhaTorre t (escolherImagemTorre estado t)) (torresJogo jogo)
+    ++ [desenhaInimigos (inimigosJogo jogo)  estado]
   where
     escolherImagemTorre :: EstadoJanela -> Torre -> Picture
     escolherImagemTorre estado torre = 
@@ -148,4 +149,25 @@ desenhaTorre :: Torre -> Picture -> Picture
 desenhaTorre torre imgTorre = 
     let (x, y) = posicaoTorre torre
     in translate x y imgTorre
+
+desenhaInimigos :: [Inimigo] -> EstadoJanela -> Picture 
+desenhaInimigos inimigos estado =
+    if null inimigos then Blank
+    else 
+    Pictures [Translate x y (selecionaImagensInimigo estado inimigo) | inimigo <- inimigos, let (x,y) = posicaoInimigo inimigo]
+ 
+-- Seleciona a lista de imagens
+selecionaImagensInimigo :: EstadoJanela -> Inimigo -> Picture
+selecionaImagensInimigo estado inimigo = 
+    case tipoInimigo inimigo of
+        Flora -> selecionaImagemInimigo (imagensFlora estado) inimigo
+
+
+-- Seleciona a imagem dentro da lista de imagens
+selecionaImagemInimigo imgs inimigo = 
+    case direcaoInimigo inimigo of
+            Oeste -> imgs !! 0 -- imgEsquerda
+            Este  -> imgs !! 1 -- imgDireita
+            Norte -> imgs !! 2 -- imgNorte
+            Sul   -> imgs !! 3 -- imgSul
 

@@ -1,5 +1,7 @@
 module Game where
 import Type 
+import Type (Inimigo(direcaoInimigo))
+
 
 
 
@@ -8,7 +10,9 @@ jogoInicial = Jogo {
     baseJogo = Base 100 (325.0, 200.0) 500,
     portaisJogo = [],
     torresJogo = [],
+    inimigosJogo = [],
     mapaJogo = [[]],
+    lojaJogo = [],
     nLinhas = 0,
     nColunas = 0         
 }
