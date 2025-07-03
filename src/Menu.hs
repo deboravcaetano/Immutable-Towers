@@ -13,9 +13,9 @@ handleInput :: Event -> EstadoJanela -> EstadoJanela
 handleInput (EventKey (MouseButton LeftButton) Down _ (x, y)) estadoGeral =
   case estadoJanela estadoGeral of -- acede o campo estadoJanela de estadoGeral :: EstadoJanela
     Menu ->
-      if estaDentro (x, y) (-25, -165) dimensaoBotaoJogar then
+      if estaDentro (x, y) (-25, -180) dimensaoBotaoJogar then
         estadoGeral { estadoJanela = EscolhaNivel }
-      else if estaDentro (x, y) (710, 370) dimensaoBotaoRegras then
+      else if estaDentro (x, y) (750, 383) dimensaoBotaoRegras then
         estadoGeral { estadoJanela = Goal }
       else
         estadoGeral

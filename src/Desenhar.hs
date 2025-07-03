@@ -21,8 +21,8 @@ desenhar estado = case estadoJanela estado of
 desenhaMenu :: EstadoJanela -> Picture
 desenhaMenu estado = pictures [
     imagemJanelaPrincipal estado,
-    translate (-25) (-165) (imagemBotaoJogar estado),
-    translate 710 370 (imagemBotaoRegras estado)
+    translate (-25) (-180) (imagemBotaoJogar estado),
+    translate 750 383 (imagemBotaoRegras estado)
     ]
 
 desenhaGoal :: EstadoJanela -> Picture

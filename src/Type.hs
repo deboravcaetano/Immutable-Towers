@@ -48,42 +48,29 @@ data Portal = Portal {
   deriving (Show)
 
 data Jogo = Jogo { 
-    baseJogo :: Base,
-    portaisJogo :: [Portal],
-    torresJogo :: [Torre],
-    mapaJogo :: [[Terreno]]--,
-    --inimigosJogo :: [Inimigo],
+     baseJogo :: Base
+    ,portaisJogo :: [Portal]
+    ,torresJogo :: [Torre]
+    ,mapaJogo :: [[Terreno]]
+    ,inimigosJogo :: [Inimigo]
     ,lojaJogo :: Loja
     ,nLinhas     :: Int
     ,nColunas    :: Int
   }
   deriving (Show)
 
-  -- | Tipo de terrenno do mapa.
-data Terreno
-  = -- | Torres constroem-se sobre o relvado do mapa.
-    Relva
-  | -- | A base e os portais constroem-se sobre caminhos de terra do mapa. Além disso, inimigos movem-se sobre estes terrenos.
-    Terra
-  | -- | Água para efeito decorativo, mas onde não se pode construir, nem os inimigos se podem mover.
-    Agua
-  deriving (Eq, Show)
+data Terreno = Relva | Terra | Agua deriving (Eq, Show)
 
 
--- | Coordenada bilateral de uma entidade no jogo, representante do seu centro.
--- O referencial tem origem no canto superior esquerdo, com eixos x e y positivos para a direita e para baixo, respectivamente.
 type Posicao = (Float, Float)
 
--- | Moeda do jogo.
+
 type Creditos = Int
 
--- | Base de operações do jogador.
-data Base = Base
-  { -- | Vida da base. Quando esta chega a zero, o jogador perde o jogo.
+
+data Base = Base { 
     vidaBase :: Float,
-    -- | Posição da base no mapa. A base deve estar sobre um terreno de terra.
     posicaoBase :: Posicao,
-    -- | Balanço de créditos do jogador.
     creditosBase :: Creditos
   }
   deriving (Show)
@@ -91,22 +78,15 @@ data Base = Base
 -- | Distância entre duas posições.
 type Distancia = Float
 
--- | Tempo em segundos.
+
 type Tempo = Float
 
--- | Representa uma duração em segundos
-data Duracao
-  = -- | Duração em segundos
-    Finita Tempo
-  | -- | Duração infinita
-    Infinita
-  deriving (Eq, Show, Ord)
 
--- | Torre que dispara projéteis contra inimigos.
-data Torre = Torre
-  { -- | Posição da torre no mapa.
+data Duracao = Finita Tempo | Infinita deriving (Eq, Show, Ord)
+
+
+data Torre = Torre { 
     posicaoTorre :: Posicao,
-    -- | Redução de vida no inimigo pelo impacto do projétil.
     --danoTorre :: Float,
     -- | Alcance circular da torre.
     --alcanceTorre :: Float,
@@ -116,38 +96,28 @@ data Torre = Torre
     --cicloTorre :: Tempo,
     -- | Tempo restante para a próxima rajada de tiros.
     --tempoTorre :: Tempo,
-    -- | Efeito secundário associado ao tipo de projétil da torre.
     projetilTorre :: Projetil
   }
   deriving (Show)
 
--- | Loja de torres disponíveis para construir por uma quantidade de créditos.
+
 type Loja = [(Creditos, Torre)]
 
--- | Tipo de projétil disparado por uma torre.
-data TipoProjetil = Fogo | Gelo | Resina
-  deriving (Eq, Show)
 
--- | Projétil aplicado por uma torre.
-data Projetil = Projetil
-  { -- | Tipo de projétil.
+data TipoProjetil = Fogo | Gelo | Resina deriving (Eq, Show)
+
+
+data Projetil = Projetil { 
     tipoProjetil :: TipoProjetil--,
-    -- | Duração do efeito do projétil no inimigo.
     --duracaoProjetil :: Duracao
   }
   deriving (Show)
 
--- | Direção de movimento de uma entidade no jogo.
-data Direcao
-  = Norte
-  | Sul
-  | Este
-  | Oeste
-  deriving (Eq, Show)
 
--- | Inimigo que se move em direção à base do jogador.
-data Inimigo = Inimigo
-  { -- | Posição do inimigo no mapa.
+data Direcao = Norte | Sul | Este | Oeste deriving (Eq, Show)
+
+
+data Inimigo = Inimigo { 
     posicaoInimigo :: Posicao,
     -- | Direção do último movimento do inimigo.
     direcaoInimigo :: Direcao,
@@ -160,19 +130,17 @@ data Inimigo = Inimigo
     -- | Créditos que o jogador recebe ao derrotar o inimigo.
     butimInimigo :: Creditos,
     -- | Efeitos secundários ativos no inimigo.
-    projeteisInimigo :: [Projetil],
-    -- | Tipo de inimigo.
-    tipoInimigo :: TipoInimigo
+    projeteisInimigo :: [Projetil]
+    --tipoInimigo :: TipoInimigo
   }
   deriving (Show)
 
--- | Inimigos que podem existir no jogo.
-data TipoInimigo = Zombie | Creeper | Esqueleto1 | Esqueleto2  
-  deriving (Show,Eq)
 
--- | Onda de inimigos que saem de um portal.
-data Onda = Onda
-  { -- | Inimigos que compõem a onda.
+-- data TipoInimigo = Flora  deriving (Show,Eq)
+
+
+data Onda = Onda { 
+    -- | Inimigos que compõem a onda.
     inimigosOnda :: [Inimigo],
     -- | Tempo em segundos entre a entrada de cada inimigo.
     cicloOnda :: Tempo,
@@ -202,7 +170,7 @@ geraAleatorios s c = take c $ System.Random.randoms (System.Random.mkStdGen s)
 
 
 dimensaoBotaoJogar :: (Float, Float)
-dimensaoBotaoJogar = (381, 36)
+dimensaoBotaoJogar = (200, 58)
 
 dimensaoBotaoVoltar :: (Float, Float)
 dimensaoBotaoVoltar = (86, 80)
@@ -217,7 +185,7 @@ dimensaoBotaoNivel3 :: (Float, Float)
 dimensaoBotaoNivel3 = (235, 225)
 
 dimensaoBotaoRegras :: (Float, Float)
-dimensaoBotaoRegras = (112, 145)
+dimensaoBotaoRegras = (77, 100)
 
 dimensaoBotaoAbaAberta :: (Float, Float)
 dimensaoBotaoAbaAberta = (169, 43)

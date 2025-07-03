@@ -22,7 +22,7 @@ iniciarJogo nivel = case nivel of
         , portaisJogo = [portal1]
         , torresJogo = []
         , mapaJogo = mapaNivel1
-        --, inimigosJogo = []
+        , inimigosJogo = []
         ,lojaJogo = [ 
         (100, criarTorre Fogo), 
         (150, criarTorre Gelo), 
