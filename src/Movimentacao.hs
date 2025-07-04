@@ -14,6 +14,12 @@ terrenoETerra pxy estado =
         Nothing -> False
 
 
+{-
+Tenta mover o inimigo na direção atual. 
+Verifica se, na direção do movimento, há terra ,ou seja, se o inimigo pode continuar. 
+Se houver, move-se , caso contrário, tenta mudar a direção para uma perpendicular.
+-}
+
 moverInimigo :: Float -> Inimigo -> EstadoJanela -> Inimigo
 moverInimigo tempo inimigo estado = 
     let direcao = direcaoInimigo inimigo
