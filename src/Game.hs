@@ -1,6 +1,6 @@
 module Game where
 import Type 
-import Type (Inimigo(direcaoInimigo, tipoInimigo, velocidadeInimigo))
+import Type (Inimigo(direcaoInimigo, tipoInimigo, velocidadeInimigo, posicaoInimigo), Base (posicaoBase))
 
 
 
@@ -66,7 +66,25 @@ mapaNivel1 =
         r = Relva
         a = Agua
 
-portal1 :: Portal
-portal1 = Portal (-325, 225) [] True
 
+portal1 :: Portal
+portal1 = Portal (-325, 225) [onda1, onda2] True
+  where
+    onda1 = Onda 
+        { inimigosOnda = [inimigo1, inimigo2,inimigo3]
+        , cicloOnda = 2.0
+        , tempoOnda = 0.0
+        , entradaOnda = 0.0  -- Começa imediatamente
+        }
+    
+    onda2 = Onda 
+        { inimigosOnda = [inimigo2, inimigo1]
+        , cicloOnda = 1.5
+        , tempoOnda = 0.0
+        , entradaOnda = 20.0  -- Inicia após 20 segundos
+        }
+
+inimigo1 = Inimigo {posicaoInimigo = (-325, 225), direcaoInimigo = Sul, velocidadeInimigo = 10.0, tipoInimigo = Flora}
+inimigo2 = Inimigo {posicaoInimigo = (-325, 225), direcaoInimigo = Sul, velocidadeInimigo = 12.0, tipoInimigo = Flora}
+inimigo3 = Inimigo {posicaoInimigo = (-325, 225), direcaoInimigo = Sul, velocidadeInimigo = 10.0, tipoInimigo = Flora}
 

@@ -1,9 +1,6 @@
 module Desenhar where
 import Type 
 import Graphics.Gloss 
-import Type 
-import Graphics.Gloss (Picture)
-import Type (Torre(projetilTorre))
 
 
 

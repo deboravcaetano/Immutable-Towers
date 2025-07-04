@@ -10,7 +10,7 @@ terrenoETerra pxy estado =
   in case pixelParaIndice (nColunas jogo) (nLinhas jogo) pxy of
         Just (r,c) -> 
             let linha = mapaJogo jogo !! r
-            in if c < length linha then linha !! c == Terra else False
+            in if c < length linha then linha !! c == Terra else False   -- xs !! a  acessa o elemento a da lista xs
         Nothing -> False
 
 
