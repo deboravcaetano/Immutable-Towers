@@ -4,6 +4,7 @@ import CarregarImagens
 import Menu
 import Type
 import Game
+import Atualizar
 
 
 
@@ -84,8 +85,14 @@ main = do
         , imagensFlora = imgsFlora
         }
 
-
-  let atualizar _ = id
+  let atualizar :: Float -> EstadoJanela -> EstadoJanela
+      atualizar delta estado = 
+          case estadoJanela estado of
+              Game -> 
+                  let jogoAntigo = jogoatual estado
+                      novoJogo = atualizarJogo delta jogoAntigo estado
+                  in estado { jogoatual = novoJogo }
+              _ -> estado
 
   play (InWindow "ImmutableTowers" (1600, 900) (300, 70)) 
        white

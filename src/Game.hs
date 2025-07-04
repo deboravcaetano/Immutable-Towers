@@ -1,7 +1,6 @@
 module Game where
 import Type 
-import Type (Inimigo(direcaoInimigo))
-
+import Type (Inimigo(direcaoInimigo, tipoInimigo, velocidadeInimigo))
 
 
 
