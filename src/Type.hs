@@ -39,7 +39,7 @@ data EstadoJanela = EstadoJanela
   , imagemTorreGelo:: Picture
   , imagemTorreResina :: Picture 
   , imagensFlora :: [Picture]
-  --, imagensStella :: [Picture]
+  , imagensStella :: [Picture]
   --, imagensInimigo3 :: [Picture]
   --, imagensInimigo4 :: [Picture]
   --, imagensInimigo5 :: [Picture]
@@ -142,7 +142,7 @@ data Inimigo = Inimigo {
   deriving (Show)
 
 
-data TipoInimigo = Flora  deriving (Show,Eq)
+data TipoInimigo = Flora | Stella  deriving (Show,Eq)
 
 
 data Onda = Onda { 

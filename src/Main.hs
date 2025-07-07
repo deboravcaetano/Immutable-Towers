@@ -47,6 +47,7 @@ main = do
   imgTorreResina <- carregarImgTorreResina
 
   imgsFlora <- carregarImgsFlora
+  imgsStella <- carregarImgsStella
 
   let estadoInicial = EstadoJanela
         { estadoJanela = Menu
@@ -83,6 +84,7 @@ main = do
         , imagemTorreGelo = imgTorreGelo 
         , imagemTorreResina = imgTorreResina
         , imagensFlora = imgsFlora
+        , imagensStella = imgsStella
         }
 
   let atualizar :: Float -> EstadoJanela -> EstadoJanela

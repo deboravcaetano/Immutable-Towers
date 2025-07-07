@@ -158,6 +158,7 @@ selecionaImagensInimigo :: EstadoJanela -> Inimigo -> Picture
 selecionaImagensInimigo estado inimigo = 
     case tipoInimigo inimigo of
         Flora -> selecionaImagemInimigo (imagensFlora estado) inimigo
+        Stella -> selecionaImagemInimigo (imagensStella estado) inimigo
 
 
 -- Seleciona a imagem dentro da lista de imagens

@@ -90,3 +90,11 @@ carregarImgsFlora = do
     imgN    <- loadBMP "assets/Personagens/Flora/FloraTras.bmp"
     imgS      <- loadBMP "assets/Personagens/Flora/FloraFrente.bmp"
     return [imgEsq, imgDir, imgN, imgS]
+
+carregarImgsStella :: IO [Picture]
+carregarImgsStella = do
+    imgEsq <- loadBMP "assets/Personagens/Stella/StellaEsquerda.bmp" 
+    imgDir  <- loadBMP "assets/Personagens/Stella/StellaDireita.bmp"
+    imgN    <- loadBMP "assets/Personagens/Stella/StellaTras.bmp"
+    imgS      <- loadBMP "assets/Personagens/Stella/StellaFrente.bmp"
+    return [imgEsq, imgDir, imgN, imgS]

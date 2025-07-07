@@ -72,19 +72,19 @@ portal1 = Portal (-325, 225) [onda1, onda2] True
   where
     onda1 = Onda 
         { inimigosOnda = [inimigo1, inimigo2,inimigo3]
-        , cicloOnda = 2.0
+        , cicloOnda = 3.0
         , tempoOnda = 0.0
         , entradaOnda = 0.0  -- Começa imediatamente
         }
     
     onda2 = Onda 
         { inimigosOnda = [inimigo2, inimigo1]
-        , cicloOnda = 1.5
+        , cicloOnda = 2.0
         , tempoOnda = 0.0
         , entradaOnda = 20.0  -- Inicia após 20 segundos
         }
 
-inimigo1 = Inimigo {posicaoInimigo = (-325, 225), direcaoInimigo = Sul, velocidadeInimigo = 10.0, tipoInimigo = Flora}
-inimigo2 = Inimigo {posicaoInimigo = (-325, 225), direcaoInimigo = Sul, velocidadeInimigo = 12.0, tipoInimigo = Flora}
+inimigo1 = Inimigo {posicaoInimigo = (-325, 225), direcaoInimigo = Sul, velocidadeInimigo = 30.0, tipoInimigo = Flora}
+inimigo2 = Inimigo {posicaoInimigo = (-325, 225), direcaoInimigo = Sul, velocidadeInimigo = 20.0, tipoInimigo = Stella}
 inimigo3 = Inimigo {posicaoInimigo = (-325, 225), direcaoInimigo = Sul, velocidadeInimigo = 10.0, tipoInimigo = Flora}
 
