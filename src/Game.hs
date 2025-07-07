@@ -86,5 +86,5 @@ portal1 = Portal (-325, 225) [onda1, onda2] True
 
 inimigo1 = Inimigo {posicaoInimigo = (-325, 225), direcaoInimigo = Sul, velocidadeInimigo = 30.0, tipoInimigo = Flora}
 inimigo2 = Inimigo {posicaoInimigo = (-325, 225), direcaoInimigo = Sul, velocidadeInimigo = 20.0, tipoInimigo = Stella}
-inimigo3 = Inimigo {posicaoInimigo = (-325, 225), direcaoInimigo = Sul, velocidadeInimigo = 10.0, tipoInimigo = Flora}
+inimigo3 = Inimigo {posicaoInimigo = (-325, 225), direcaoInimigo = Sul, velocidadeInimigo = 30.0, tipoInimigo = Flora}
 
