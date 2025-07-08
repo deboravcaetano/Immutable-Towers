@@ -1,6 +1,6 @@
 module Game where
 import Type 
-import Type (Inimigo(direcaoInimigo, tipoInimigo, velocidadeInimigo, posicaoInimigo), Base (posicaoBase))
+
 
 
 
@@ -50,21 +50,22 @@ mapaNivel1 =
      [r, t, t, t, r, r, r, r, r, r, r, r, r, r],
      [t, t, r, t, r, r, r, r, r, r, r, r, r, r],
      [r, r, r, t, r, r, r, r, r, r, r, t, t, t],
-     [r, t, t, t, r, r, r, r, r, r, r, t, r, a],
-     [r, t, r, r, r, r, r, r, r, r, a, t, a, a],
-     [r, t, r, r, r, r, r, r, a, a, a, t, a, a],
-     [r, t, t, t, t, a, a, a, a, a, a, t, t, a],
+     [r, t, t, t, r, r, r, r, r, r, r, t, r, at],
+     [r, t, r, r, r, r, r, r, r, r, at, t, at, a],
+     [r, t, r, r, r, r, r, r, at, at, a, t, a, a],
+     [r, t, t, t, t, at, at, at, a, a, a, t, t, a],
      [r, r, r, r, t, a, a, a, a, a, r, r, t, r],
-     [r, r, r, a, t, a, a, a, a, t, t, t, t, r],
-     [r, r, a, a, t, t, t, t, t, t, r, r, r, r],
-     [r, r, a, a, r, r, r, r, r, r, r, r, r, r],
-     [r, a, a, r, r, r, r, r, r, r, r, a, a, a],
-     [a, a, a, r, r, r, r, r, r, r, r, a, a, a]
+     [r, r, r, at, t, a, a, a, a, t, t, t, t, r],
+     [r, r, at, a, t, t, t, t, t, t, r, r, r, r],
+     [r, r, a, a, a, r, r, r, r, r, r, r, r, r],
+     [r, at, a, a, r, r, r, r, r, r, r, t, t, t],
+     [at, a, a, r, r, r, r, r, r, r, t, t, t, t]
     ] 
     where
         t = Terra
         r = Relva
         a = Agua
+        at = AguaTerra
 
 
 portal1 :: Portal

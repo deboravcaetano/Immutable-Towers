@@ -5,6 +5,7 @@ import Menu
 import Type
 import Game
 import Atualizar
+import CarregarImagens (carregarImgAguaTerra)
 
 
 
@@ -27,6 +28,7 @@ main = do
   relva <- carregarImgRelva
   terra <- carregarImgTerra
   agua  <- carregarImgAgua
+  aguaTerra <- carregarImgAguaTerra
 
   imgBase <- carregarImgBase
   imgPortal <- carregarImgPortal
@@ -72,6 +74,7 @@ main = do
         , imagemRelva = relva    
         , imagemTerra = terra    
         , imagemAgua = agua  
+        , imagemAguaTerra = aguaTerra
         , imagemBase = imgBase
         , imagemPortal = imgPortal
         , imagemLoja = imgLoja

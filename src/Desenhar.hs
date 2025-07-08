@@ -1,6 +1,7 @@
 module Desenhar where
 import Type 
 import Graphics.Gloss 
+import Type (EstadoJanela(imagemAgua))
 
 
 
@@ -78,7 +79,7 @@ desenhaEscolhaNivel estado = pictures [
 desenhaJogo :: EstadoJanela -> Jogo -> Picture
 desenhaJogo estado jogo = pictures $
     [ desenhaFundoMapa (imagemFundoMapa estado) estado
-    , desenhaMapa (mapaJogo jogo) [imagemRelva estado, imagemTerra estado, imagemAgua estado]
+    , desenhaMapa (mapaJogo jogo) [imagemRelva estado, imagemTerra estado, imagemAgua estado, imagemAguaTerra estado]
     , desenhaBase (baseJogo jogo) (imagemBase estado)
     , desenhaLoja (imagemLoja estado) (imagemBotaoGelo estado) (imagemBotaoResina estado) (imagemBotaoFogo estado) estado
     ]
@@ -123,12 +124,13 @@ desenhaMapa mapa imagens =
 
 
 desenhaTile :: (Float, Float) -> Terreno -> [Picture] -> Picture
-desenhaTile (x, y) terreno [relva, terra, agua] = 
+desenhaTile (x, y) terreno [relva, terra, agua, aguaTerra] = 
     Translate (x * 50) (y * 50) img
   where img = case terreno of
                  Relva -> relva
                  Terra -> terra
                  Agua  -> agua
+                 AguaTerra -> aguaTerra
 
 desenhaBase :: Base -> Picture -> Picture
 desenhaBase base imgBase = 

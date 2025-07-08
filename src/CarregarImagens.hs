@@ -47,6 +47,9 @@ carregarImgTerra = loadBMP "assets/Terrenos/Terra.bmp"
 carregarImgAgua :: IO Picture
 carregarImgAgua = loadBMP "assets/Terrenos/Agua.bmp"
 
+carregarImgAguaTerra :: IO Picture
+carregarImgAguaTerra = loadBMP "assets/Terrenos/AguaETerra.bmp"
+
 carregarImgBase :: IO Picture
 carregarImgBase = loadBMP "assets/Base/Torre/Base.bmp"
 

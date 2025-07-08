@@ -26,7 +26,8 @@ data EstadoJanela = EstadoJanela
   , imagemBotao5 :: Picture
   , imagemRelva :: Picture
   , imagemTerra :: Picture
-  , imagemAgua :: Picture   
+  , imagemAgua :: Picture  
+  , imagemAguaTerra 
   , imagemBase :: Picture 
   , imagemPortal :: Picture 
   , imagemLoja :: Picture
@@ -65,7 +66,7 @@ data Jogo = Jogo {
   }
   deriving (Show)
 
-data Terreno = Relva | Terra | Agua deriving (Eq, Show)
+data Terreno = Relva | Terra | Agua | AguaTerra deriving (Eq, Show)
 
 
 type Posicao = (Float, Float)
@@ -93,15 +94,14 @@ data Duracao = Finita Tempo | Infinita deriving (Eq, Show, Ord)
 
 data Torre = Torre { 
     posicaoTorre :: Posicao,
-    --danoTorre :: Float,
-    -- | Alcance circular da torre.
-    --alcanceTorre :: Float,
+    danoTorre :: Float,
+    alcanceTorre :: Float,
     -- | Número de máximo de inimigos simultaneamente atingidos por uma rajada de tiros.
-    --rajadaTorre :: Int,
+    rajadaTorre :: Int,
     -- | Ciclo de tempo entre rajadas de tiros.
-    --cicloTorre :: Tempo,
+    cicloTorre :: Tempo,
     -- | Tempo restante para a próxima rajada de tiros.
-    --tempoTorre :: Tempo,
+    tempoTorre :: Tempo,
     projetilTorre :: Projetil
   }
   deriving (Show)
@@ -128,7 +128,7 @@ data Inimigo = Inimigo {
     -- | Direção do último movimento do inimigo.
     direcaoInimigo :: Direcao,
     -- | Vida do inimigo.
-   -- vidaInimigo :: Float,
+   vidaInimigo :: Float,
     -- | Velocidade do inimigo.
     velocidadeInimigo :: Float,
     -- | Dano causado pelo inimigo na base do jogador.
@@ -136,7 +136,7 @@ data Inimigo = Inimigo {
     -- | Créditos que o jogador recebe ao derrotar o inimigo.
     --butimInimigo :: Creditos,
     -- | Efeitos secundários ativos no inimigo.
-    --projeteisInimigo :: [Projetil],
+    projeteisInimigo :: [Projetil],
     tipoInimigo :: TipoInimigo
   }
   deriving (Show)
