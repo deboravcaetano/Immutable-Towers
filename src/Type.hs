@@ -82,9 +82,6 @@ data Base = Base {
   }
   deriving (Show)
 
--- | Distância entre duas posições.
-type Distancia = Float
-
 
 type Tempo = Float
 
@@ -114,8 +111,8 @@ data TipoProjetil = Fogo | Gelo | Resina deriving (Eq, Show)
 
 
 data Projetil = Projetil { 
-    tipoProjetil :: TipoProjetil--,
-    --duracaoProjetil :: Duracao
+    tipoProjetil :: TipoProjetil,
+    duracaoProjetil :: Duracao
   }
   deriving (Show)
 
@@ -128,13 +125,13 @@ data Inimigo = Inimigo {
     -- | Direção do último movimento do inimigo.
     direcaoInimigo :: Direcao,
     -- | Vida do inimigo.
-   vidaInimigo :: Float,
+    vidaInimigo :: Float,
     -- | Velocidade do inimigo.
     velocidadeInimigo :: Float,
     -- | Dano causado pelo inimigo na base do jogador.
-    --ataqueInimigo :: Float,
+    ataqueInimigo :: Float,
     -- | Créditos que o jogador recebe ao derrotar o inimigo.
-    --butimInimigo :: Creditos,
+    butimInimigo :: Creditos,
     -- | Efeitos secundários ativos no inimigo.
     projeteisInimigo :: [Projetil],
     tipoInimigo :: TipoInimigo
