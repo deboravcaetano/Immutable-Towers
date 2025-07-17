@@ -1,11 +1,11 @@
 module Main where
 import Graphics.Gloss.Interface.Pure.Game
-import CarregarImagens
+import Imagens
 import Menu
 import Type
 import Game
 import Atualizar
-import CarregarImagens (carregarImgAguaTerra)
+
 
 
 

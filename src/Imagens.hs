@@ -1,5 +1,6 @@
-module CarregarImagens where
+module Imagens where
 import Graphics.Gloss
+import Type
 
 
 carregarImgMenu :: IO Picture
@@ -196,3 +197,43 @@ carregarImgsStella = do
             [imgD100,imgD90,imgD80,imgD70,imgD60,imgD50,imgD40,imgD30,imgD20,imgD10,imgD0], 
             [imgN100,imgN90,imgN80,imgN70,imgN60,imgN50,imgN40,imgN30,imgN20,imgN10,imgN0], 
             [imgS100,imgS90,imgS80,imgS70,imgS60,imgS50,imgS40,imgS30,imgS20,imgS10,imgS0]]
+
+
+selecionaImagensDirecaoInimigo :: EstadoJanela -> Inimigo -> Picture
+selecionaImagensDirecaoInimigo estado inimigo = 
+    case tipoInimigo inimigo of
+        Flora -> selecionaImagemInimigo (imagensFlora estado) inimigo
+        Stella -> selecionaImagemInimigo (imagensStella estado) inimigo
+
+
+-- Seleciona a lista de imagens para uma direção específica
+selecionarListaPorDirecao :: [[Picture]] -> Direcao -> [Picture]
+selecionarListaPorDirecao dirImgs dir = 
+    case dir of
+        Oeste -> dirImgs !! 0  
+        Este  -> dirImgs !! 1  
+        Norte -> dirImgs !! 2  
+        Sul   -> dirImgs !! 3  
+
+
+-- Seleciona a imagem específica dentro dessa lista baseada na vida do inimigo
+selecionarImagemPorVida :: [Picture] -> Float -> Picture
+selecionarImagemPorVida imgs vida
+    | vida > 90 = imgs !! 0 
+    | vida > 80 = imgs !! 1  
+    | vida > 70 = imgs !! 2  
+    | vida > 60 = imgs !! 3  
+    | vida > 50 = imgs !! 4
+    | vida > 40 = imgs !! 5
+    | vida > 30 = imgs !! 6
+    | vida > 20 = imgs !! 7
+    | vida > 10 = imgs !! 8
+    | vida > 0 = imgs !! 9  
+    | otherwise = imgs !! 10
+
+
+-- Principal que junta as duas funções
+selecionaImagemInimigo :: [[Picture]] -> Inimigo -> Picture
+selecionaImagemInimigo imgs inimigo = 
+    let listaDirecao = selecionarListaPorDirecao imgs (direcaoInimigo inimigo)
+    in selecionarImagemPorVida listaDirecao (vidaInimigo inimigo)

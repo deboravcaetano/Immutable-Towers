@@ -73,7 +73,7 @@ adicionarTorre estado posicao tipo =
             let novaTorre = Torre {
                     posicaoTorre = posCentral,
                     projetilTorre = Projetil {
-                      tipoProjetil = tipo
+                    tipoProjetil = tipo
                     }
                 } 
                 
