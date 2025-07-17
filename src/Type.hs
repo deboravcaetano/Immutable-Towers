@@ -39,8 +39,8 @@ data EstadoJanela = EstadoJanela
   , imagemTorreFogo :: Picture
   , imagemTorreGelo:: Picture
   , imagemTorreResina :: Picture 
-  , imagensFlora :: [Picture]
-  , imagensStella :: [Picture]
+  , imagensFlora :: [[Picture]]
+  , imagensStella :: [[Picture]]
   --, imagensInimigo3 :: [Picture]
   --, imagensInimigo4 :: [Picture]
   --, imagensInimigo5 :: [Picture]

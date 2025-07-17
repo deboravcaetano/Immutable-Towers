@@ -2,6 +2,7 @@ module Desenhar where
 import Type 
 import Graphics.Gloss 
 import Type (EstadoJanela(imagemAgua))
+import Graphics.Gloss (Picture)
 
 
 
@@ -153,21 +154,44 @@ desenhaInimigos :: [Inimigo] -> EstadoJanela -> Picture
 desenhaInimigos inimigos estado =
     if null inimigos then Blank
     else 
-    Pictures [Translate x y (selecionaImagensInimigo estado inimigo) | inimigo <- inimigos, let (x,y) = posicaoInimigo inimigo]
+    Pictures [Translate x y (selecionaImagensDirecaoInimigo estado inimigo) | inimigo <- inimigos, let (x,y) = posicaoInimigo inimigo]
  
--- Seleciona a lista de imagens
-selecionaImagensInimigo :: EstadoJanela -> Inimigo -> Picture
-selecionaImagensInimigo estado inimigo = 
+
+selecionaImagensDirecaoInimigo :: EstadoJanela -> Inimigo -> Picture
+selecionaImagensDirecaoInimigo estado inimigo = 
     case tipoInimigo inimigo of
         Flora -> selecionaImagemInimigo (imagensFlora estado) inimigo
         Stella -> selecionaImagemInimigo (imagensStella estado) inimigo
 
 
--- Seleciona a imagem dentro da lista de imagens
-selecionaImagemInimigo imgs inimigo = 
-    case direcaoInimigo inimigo of
-            Oeste -> imgs !! 0 -- imgEsquerda
-            Este  -> imgs !! 1 -- imgDireita
-            Norte -> imgs !! 2 -- imgNorte
-            Sul   -> imgs !! 3 -- imgSul
+-- Seleciona a lista de imagens para uma direção específica
+selecionarListaPorDirecao :: [[Picture]] -> Direcao -> [Picture]
+selecionarListaPorDirecao dirImgs dir = 
+    case dir of
+        Oeste -> dirImgs !! 0  
+        Este  -> dirImgs !! 1  
+        Norte -> dirImgs !! 2  
+        Sul   -> dirImgs !! 3  
 
+
+-- Seleciona a imagem específica dentro dessa lista baseada na vida do inimigo
+selecionarImagemPorVida :: [Picture] -> Float -> Picture
+selecionarImagemPorVida imgs vida
+    | vida > 90 = imgs !! 0 
+    | vida > 80 = imgs !! 1  
+    | vida > 70 = imgs !! 2  
+    | vida > 60 = imgs !! 3  
+    | vida > 50 = imgs !! 4
+    | vida > 40 = imgs !! 5
+    | vida > 30 = imgs !! 6
+    | vida > 20 = imgs !! 7
+    | vida > 10 = imgs !! 8
+    | vida > 0 = imgs !! 9  
+    | otherwise = imgs !! 10
+
+
+-- Principal que junta as duas funções
+selecionaImagemInimigo :: [[Picture]] -> Inimigo -> Picture
+selecionaImagemInimigo imgs inimigo = 
+    let listaDirecao = selecionarListaPorDirecao imgs (direcaoInimigo inimigo)
+    in selecionarImagemPorVida listaDirecao (vidaInimigo inimigo)

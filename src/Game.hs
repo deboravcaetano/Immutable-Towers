@@ -1,5 +1,6 @@
 module Game where
 import Type 
+import Type (Inimigo(vidaInimigo))
 
 
 
@@ -15,7 +16,6 @@ jogoInicial = Jogo {
     nLinhas = 0,
     nColunas = 0         
 }
-
 
 
 iniciarJogo :: Int -> Jogo
@@ -85,7 +85,7 @@ portal1 = Portal (-325, 225) [onda1, onda2] True
         , entradaOnda = 20.0  -- Inicia após 20 segundos
         }
 
-inimigo1 = Inimigo {posicaoInimigo = (-325, 225), direcaoInimigo = Sul, velocidadeInimigo = 30.0, tipoInimigo = Flora}
-inimigo2 = Inimigo {posicaoInimigo = (-325, 225), direcaoInimigo = Sul, velocidadeInimigo = 20.0, tipoInimigo = Stella}
-inimigo3 = Inimigo {posicaoInimigo = (-325, 225), direcaoInimigo = Sul, velocidadeInimigo = 30.0, tipoInimigo = Flora}
+inimigo1 = Inimigo {posicaoInimigo = (-325, 225), vidaInimigo = 52, direcaoInimigo = Sul, velocidadeInimigo = 30.0, tipoInimigo = Stella}
+inimigo2 = Inimigo {posicaoInimigo = (-325, 225), vidaInimigo = 90, direcaoInimigo = Sul, velocidadeInimigo = 20.0, tipoInimigo = Stella}
+inimigo3 = Inimigo {posicaoInimigo = (-325, 225), vidaInimigo = 10, direcaoInimigo = Sul, velocidadeInimigo = 30.0, tipoInimigo = Stella}
 
