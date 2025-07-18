@@ -1,6 +1,6 @@
 module Game where
 import Type 
-import Type (Inimigo(vidaInimigo, projeteisInimigo), Projetil (duracaoProjetil), Torre (rajadaTorre))
+
 
 
 

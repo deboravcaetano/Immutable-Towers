@@ -179,13 +179,13 @@ dimensaoBotaoVoltar :: (Float, Float)
 dimensaoBotaoVoltar = (86, 80)
 
 dimensaoBotaoNivel1 :: (Float, Float)
-dimensaoBotaoNivel1 = (235, 225)
+dimensaoBotaoNivel1 = (223, 225)
 
 dimensaoBotaoNivel2 :: (Float, Float)
-dimensaoBotaoNivel2 = (235, 225)
+dimensaoBotaoNivel2 = (223, 225)
 
 dimensaoBotaoNivel3 :: (Float, Float)
-dimensaoBotaoNivel3 = (235, 225)
+dimensaoBotaoNivel3 = (223, 225)
 
 dimensaoBotaoRegras :: (Float, Float)
 dimensaoBotaoRegras = (77, 100)

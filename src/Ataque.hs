@@ -45,7 +45,7 @@ aplicarSinergia novo (p:ps)
 
 atingeInimigo :: Torre -> Inimigo -> Inimigo
 atingeInimigo torre inimigo = 
-    let vidaNova = vidaInimigo inimigo - danoTorre torre
+    let vidaNova = (vidaInimigo inimigo) - (danoTorre torre)
         projeteisNovos = aplicarSinergia (projetilTorre torre) (projeteisInimigo inimigo)
     in inimigo { 
         vidaInimigo = max 0 vidaNova,  -- Vida não pode ser negativa
@@ -62,6 +62,7 @@ atualizarProjeteisInimigo delta inimigo =
         projeteisInimigo = projeteisAtualizados 
     }
 
+
 atualizarListaProjeteis :: Float -> [Projetil] -> ([Projetil], Float)
 atualizarListaProjeteis _ [] = ([], 0)
 atualizarListaProjeteis delta (p:ps) =
@@ -69,17 +70,15 @@ atualizarListaProjeteis delta (p:ps) =
         (pAtualizado, danoP) = atualizarProjetil delta p
     in (if duracaoProjetil pAtualizado > Finita 0 then pAtualizado : psAtualizados else psAtualizados, dano + danoP)
 
--- Atualiza um único projétil e retorna dano causado
+
 atualizarProjetil :: Float -> Projetil -> (Projetil, Float)
 atualizarProjetil delta p = 
     case tipoProjetil p of
         Fogo -> 
-            let (novoProjetil, dano) = case duracaoProjetil p of
-                    Finita t -> 
-                        let t' = t - delta
-                        in if t' <= 0 
-                            then (p { duracaoProjetil = Finita 0 }, 0)  -- Remove no próximo passo
-                            else (p { duracaoProjetil = Finita t' }, 10 * delta)  -- 10 DPS
-                    _ -> (p, 0)
-            in (novoProjetil, dano)
-        _ -> (p, 0)  -- Apenas fogo causa dano contínuo
+            case duracaoProjetil p of
+                Finita t | t > 0 -> 
+                    let t' = t - delta
+                        dano = 10 * delta  -- Dano por segundo
+                    in (p { duracaoProjetil = Finita t' }, dano)
+                _ -> (p, 0)
+        _ -> (p, 0)

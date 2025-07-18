@@ -52,7 +52,7 @@ carregarImgAguaTerra :: IO Picture
 carregarImgAguaTerra = loadBMP "assets/Terrenos/AguaETerra.bmp"
 
 carregarImgBase :: IO Picture
-carregarImgBase = loadBMP "assets/Base/Torre/Base.bmp"
+carregarImgBase = loadBMP "assets/Base/Base.bmp"
 
 carregarImgPortal :: IO Picture
 carregarImgPortal = loadBMP "assets/Portal/Portal.bmp"
@@ -199,8 +199,8 @@ carregarImgsStella = do
             [imgS100,imgS90,imgS80,imgS70,imgS60,imgS50,imgS40,imgS30,imgS20,imgS10,imgS0]]
 
 
-selecionaImagensDirecaoInimigo :: EstadoJanela -> Inimigo -> Picture
-selecionaImagensDirecaoInimigo estado inimigo = 
+selecionaImagemPorInimigo :: EstadoJanela -> Inimigo -> Picture
+selecionaImagemPorInimigo estado inimigo = 
     case tipoInimigo inimigo of
         Flora -> selecionaImagemInimigo (imagensFlora estado) inimigo
         Stella -> selecionaImagemInimigo (imagensStella estado) inimigo

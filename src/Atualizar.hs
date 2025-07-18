@@ -76,13 +76,15 @@ atualizarTorre delta inimigos torre
     | tempoTorre torre > 0 = (torre { tempoTorre = tempoTorre torre - delta }, inimigos)
     | otherwise = 
         let alvos = take (rajadaTorre torre) $ inimigosNoAlcance torre inimigos
-            novosAlvos = map (atingeInimigo torre) alvos
-            substituirInimigo ini = 
-                case find (\na -> posicaoInimigo na == posicaoInimigo ini) novosAlvos of
-                    Just novo -> novo
-                    Nothing -> ini
-            novosInimigos = map substituirInimigo inimigos
+            idsAlvos = map (\inimigo -> (posicaoInimigo inimigo, vidaInimigo inimigo)) alvos
+            novosInimigos = map (atualizarInimigoSeAlvo idsAlvos torre) inimigos
         in (torre { tempoTorre = cicloTorre torre }, novosInimigos)
+  where
+    atualizarInimigoSeAlvo :: [((Float, Float), Float)] -> Torre -> Inimigo -> Inimigo
+    atualizarInimigoSeAlvo alvos torre inimigo
+        | any (\(pos, vida) -> pos == posicaoInimigo inimigo && vida == vidaInimigo inimigo) alvos =
+            atingeInimigo torre inimigo
+        | otherwise = inimigo
 
 
 atualizarProjeteisInimigos :: Float -> [Inimigo] -> [Inimigo]
@@ -94,13 +96,21 @@ atualizarJogo delta jogo estado =
     let (portaisAtualizados, inimigosNovos) = atualizarPortais (portaisJogo jogo) delta
         (torresAtualizadas, inimigosAtualizados) = atualizarTorres delta (torresJogo jogo) (inimigosJogo jogo)
         todosInimigos = inimigosAtualizados ++ inimigosNovos
-        
         inimigosComProjeteis = atualizarProjeteisInimigos delta todosInimigos
-        
         inimigosMovidos = atualizarInimigos inimigosComProjeteis delta estado
+        
+
+        inimigosComDano = map (aplicarDanoProjeteis delta) inimigosMovidos
     in jogo { 
         portaisJogo = portaisAtualizados,
         torresJogo = torresAtualizadas,
-        inimigosJogo = inimigosMovidos 
+        inimigosJogo = inimigosComDano  -- Usa os inimigos com dano aplicado
     }
+
+-- Função auxiliar para aplicar dano de projéteis
+aplicarDanoProjeteis :: Float -> Inimigo -> Inimigo
+aplicarDanoProjeteis delta inimigo =
+    let (_, dano) = atualizarListaProjeteis delta (projeteisInimigo inimigo)
+        vidaNova = vidaInimigo inimigo - dano
+    in inimigo { vidaInimigo = max 0 vidaNova }
     

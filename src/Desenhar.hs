@@ -1,7 +1,7 @@
 module Desenhar where
 import Type 
 import Graphics.Gloss 
-import Type (EstadoJanela(imagemAgua))
+import Type (EstadoJanela(imagemAgua), Base (creditosBase))
 import Graphics.Gloss (Picture)
 import Imagens
 
@@ -78,12 +78,15 @@ desenhaEscolhaNivel estado = pictures [
     translate (-740) (-390) (imagemBotaoVoltar estado)
     ]
 
+
 desenhaJogo :: EstadoJanela -> Jogo -> Picture
 desenhaJogo estado jogo = pictures $
     [ desenhaFundoMapa (imagemFundoMapa estado) estado
     , desenhaMapa (mapaJogo jogo) [imagemRelva estado, imagemTerra estado, imagemAgua estado, imagemAguaTerra estado]
     , desenhaBase (baseJogo jogo) (imagemBase estado)
     , desenhaLoja (imagemLoja estado) (imagemBotaoGelo estado) (imagemBotaoResina estado) (imagemBotaoFogo estado) estado
+    , Translate (-70) (-418) $ Scale 0.2 0.2 $ Text (show $ vidaBase (baseJogo jogo))
+    , Translate 103 (-418) $ Scale 0.2 0.2 $ Text (show $ creditosBase (baseJogo jogo))
     ]
     ++ map (\p -> desenhaPortal p (imagemPortal estado)) (portaisJogo jogo)
     ++ map (\t -> desenhaTorre t (escolherImagemTorre estado t)) (torresJogo jogo)
@@ -155,6 +158,6 @@ desenhaInimigos :: [Inimigo] -> EstadoJanela -> Picture
 desenhaInimigos inimigos estado =
     if null inimigos then Blank
     else 
-    Pictures [Translate x y (selecionaImagensDirecaoInimigo estado inimigo) | inimigo <- inimigos, let (x,y) = posicaoInimigo inimigo]
+    Pictures [Translate x y (selecionaImagemPorInimigo estado inimigo) | inimigo <- inimigos, let (x,y) = posicaoInimigo inimigo]
  
 
