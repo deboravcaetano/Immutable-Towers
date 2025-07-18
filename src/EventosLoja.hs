@@ -53,38 +53,49 @@ procurarCustoTorre tipo loja =
         _ -> Nothing
 
 adicionarTorre :: EstadoJanela -> (Float, Float) -> TipoProjetil -> EstadoJanela
-adicionarTorre estado posicao tipo = 
+adicionarTorre estado posicao tipo =
     let jogo = jogoatual estado
         nCols = nColunas jogo
         nRows = nLinhas jogo
-        
+
         posCentral = case tileParaPosicaoCentral posicao (nCols, nRows) of
             Just pos -> pos
-            Nothing -> posicao  
-            
+            Nothing -> posicao
+
         custo = case procurarCustoTorre tipo (lojaJogo jogo) of
             Just cost -> cost
-            Nothing   -> 1000  -- Valor alto padrão se não encontrar
-            
+            Nothing -> 1000
+
         creditosAtuais = creditosBase (baseJogo jogo)
-        
+
     in if creditosAtuais >= custo
         then
-            let novaTorre = Torre {
+            let (dano, alcance, rajada, ciclo, duracao) = case tipo of
+                    Fogo  -> (50, 3.0, 1, 1.5, Finita 2.0)
+                    Resina    -> (30, 2.5, 2, 2.0, Finita 1.8)
+                    Gelo     -> (50, 2.0, 3, 3.0, Finita 1.5)
+
+                novaTorre = Torre {
                     posicaoTorre = posCentral,
                     projetilTorre = Projetil {
-                    tipoProjetil = tipo
-                    }
-                } 
-                
-                novasTorres = novaTorre : torresJogo jogo
-                
-                baseAtual = baseJogo jogo
-                novaBase = baseAtual { creditosBase = creditosAtuais - custo }
-                
-                novoJogo = jogo { 
-                    baseJogo = novaBase,
-                    torresJogo = novasTorres 
+                        tipoProjetil = tipo,
+                        duracaoProjetil = duracao
+                    },
+                    tempoTorre = 0,
+                    danoTorre = dano,
+                    alcanceTorre = alcance,
+                    rajadaTorre = rajada,
+                    cicloTorre = ciclo
                 }
+
+                novasTorres = novaTorre : torresJogo jogo
+
+                novaBase = (baseJogo jogo) { creditosBase = creditosAtuais - custo }
+
+                novoJogo = jogo {
+                    baseJogo = novaBase,
+                    torresJogo = novasTorres
+                }
+
             in estado { jogoatual = novoJogo }
-        else estado  
+        else estado

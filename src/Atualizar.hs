@@ -1,6 +1,8 @@
 module Atualizar where
 import Type 
 import Movimentacao
+import Ataque
+import Data.List
 
 
 atualizarInimigos :: [Inimigo] -> Float -> EstadoJanela -> [Inimigo]
@@ -61,14 +63,44 @@ atualizarPortais portais delta =
     in (portaisAtualizados, inimigosNovos)
 
 
+atualizarTorres :: Float -> [Torre] -> [Inimigo] -> ([Torre], [Inimigo])
+atualizarTorres _ [] inimigos = ([], inimigos)
+atualizarTorres delta (t:ts) inimigos =
+    let (torreAtualizada, novosInimigos) = atualizarTorre delta inimigos t
+        (torresRestantes, inimigosRestantes) = atualizarTorres delta ts novosInimigos
+    in (torreAtualizada : torresRestantes, inimigosRestantes)
+
+
+atualizarTorre :: Float -> [Inimigo] -> Torre -> (Torre, [Inimigo])
+atualizarTorre delta inimigos torre
+    | tempoTorre torre > 0 = (torre { tempoTorre = tempoTorre torre - delta }, inimigos)
+    | otherwise = 
+        let alvos = take (rajadaTorre torre) $ inimigosNoAlcance torre inimigos
+            novosAlvos = map (atingeInimigo torre) alvos
+            substituirInimigo ini = 
+                case find (\na -> posicaoInimigo na == posicaoInimigo ini) novosAlvos of
+                    Just novo -> novo
+                    Nothing -> ini
+            novosInimigos = map substituirInimigo inimigos
+        in (torre { tempoTorre = cicloTorre torre }, novosInimigos)
+
+
+atualizarProjeteisInimigos :: Float -> [Inimigo] -> [Inimigo]
+atualizarProjeteisInimigos delta = map (atualizarProjeteisInimigo delta)
+
+
 atualizarJogo :: Float -> Jogo -> EstadoJanela -> Jogo
 atualizarJogo delta jogo estado =
     let (portaisAtualizados, inimigosNovos) = atualizarPortais (portaisJogo jogo) delta
-        inimigosAntigos = inimigosJogo jogo
-        inimigosAtualizados = atualizarInimigos inimigosAntigos delta estado
-        novosInimigos = inimigosAtualizados ++ inimigosNovos
+        (torresAtualizadas, inimigosAtualizados) = atualizarTorres delta (torresJogo jogo) (inimigosJogo jogo)
+        todosInimigos = inimigosAtualizados ++ inimigosNovos
+        
+        inimigosComProjeteis = atualizarProjeteisInimigos delta todosInimigos
+        
+        inimigosMovidos = atualizarInimigos inimigosComProjeteis delta estado
     in jogo { 
         portaisJogo = portaisAtualizados,
-        inimigosJogo = novosInimigos 
+        torresJogo = torresAtualizadas,
+        inimigosJogo = inimigosMovidos 
     }
     

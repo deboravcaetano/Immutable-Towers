@@ -1,6 +1,3 @@
-{-# OPTIONS_GHC -Wno-unrecognised-pragmas #-}
-{-# HLINT ignore "Eta reduce" #-}
-{-# HLINT ignore "Use :" #-}
 module Ataque where
 import Type
 
@@ -54,3 +51,35 @@ atingeInimigo torre inimigo =
         vidaInimigo = max 0 vidaNova,  -- Vida não pode ser negativa
         projeteisInimigo = projeteisNovos 
     }
+
+
+atualizarProjeteisInimigo :: Float -> Inimigo -> Inimigo
+atualizarProjeteisInimigo delta inimigo =
+    let (projeteisAtualizados, danoAcumulado) = atualizarListaProjeteis delta (projeteisInimigo inimigo)
+        vidaNova = vidaInimigo inimigo - danoAcumulado
+    in inimigo { 
+        vidaInimigo = max 0 vidaNova,
+        projeteisInimigo = projeteisAtualizados 
+    }
+
+atualizarListaProjeteis :: Float -> [Projetil] -> ([Projetil], Float)
+atualizarListaProjeteis _ [] = ([], 0)
+atualizarListaProjeteis delta (p:ps) =
+    let (psAtualizados, dano) = atualizarListaProjeteis delta ps
+        (pAtualizado, danoP) = atualizarProjetil delta p
+    in (if duracaoProjetil pAtualizado > Finita 0 then pAtualizado : psAtualizados else psAtualizados, dano + danoP)
+
+-- Atualiza um único projétil e retorna dano causado
+atualizarProjetil :: Float -> Projetil -> (Projetil, Float)
+atualizarProjetil delta p = 
+    case tipoProjetil p of
+        Fogo -> 
+            let (novoProjetil, dano) = case duracaoProjetil p of
+                    Finita t -> 
+                        let t' = t - delta
+                        in if t' <= 0 
+                            then (p { duracaoProjetil = Finita 0 }, 0)  -- Remove no próximo passo
+                            else (p { duracaoProjetil = Finita t' }, 10 * delta)  -- 10 DPS
+                    _ -> (p, 0)
+            in (novoProjetil, dano)
+        _ -> (p, 0)  -- Apenas fogo causa dano contínuo

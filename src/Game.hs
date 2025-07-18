@@ -1,6 +1,6 @@
 module Game where
 import Type 
-import Type (Inimigo(vidaInimigo))
+import Type (Inimigo(vidaInimigo, projeteisInimigo), Projetil (duracaoProjetil), Torre (rajadaTorre))
 
 
 
@@ -38,11 +38,23 @@ iniciarJogo nivel = case nivel of
 
 
 criarTorre :: TipoProjetil -> Torre
-criarTorre tipo = Torre {
+criarTorre tipo = 
+    let (dano, alcance, rajada, ciclo, duracao) = case tipo of
+                    Fogo  -> (50, 3.0, 1, 1.5, Finita 2.0)
+                    Resina    -> (30, 2.5, 2, 2.0, Finita 1.8)
+                    Gelo     -> (50, 2.0, 3, 3.0, Finita 1.5)
+    in Torre {
     posicaoTorre = (-1650, -950), 
     projetilTorre = Projetil {
-        tipoProjetil = tipo
-    }
+        tipoProjetil = tipo,
+        duracaoProjetil = duracao 
+    },
+    danoTorre = dano,
+    alcanceTorre = alcance,
+    rajadaTorre = rajada,
+    cicloTorre = ciclo ,
+    tempoTorre = 10
+
 }
 
 mapaNivel1 =
@@ -85,7 +97,20 @@ portal1 = Portal (-325, 225) [onda1, onda2] True
         , entradaOnda = 20.0  -- Inicia após 20 segundos
         }
 
-inimigo1 = Inimigo {posicaoInimigo = (-325, 225), vidaInimigo = 100, direcaoInimigo = Sul, velocidadeInimigo = 30.0, tipoInimigo = Flora}
-inimigo2 = Inimigo {posicaoInimigo = (-325, 225), vidaInimigo = 100, direcaoInimigo = Sul, velocidadeInimigo = 20.0, tipoInimigo = Stella}
-inimigo3 = Inimigo {posicaoInimigo = (-325, 225), vidaInimigo = 100, direcaoInimigo = Sul, velocidadeInimigo = 30.0, tipoInimigo = Stella}
+inimigo1 = Inimigo {posicaoInimigo = (-325, 225), vidaInimigo = 100, direcaoInimigo = Sul, velocidadeInimigo = 30.0, tipoInimigo = Flora, projeteisInimigo = []}
+inimigo2 = Inimigo {posicaoInimigo = (-325, 225), vidaInimigo = 100, direcaoInimigo = Sul, velocidadeInimigo = 20.0, tipoInimigo = Stella, projeteisInimigo = []}
+inimigo3 = Inimigo {posicaoInimigo = (-325, 225), vidaInimigo = 100, direcaoInimigo = Sul, velocidadeInimigo = 30.0, tipoInimigo = Stella, projeteisInimigo = []}
 
+
+{-
+terminouJogo :: Jogo -> Bool
+terminouJogo jogo = ganhouJogo jogo || perdeuJogo jogo
+
+
+ganhouJogo :: Jogo -> Bool
+ganhouJogo jogo = null (inimigosJogo jogo) && vidaBase (baseJogo jogo) > 0
+
+
+perdeuJogo :: Jogo -> Bool
+perdeuJogo jogo = vidaBase (baseJogo jogo) <= 0
+-}
