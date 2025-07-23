@@ -104,7 +104,7 @@ atualizarJogo delta jogo estado =
     in jogo { 
         portaisJogo = portaisAtualizados,
         torresJogo = torresAtualizadas,
-        inimigosJogo = inimigosComDano  -- Usa os inimigos com dano aplicado
+        inimigosJogo = inimigosComDano  
     }
 
 -- Função auxiliar para aplicar dano de projéteis

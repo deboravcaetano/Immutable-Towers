@@ -22,11 +22,11 @@ handleInput (EventKey (MouseButton LeftButton) Down _ (x, y)) estadoGeral =
     EscolhaNivel ->
       if estaDentro (x, y) (-740, -390) dimensaoBotaoVoltar then
         estadoGeral { estadoJanela = Menu }
-      else if estaDentro (x, y) (-350, 0) dimensaoBotaoNivel1 then
+      else if estaDentro (x, y) (250, -30) dimensaoBotaoNivel1 then
         estadoGeral { estadoJanela = Game, jogoatual = iniciarJogo 1 }
-      else if estaDentro (x, y) (0, 0) dimensaoBotaoNivel2 then
+      else if estaDentro (x, y) (380, -70) dimensaoBotaoNivel2 then
         estadoGeral { estadoJanela = Menu }
-      else if estaDentro (x, y) (350, 0) dimensaoBotaoNivel3 then
+      else if estaDentro (x, y) (500, 0) dimensaoBotaoNivel3 then
         estadoGeral { estadoJanela = Menu }
       else
         estadoGeral

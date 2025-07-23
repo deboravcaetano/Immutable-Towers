@@ -72,9 +72,9 @@ desenhaResinaInfo estado = pictures [
 desenhaEscolhaNivel :: EstadoJanela -> Picture
 desenhaEscolhaNivel estado = pictures [
     imagemJanelaEscolhaNivel estado,
-    translate (-350) 0 (imagemBotaoNivel1 estado),
-    translate 0 0 (imagemBotaoNivel2 estado),
-    translate 350 0 (imagemBotaoNivel3 estado),
+    translate 250 (-30) (imagemBotaoNivel1 estado),
+    translate 380 (-70) (imagemBotaoNivel2 estado),
+    translate 500 0 (imagemBotaoNivel3 estado),
     translate (-740) (-390) (imagemBotaoVoltar estado)
     ]
 
@@ -89,8 +89,8 @@ desenhaJogo estado jogo = pictures $
     , Translate 103 (-418) $ Scale 0.2 0.2 $ Text (show $ creditosBase (baseJogo jogo))
     ]
     ++ map (\p -> desenhaPortal p (imagemPortal estado)) (portaisJogo jogo)
-    ++ map (\t -> desenhaTorre t (escolherImagemTorre estado t)) (torresJogo jogo)
     ++ [desenhaInimigos (inimigosJogo jogo)  estado]
+    ++ map (\t -> desenhaTorre t (escolherImagemTorre estado t)) (torresJogo jogo)
   where
     escolherImagemTorre :: EstadoJanela -> Torre -> Picture
     escolherImagemTorre estado torre = 
