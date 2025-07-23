@@ -80,5 +80,16 @@ atualizarProjetil delta p =
                     let t' = t - delta
                         dano = 10 * delta  -- Dano por segundo
                     in (p { duracaoProjetil = Finita t' }, dano)
-                _ -> (p, 0)
+        Gelo -> 
+            case duracaoProjetil p of
+                Finita t | t > 0 -> 
+                    let t' = t - delta
+                        dano = 10 * delta  -- Dano por segundo
+                    in (p { duracaoProjetil = Finita t' }, dano)
+        Resina -> 
+            case duracaoProjetil p of
+                Finita t | t > 0 -> 
+                    let t' = t - delta
+                        dano = 10 * delta  -- Dano por segundo
+                    in (p { duracaoProjetil = Finita t' }, dano)
         _ -> (p, 0)

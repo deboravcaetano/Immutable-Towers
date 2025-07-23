@@ -42,7 +42,7 @@ tileParaPosicaoCentral (x, y) (nCols, nRows) = do
         centY = metadeAltura - fromIntegral r * tile - tile/ 2
 
         posX = centX
-        posY = centY + 12 -- Ajuste para não ficar parte no bloco abaixo
+        posY = centY + 13 -- Ajuste para não ficar parte no bloco abaixo
     return (posX, posY)
 
 
@@ -71,9 +71,9 @@ adicionarTorre estado posicao tipo =
     in if creditosAtuais >= custo
         then
             let (dano, alcance, rajada, ciclo, duracao) = case tipo of
-                    Fogo  -> (50, 3.0, 1, 1.5, Finita 2.0)
-                    Resina    -> (30, 2.5, 2, 2.0, Finita 1.8)
-                    Gelo     -> (50, 2.0, 3, 3.0, Finita 1.5)
+                    Fogo  -> (15, 50.0, 1, 1.5, Finita 2.0)
+                    Resina    -> (30, 50.0, 2, 2.0, Finita 1.8)
+                    Gelo     -> (20, 50.0, 3, 3.0, Finita 1.5)
 
                 novaTorre = Torre {
                     posicaoTorre = posCentral,
