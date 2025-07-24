@@ -80,11 +80,12 @@ atualizarListaProjeteis delta (p:ps) =
 
 atualizarProjetil :: Float -> Projetil -> (Projetil, Float)
 atualizarProjetil delta p = 
-    case tipoProjetil p of
-        Fogo -> 
-            case duracaoProjetil p of
-                Finita t | t > 0 -> 
-                    let t' = t - delta
-                        dano = 10 * delta  -- Dano por segundo          
-                    in (p { duracaoProjetil = Finita t' }, dano)
-        _ -> (p,0)
+    case duracaoProjetil p of
+        Finita t | t > 0 -> 
+            let deltaEfetivo = min delta t
+                duracaoRestante = t - deltaEfetivo
+                dano = case tipoProjetil p of
+                         Fogo -> 10 * deltaEfetivo
+                         _    -> 0
+            in (p { duracaoProjetil = Finita duracaoRestante }, dano)
+        _ -> (p, 0)
