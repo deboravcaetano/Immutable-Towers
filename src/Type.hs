@@ -112,7 +112,8 @@ data TipoProjetil = Fogo | Gelo | Resina deriving (Eq, Show)
 
 data Projetil = Projetil { 
     tipoProjetil :: TipoProjetil,
-    duracaoProjetil :: Duracao
+    duracaoProjetil :: Duracao,
+    reducaoVelocidade :: Float  -- (0 para fogo/gelo)
   }
   deriving (Show)
 

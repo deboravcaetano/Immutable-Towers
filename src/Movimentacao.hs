@@ -21,28 +21,34 @@ Se houver, move-se , caso contrário, tenta mudar a direção para uma perpendic
 -}
 
 moverInimigo :: Float -> Inimigo -> EstadoJanela -> Inimigo
-moverInimigo tempo inimigo estado = 
-    let direcao = direcaoInimigo inimigo
-        (x,y) = posicaoInimigo inimigo
-        tile = 50
-        largura = (tile / 2) + 1
-        altura = (tile / 2) + 1
-    in case direcao of
-        Norte -> if terrenoETerra (x, y + altura) estado then inimigo { posicaoInimigo = (x, y + (velocidadeInimigo inimigo * tempo)) }
-                 else if terrenoETerra (x + largura, y) estado then inimigo { direcaoInimigo = Este }
-                 else if terrenoETerra (x - largura, y) estado then inimigo { direcaoInimigo = Oeste }
-                 else inimigo
-        Sul -> if terrenoETerra (x, y - altura) estado then inimigo { posicaoInimigo = (x, y - (velocidadeInimigo inimigo * tempo)) }
-               else if terrenoETerra (x + largura, y) estado then inimigo { direcaoInimigo = Este }
-               else if terrenoETerra (x - largura, y) estado then inimigo { direcaoInimigo = Oeste }
-               else inimigo
-        Este -> if terrenoETerra (x + largura, y) estado then inimigo { posicaoInimigo = (x + (velocidadeInimigo inimigo * tempo), y) }
-                else if terrenoETerra (x, y - altura) estado then inimigo { direcaoInimigo = Sul }
-                else if terrenoETerra (x, y + altura) estado then inimigo { direcaoInimigo = Norte }
+moverInimigo tempo inimigo estado 
+    | estaCongelado inimigo = inimigo  -- Não se move se congelado
+    | otherwise = 
+        let direcao = direcaoInimigo inimigo
+            (x,y) = posicaoInimigo inimigo
+            tile = 50
+            largura = (tile / 2) + 1
+            altura = (tile / 2) + 1
+        in case direcao of
+            Norte -> if terrenoETerra (x, y + altura) estado then inimigo { posicaoInimigo = (x, y + (velocidadeInimigo inimigo * tempo)) }
+                    else if terrenoETerra (x + largura, y) estado then inimigo { direcaoInimigo = Este }
+                    else if terrenoETerra (x - largura, y) estado then inimigo { direcaoInimigo = Oeste }
+                    else inimigo
+            Sul -> if terrenoETerra (x, y - altura) estado then inimigo { posicaoInimigo = (x, y - (velocidadeInimigo inimigo * tempo)) }
+                else if terrenoETerra (x + largura, y) estado then inimigo { direcaoInimigo = Este }
+                else if terrenoETerra (x - largura, y) estado then inimigo { direcaoInimigo = Oeste }
                 else inimigo
-        Oeste -> if terrenoETerra (x - largura, y) estado then inimigo { posicaoInimigo = (x - (velocidadeInimigo inimigo * tempo), y) }
-                 else if terrenoETerra (x, y - largura) estado then inimigo { direcaoInimigo = Sul }
-                 else if terrenoETerra (x, y + altura) estado then inimigo { direcaoInimigo = Norte }
-                 else inimigo
+            Este -> if terrenoETerra (x + largura, y) estado then inimigo { posicaoInimigo = (x + (velocidadeInimigo inimigo * tempo), y) }
+                    else if terrenoETerra (x, y - altura) estado then inimigo { direcaoInimigo = Sul }
+                    else if terrenoETerra (x, y + altura) estado then inimigo { direcaoInimigo = Norte }
+                    else inimigo
+            Oeste -> if terrenoETerra (x - largura, y) estado then inimigo { posicaoInimigo = (x - (velocidadeInimigo inimigo * tempo), y) }
+                    else if terrenoETerra (x, y - largura) estado then inimigo { direcaoInimigo = Sul }
+                    else if terrenoETerra (x, y + altura) estado then inimigo { direcaoInimigo = Norte }
+                    else inimigo
+    where
+        estaCongelado i = any (\p -> tipoProjetil p == Gelo && duracaoProjetil p > Finita 0) (projeteisInimigo i)
 
 
+estaCongelado :: Inimigo -> Bool
+estaCongelado inimigo = any (\p -> tipoProjetil p == Gelo && duracaoProjetil p > Finita 0) (projeteisInimigo inimigo)

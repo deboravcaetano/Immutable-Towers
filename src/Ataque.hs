@@ -45,12 +45,19 @@ aplicarSinergia novo (p:ps)
 
 atingeInimigo :: Torre -> Inimigo -> Inimigo
 atingeInimigo torre inimigo = 
-    let vidaNova = (vidaInimigo inimigo) - (danoTorre torre)
-        projeteisNovos = aplicarSinergia (projetilTorre torre) (projeteisInimigo inimigo)
-    in inimigo { 
-        vidaInimigo = max 0 vidaNova,  -- Vida não pode ser negativa
-        projeteisInimigo = projeteisNovos 
-    }
+    let vidaNova = vidaInimigo inimigo - danoTorre torre
+        proj = projetilTorre torre
+        velocidadeNova = 
+            if reducaoVelocidade proj > 0 
+            then velocidadeInimigo inimigo * (1 - reducaoVelocidade proj)
+            else velocidadeInimigo inimigo
+            
+        novoInimigo = inimigo {
+            vidaInimigo = max 0 vidaNova,
+            velocidadeInimigo = velocidadeNova,
+            projeteisInimigo = aplicarSinergia proj (projeteisInimigo inimigo)
+        }
+    in novoInimigo
 
 
 atualizarProjeteisInimigo :: Float -> Inimigo -> Inimigo
@@ -78,18 +85,6 @@ atualizarProjetil delta p =
             case duracaoProjetil p of
                 Finita t | t > 0 -> 
                     let t' = t - delta
-                        dano = 10 * delta  -- Dano por segundo
+                        dano = 10 * delta  -- Dano por segundo          
                     in (p { duracaoProjetil = Finita t' }, dano)
-        Gelo -> 
-            case duracaoProjetil p of
-                Finita t | t > 0 -> 
-                    let t' = t - delta
-                        dano = 10 * delta  -- Dano por segundo
-                    in (p { duracaoProjetil = Finita t' }, dano)
-        Resina -> 
-            case duracaoProjetil p of
-                Finita t | t > 0 -> 
-                    let t' = t - delta
-                        dano = 10 * delta  -- Dano por segundo
-                    in (p { duracaoProjetil = Finita t' }, dano)
-        _ -> (p, 0)
+        _ -> (p,0)
