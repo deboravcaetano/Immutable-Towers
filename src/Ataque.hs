@@ -1,13 +1,21 @@
 module Ataque where
 import Type
-
+import Data.List (sortBy) 
 
 distancia :: Posicao -> Posicao -> Float
 distancia (x1, y1) (x2, y2) = sqrt $ (x1 - x2) ^ 2 + (y1 - y2) ^ 2
 
 
 inimigosNoAlcance :: Torre -> [Inimigo] -> [Inimigo]
-inimigosNoAlcance torre inimigos = filter (\inimigo -> distancia (posicaoTorre torre) (posicaoInimigo inimigo) <= alcanceTorre torre) inimigos
+inimigosNoAlcance torre inimigos = 
+    sortBy (compararPrioridade torre)  
+    $ filter (\inimigo -> distancia (posicaoTorre torre) (posicaoInimigo inimigo) <= alcanceTorre torre) 
+      inimigos
+
+compararPrioridade :: Torre -> Inimigo -> Inimigo -> Ordering
+compararPrioridade torre i1 i2 =
+    compare (distancia (posicaoTorre torre) (posicaoInimigo i1))
+            (distancia (posicaoTorre torre) (posicaoInimigo i2))
 
 
 -- Aplicar efeitos sinergia

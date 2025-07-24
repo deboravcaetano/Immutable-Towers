@@ -2,6 +2,7 @@ module Type where
 import Graphics.Gloss.Interface.Pure.Game
 import System.Random 
 
+
 data Janela = Menu | EscolhaNivel | Goal | TorreFogoInfo | TorreGeloInfo | TorreResinaInfo | Game  
 
 data EstadoJanela = EstadoJanela
