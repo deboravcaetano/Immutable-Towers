@@ -209,7 +209,7 @@ dimensaoBotaoFindIt :: (Float, Float)
 dimensaoBotaoFindIt = (121, 18)
 
 dimensaoBotaoPausa :: (Float, Float)
-dimensaoBotaoPausa = (133, 30)
+dimensaoBotaoPausa = (137, 39)
 
 dimensaoBotaoVoltarAJogar :: (Float, Float)
 dimensaoBotaoVoltarAJogar = (188, 53)
@@ -218,4 +218,4 @@ dimensaoBotaoSair :: (Float, Float)
 dimensaoBotaoSair = (188, 50)
 
 dimensaoBotaoVender :: (Float, Float)
-dimensaoBotaoVender = (98, 14)
+dimensaoBotaoVender = (65, 14)

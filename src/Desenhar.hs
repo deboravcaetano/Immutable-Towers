@@ -84,7 +84,7 @@ desenhaGanhouJanela estado = pictures [
 desenhaPausa :: EstadoJanela -> Picture
 desenhaPausa estado = pictures [
     desenhaJogo estado (jogoatual estado), 
-    color (makeColor 0 0 0 0.9) $ rectangleSolid 1600 9000,
+    color (makeColor 0 0 0 0.8) $ rectangleSolid 1600 9000,
     translate 0 0 (imagemPausa estado)
     ]
 
