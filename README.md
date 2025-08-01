@@ -34,7 +34,8 @@ And sell it too, by clicking on the tower and clicking on the "SELL" button to g
 ### Pause
 You can pause the game by pressing the "PAUSE" button.
 
-<img width="1601" height="902" alt="image" src="https://github.com/user-attachments/assets/4f75f543-ff91-43e0-923e-d2482448e8f4" />
+<img width="1601" height="902" alt="image" src="https://github.com/user-attachments/assets/faa7dfca-a9c6-41cb-894c-a22484f90083" />
+
 
 ### WIN 
 <img width="1601" height="902" alt="image" src="https://github.com/user-attachments/assets/c5e0736e-8558-419f-be25-b33dcca215db" />
