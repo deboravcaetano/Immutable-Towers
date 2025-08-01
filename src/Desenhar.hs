@@ -72,7 +72,7 @@ desenhaJogo estado jogo = pictures $
     , desenhaBase (baseJogo jogo) (imagemBase estado)
     , desenhaLoja (imagemLoja estado) (imagemBotaoGelo estado) (imagemBotaoResina estado) (imagemBotaoFogo estado) estado
     , Translate (-70) (-410) $ Scale 0.2 0.2 $ Text (show $ vidaBase (baseJogo jogo))
-    , Translate 103 (-410) $ Scale 0.2 0.2 $ Text (show $ creditosBase (baseJogo jogo))
+    , Translate 70 (-410) $ Scale 0.2 0.2 $ Text (show $ creditosBase (baseJogo jogo))
     ]
     ++ map (\p -> desenhaPortal p (imagemPortal estado)) (portaisJogo jogo)
     ++ [desenhaInimigos (inimigosJogo jogo)  estado]
