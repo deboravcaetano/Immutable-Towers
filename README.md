@@ -21,8 +21,7 @@ Pressing play this is what the game will show you.
 ### Game
 Choosing one of the three kingdoms...
 
-<img width="1601" height="902" alt="image" src="https://github.com/user-attachments/assets/79b319f8-34b0-4ebb-bdd0-fe8e2b126584" />
-
+<img width="1601" height="902" alt="image" src="https://github.com/user-attachments/assets/bff709d6-d43c-4ade-a077-57e63cdc7516" />
 
 You can place a tower by clicking on a grass tile and buying a tower from the game store...
 
