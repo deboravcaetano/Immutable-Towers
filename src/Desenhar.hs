@@ -58,9 +58,9 @@ desenhaResinaInfo estado = pictures [
 desenhaEscolhaNivel :: EstadoJanela -> Picture
 desenhaEscolhaNivel estado = pictures [
     imagemJanelaEscolhaNivel estado,
-    translate 250 (-30) (imagemBotaoNivel1 estado),
-    translate 380 (-70) (imagemBotaoNivel2 estado),
-    translate 500 0 (imagemBotaoNivel3 estado),
+    translate 10 0 (imagemBotaoNivel1 estado),
+    translate 10 (-35) (imagemBotaoNivel2 estado),
+    translate 10 (-70) (imagemBotaoNivel3 estado),
     translate 0 (-410) (imagemBotaoVoltar estado)
     ]
 
