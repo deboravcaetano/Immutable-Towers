@@ -175,7 +175,7 @@ dimensaoBotaoJogar :: (Float, Float)
 dimensaoBotaoJogar = (200, 58)
 
 dimensaoBotaoVoltar :: (Float, Float)
-dimensaoBotaoVoltar = (86, 80)
+dimensaoBotaoVoltar = (336, 36)
 
 dimensaoBotaoNivel1 :: (Float, Float)
 dimensaoBotaoNivel1 = (90, 104)

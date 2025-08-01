@@ -31,14 +31,14 @@ handleInput (EventKey (MouseButton LeftButton) Down _ (x, y)) estadoGeral =
       else
         estadoGeral
     Goal ->
-      if estaDentro (x, y) (-740,-390) dimensaoBotaoVoltar then
+      if estaDentro (x, y) (0,-410) dimensaoBotaoVoltar then
         estadoGeral { estadoJanela = Menu }
       else if estaDentro (x, y) (-450,-20) dimensaoBotaoSetaEsq then
         estadoGeral { estadoJanela = TorreGeloInfo }
       else 
         estadoGeral
     TorreFogoInfo ->
-      if estaDentro (x, y) (-740,-390) dimensaoBotaoVoltar then
+      if estaDentro (x, y) (x, y) (0,-410) dimensaoBotaoVoltar then
         estadoGeral { estadoJanela = Menu }
       else if estaDentro (x, y) (-450,-20) dimensaoBotaoSetaEsq then
         estadoGeral { estadoJanela = TorreResinaInfo }
@@ -47,7 +47,7 @@ handleInput (EventKey (MouseButton LeftButton) Down _ (x, y)) estadoGeral =
       else 
         estadoGeral
     TorreGeloInfo ->
-      if estaDentro (x, y) (-740,-390) dimensaoBotaoVoltar then
+      if estaDentro (x, y) (x, y) (0,-410) dimensaoBotaoVoltar then
         estadoGeral { estadoJanela = Menu }
       else if estaDentro (x, y) (-450,-20) dimensaoBotaoSetaEsq then
         estadoGeral { estadoJanela = TorreFogoInfo }
@@ -56,7 +56,7 @@ handleInput (EventKey (MouseButton LeftButton) Down _ (x, y)) estadoGeral =
       else 
         estadoGeral
     TorreResinaInfo ->
-      if estaDentro (x, y) (-740,-390) dimensaoBotaoVoltar then
+      if estaDentro (x, y) (x, y) (0,-410) dimensaoBotaoVoltar then
         estadoGeral { estadoJanela = Menu }
       else if estaDentro (x, y) (488,-20) dimensaoBotaoSetaDir then
         estadoGeral { estadoJanela = TorreFogoInfo }

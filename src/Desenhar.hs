@@ -28,14 +28,14 @@ desenhaMenu estado = pictures [
 desenhaGoal :: EstadoJanela -> Picture
 desenhaGoal estado = pictures [
     imagemFundoGoal estado,
-    translate (-740) (-390) (imagemBotaoVoltar estado),
+    translate 0 (-410) (imagemBotaoVoltar estado),
     translate (-450) (-20) (imagemBotao1 estado)
     ]
 
 desenhaFogoInfo :: EstadoJanela -> Picture
 desenhaFogoInfo estado = pictures [
     imagemFundoFogo estado,
-    translate (-740) (-390) (imagemBotaoVoltar estado),
+    translate 0 (-410) (imagemBotaoVoltar estado),
     translate (-450) (-20) (imagemBotao1 estado),
     translate 455 (-20) (imagemBotao2 estado)
     ]
@@ -43,7 +43,7 @@ desenhaFogoInfo estado = pictures [
 desenhaGeloInfo :: EstadoJanela -> Picture
 desenhaGeloInfo estado = pictures [
     imagemFundoGelo estado,
-    translate (-740) (-390) (imagemBotaoVoltar estado),
+    translate 0 (-410) (imagemBotaoVoltar estado),
     translate (-450) (-20) (imagemBotao1 estado),
     translate 455 (-20) (imagemBotao2 estado)
     ]
@@ -51,7 +51,7 @@ desenhaGeloInfo estado = pictures [
 desenhaResinaInfo :: EstadoJanela -> Picture
 desenhaResinaInfo estado = pictures [
     imagemFundoResina estado,
-    translate (-740) (-390) (imagemBotaoVoltar estado),
+    translate 0 (-410) (imagemBotaoVoltar estado),
     translate 455 (-20) (imagemBotao2 estado)
     ]
 
@@ -61,7 +61,7 @@ desenhaEscolhaNivel estado = pictures [
     translate 250 (-30) (imagemBotaoNivel1 estado),
     translate 380 (-70) (imagemBotaoNivel2 estado),
     translate 500 0 (imagemBotaoNivel3 estado),
-    translate (-740) (-390) (imagemBotaoVoltar estado)
+    translate 0 (-410) (imagemBotaoVoltar estado)
     ]
 
 
