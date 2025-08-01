@@ -95,39 +95,65 @@ atualizarProjeteisInimigos delta = map (atualizarProjeteisInimigo delta)
 
 atualizarJogo :: Float -> Jogo -> EstadoJanela -> Jogo
 atualizarJogo delta jogo estado =
-  let (portaisAtualizados, inimigosNovos) = atualizarPortais (portaisJogo jogo) delta
-      (torresAtualizadas, inimigosAtualizados) = atualizarTorres delta (torresJogo jogo) (inimigosJogo jogo)
-      todosInimigos = inimigosAtualizados ++ inimigosNovos
-      inimigosComProjeteis = atualizarProjeteisInimigos delta todosInimigos
+  let -- atualiza portais e pega novos inimigos
+      (portaisAtualizados, inimigosNovos) = atualizarPortais (portaisJogo jogo) delta
+      
+      -- junta todos os inimigos (novos e existentes)
+      todosInimigos = inimigosJogo jogo ++ inimigosNovos
+      
+      -- aplica dano das torres
+      (torresAtualizadas, inimigosAposTorres) = atualizarTorres delta (torresJogo jogo) todosInimigos
+      
+      -- atualiza projéteis nos inimigos
+      inimigosComProjeteis = atualizarProjeteisInimigos delta inimigosAposTorres
+      
+      -- move os inimigos
       inimigosMovidos = atualizarInimigos inimigosComProjeteis delta estado
       
-
-      (novaBase, inimigosQueSobram) = verificarColisoesBase (baseJogo jogo) inimigosMovidos
+      -- verifica colisões com a base
+      (novaBase, inimigosQueSobram, butimTotal) = verificarColisoesBase (baseJogo jogo) inimigosMovidos
       
-      inimigosComDano = map (aplicarDanoProjeteis delta) inimigosQueSobram
+      -- filtra inimigos vivos
+      inimigosVivos = filter (\i -> vidaInimigo i > 0) inimigosQueSobram
+      
+      -- atualiza créditos
+      baseFinal = novaBase { creditosBase = creditosBase novaBase + butimTotal }
+      
   in jogo { 
-      baseJogo = novaBase,  -- base atualizada com dano
+      baseJogo = baseFinal,
       portaisJogo = portaisAtualizados,
       torresJogo = torresAtualizadas,
-      inimigosJogo = inimigosComDano  
+      inimigosJogo = inimigosVivos
   }
 
 
--- Função auxiliar para aplicar dano de projéteis
-aplicarDanoProjeteis :: Float -> Inimigo -> Inimigo
+aplicarDanoProjeteis :: Float -> Inimigo -> (Inimigo, Creditos)
 aplicarDanoProjeteis delta inimigo =
-    let (_, dano) = atualizarListaProjeteis delta (projeteisInimigo inimigo)
+    let (projAtualizados, dano) = atualizarListaProjeteis delta (projeteisInimigo inimigo)
         vidaNova = vidaInimigo inimigo - dano
-    in inimigo { vidaInimigo = max 0 vidaNova }
+        butim = if vidaNova <= 0 then butimInimigo inimigo else 0
+    in (inimigo { 
+        vidaInimigo = max 0 vidaNova,
+        projeteisInimigo = projAtualizados
+    }, butim)
     
 
-verificarColisoesBase :: Base -> [Inimigo] -> (Base, [Inimigo])
+verificarColisoesBase :: Base -> [Inimigo] -> (Base, [Inimigo], Creditos)
 verificarColisoesBase base inimigos =
-  let (colidiram, restantes) = partition (colidiuComBase base) inimigos -- partition divide em dois, os que verificam a condição e os que não verificam
+  let (colidiram, naoColidiram) = partition (colidiuComBase base) inimigos -- partition divide em dois, aqueles que verificam a condição e os que não
+      
       danoTotal = sum $ map ataqueInimigo colidiram
-      novaBase = base { vidaBase = vidaBase base - danoTotal }
-  in (novaBase, restantes)
-
+      
+      -- calcula butim dos inimigos que morreram (tanto os que colidiram quanto outros)
+      todosInimigos = colidiram ++ naoColidiram
+      butimTotal = sum [ butimInimigo i | i <- todosInimigos, vidaInimigo i <= 0 ]
+      
+      novaBase = base { 
+          vidaBase = vidaBase base - danoTotal,
+          creditosBase = creditosBase base + butimTotal
+      }
+      
+  in (novaBase, naoColidiram, butimTotal)
 
 colidiuComBase :: Base -> Inimigo -> Bool
 colidiuComBase base inimigo = 
