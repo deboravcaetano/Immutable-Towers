@@ -29,30 +29,30 @@ desenhaGoal :: EstadoJanela -> Picture
 desenhaGoal estado = pictures [
     imagemFundoGoal estado,
     translate (-740) (-390) (imagemBotaoVoltar estado),
-    translate (-483) (-20) (imagemBotao1 estado)
+    translate (-450) (-20) (imagemBotao1 estado)
     ]
 
 desenhaFogoInfo :: EstadoJanela -> Picture
 desenhaFogoInfo estado = pictures [
     imagemFundoFogo estado,
     translate (-740) (-390) (imagemBotaoVoltar estado),
-    translate (-483) (-20) (imagemBotao1 estado),
-    translate 488 (-20) (imagemBotao2 estado)
+    translate (-450) (-20) (imagemBotao1 estado),
+    translate 455 (-20) (imagemBotao2 estado)
     ]
 
 desenhaGeloInfo :: EstadoJanela -> Picture
 desenhaGeloInfo estado = pictures [
     imagemFundoGelo estado,
     translate (-740) (-390) (imagemBotaoVoltar estado),
-    translate (-483) (-20) (imagemBotao1 estado),
-    translate 488 (-20) (imagemBotao2 estado)
+    translate (-450) (-20) (imagemBotao1 estado),
+    translate 455 (-20) (imagemBotao2 estado)
     ]
 
 desenhaResinaInfo :: EstadoJanela -> Picture
 desenhaResinaInfo estado = pictures [
     imagemFundoResina estado,
     translate (-740) (-390) (imagemBotaoVoltar estado),
-    translate 488 (-20) (imagemBotao2 estado)
+    translate 455 (-20) (imagemBotao2 estado)
     ]
 
 desenhaEscolhaNivel :: EstadoJanela -> Picture
