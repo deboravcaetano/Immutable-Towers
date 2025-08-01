@@ -16,6 +16,7 @@ desenhar estado = case estadoJanela estado of
     TorreGeloInfo -> desenhaGeloInfo estado
     TorreResinaInfo -> desenhaResinaInfo estado
     Game -> desenhaJogo estado (jogoatual estado)  
+    Perdeu -> desenhaPerdeuJanela estado
 
 
 desenhaMenu :: EstadoJanela -> Picture
@@ -62,6 +63,11 @@ desenhaEscolhaNivel estado = pictures [
     translate 10 (-35) (imagemBotaoNivel2 estado),
     translate 10 (-70) (imagemBotaoNivel3 estado),
     translate 10 (-210) $ scale 0.6 0.6  (imagemBotaoVoltar estado)
+    ]
+
+desenhaPerdeuJanela :: EstadoJanela -> Picture
+desenhaPerdeuJanela estado = pictures [
+    imagemJanelaPerdeu estado
     ]
 
 

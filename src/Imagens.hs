@@ -66,6 +66,9 @@ carregarImgSetaDir = loadBMP "assets/Botoes/BotaoSetaDireita.bmp"
 carregarImgFundoMapa:: IO Picture
 carregarImgFundoMapa = loadBMP "assets/Fundos/FundoMapa.bmp"
 
+carregarImgJanelaPerdeu :: IO Picture
+carregarImgJanelaPerdeu = loadBMP "assets/Fundos/FundoJanelaPerdeu.bmp"
+
 carregarImgLoja :: IO Picture
 carregarImgLoja = loadBMP "assets/Loja/Loja.bmp"
 

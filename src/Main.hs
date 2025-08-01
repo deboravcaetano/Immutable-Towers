@@ -51,6 +51,8 @@ main = do
   imgsFlora <- carregarImgsFlora
   imgsStella <- carregarImgsStella
 
+  imgJanelaPerdeu <- carregarImgJanelaPerdeu
+
   let estadoInicial = EstadoJanela
         { estadoJanela = Menu
         , imagemJanelaPrincipal = imgMenu
@@ -60,6 +62,7 @@ main = do
         , imagemFundoGelo = imgIceTowerInfo
         , imagemFundoResina = imgResinTowerInfo
         , imagemFundoMapa = imgFundoMapa
+        , imagemJanelaPerdeu = imgJanelaPerdeu
         , imagemBotaoJogar = imgBotaoJogar
         , imagemBotaoRegras = imgBotaoRegras
         , imagemBotaoVoltar = imgBotaoVoltar
@@ -95,7 +98,7 @@ main = do
                     novoJogo = atualizarJogo delta jogoAntigo estado
                     novaJanela =
                         if vidaBase (baseJogo novoJogo) <= 0.0
-                        then Menu
+                        then Perdeu
                         else estadoJanela estado
                 in estado { jogoatual = novoJogo, estadoJanela = novaJanela }
             _ -> estado
