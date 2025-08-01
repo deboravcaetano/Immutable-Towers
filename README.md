@@ -27,12 +27,12 @@ You can place a tower by clicking on a grass tile and buying a tower from the ga
 
 <img width="1601" height="902" alt="image" src="https://github.com/user-attachments/assets/cfcef591-5077-47cf-a627-f0ffe09f4259" />
 <img width="1601" height="902" alt="image" src="https://github.com/user-attachments/assets/69c2ba79-e410-43a6-96e0-f1d52a2fc7dc" />
-And sell it too, by clicking on the tower and clicking on the "SELL" button to gain 75% of its price.
+And sell it too, by clicking on the tower and clicking on the **SELL** button to gain 75% of its price.
 
 <img width="1601" height="902" alt="image" src="https://github.com/user-attachments/assets/d2abba45-9390-4c9b-843b-1076cbb257ce" />
 
 ### Pause
-You can pause the game by pressing the "PAUSE" button.
+You can pause the game by pressing the **PAUSE** button.
 
 <img width="1601" height="902" alt="image" src="https://github.com/user-attachments/assets/faa7dfca-a9c6-41cb-894c-a22484f90083" />
 
