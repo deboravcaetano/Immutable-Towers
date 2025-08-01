@@ -1,5 +1,7 @@
 module EventosLoja where
 import Type
+import Ataque
+import Data.List (find)
 
 
 -- Objetivo: Transformar coordenadas do clique do rato em píxeis (x,y) num índice da matriz do tabuleiro Just (linha,coluna)
@@ -100,3 +102,32 @@ adicionarTorre estado posicao tipo =
 
             in estado { jogoatual = novoJogo }
         else estado
+
+
+torreClicada :: EstadoJanela -> (Float, Float) -> Maybe Torre
+torreClicada estado (x, y) = 
+  find (\torre -> distancia (x,y) (posicaoTorre torre) < 25) (torresJogo $ jogoatual estado)
+
+
+venderTorre :: EstadoJanela -> Torre -> EstadoJanela
+venderTorre estado torre =
+  let jogo = jogoatual estado
+      custo = case procurarCustoTorre (tipoProjetil (projetilTorre torre)) (lojaJogo jogo) of
+                Just cost -> cost
+      reembolso = round (fromIntegral custo * 0.75)  -- 75% de reembolso
+      
+      -- Remover a torre da lista
+      novasTorres = filter (\t -> posicaoTorre t /= posicaoTorre torre) (torresJogo jogo)
+      
+      -- Atualizar créditos
+      base = baseJogo jogo
+      novaBase = base { creditosBase = creditosBase base + reembolso }
+      
+      novoJogo = jogo {
+          baseJogo = novaBase,
+          torresJogo = novasTorres
+      }
+  in estado { 
+      jogoatual = novoJogo,
+      torreSelecionada = Nothing  -- deselecionar após vender
+  }

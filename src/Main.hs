@@ -63,6 +63,8 @@ main = do
 
   imgJanelaGanhou <- carregarImgJanelaGanhou
 
+  imgBotaoVender <- carregarImgBotaoVender
+
 
   let estadoInicial = EstadoJanela
         { estadoJanela = Menu
@@ -84,6 +86,7 @@ main = do
         , imagemBotaoMenu = imgBotaoMenu
         , imagemBotaoFindIt = imgBotaoFindIt
         , imagemBotaoPausa = imgBotaoPausa
+        , imagemBotaoVender = imgBotaoVender
         , imagemPausa = imgPausa
         , imagemBotao1 = imgSetaEsquerda
         , imagemBotao2 = imgSetaDireita
@@ -98,6 +101,7 @@ main = do
         , imagemBotaoGelo = imgBotaoGelo
         , imagemBotaoResina = imgBotaoResina
         , relvaSelecionada = Nothing
+        , torreSelecionada = Nothing
         , jogoatual = jogoInicial
         , imagemTorreFogo = imgTorreFogo
         , imagemTorreGelo = imgTorreGelo 

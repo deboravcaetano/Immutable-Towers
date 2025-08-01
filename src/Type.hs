@@ -25,6 +25,7 @@ data EstadoJanela = EstadoJanela
   , imagemBotaoMenu :: Picture
   , imagemBotaoFindIt :: Picture
   , imagemBotaoPausa :: Picture
+  , imagemBotaoVender :: Picture
   , imagemPausa :: Picture
   , imagemBotao1 :: Picture
   , imagemBotao2 :: Picture
@@ -40,6 +41,7 @@ data EstadoJanela = EstadoJanela
   , imagemBotaoResina :: Picture  
   , jogoatual :: Jogo 
   , relvaSelecionada :: Maybe (Float, Float) 
+  , torreSelecionada :: Maybe Torre
   , imagemTorreFogo :: Picture
   , imagemTorreGelo:: Picture
   , imagemTorreResina :: Picture 
@@ -218,3 +220,6 @@ dimensaoBotaoVoltarAJogar = (188, 53)
 
 dimensaoBotaoSair :: (Float, Float)
 dimensaoBotaoSair = (188, 50)
+
+dimensaoBotaoVender :: (Float, Float)
+dimensaoBotaoVender = (98, 14)

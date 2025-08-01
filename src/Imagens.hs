@@ -108,6 +108,8 @@ carregarImgTorreFogo = loadBMP "assets/Torres/TorreFogo.bmp"
 carregarImgPausa :: IO Picture
 carregarImgPausa = loadBMP "assets/Fundos/PausaJogo.bmp"
 
+carregarImgBotaoVender :: IO Picture
+carregarImgBotaoVender = loadBMP "assets/Botoes/BotaoVender.bmp"
 
 carregarImgsFlora :: IO [[Picture]]
 carregarImgsFlora = do

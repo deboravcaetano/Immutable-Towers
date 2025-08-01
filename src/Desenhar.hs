@@ -4,6 +4,8 @@ import Graphics.Gloss
 import Type (EstadoJanela(imagemAgua), Base (creditosBase))
 import Graphics.Gloss (Picture)
 import Imagens
+import Data.Maybe (isJust)
+import EventosLoja
 
 
 
@@ -91,7 +93,7 @@ desenhaJogo estado jogo = pictures $
     [ desenhaFundoMapa (imagemFundoMapa estado) estado
     , desenhaMapa (mapaJogo jogo) [imagemRelva estado, imagemTerra estado, imagemAgua estado, imagemAguaTerra estado]
     , desenhaBase (baseJogo jogo) (imagemBase estado)
-    , desenhaLoja (imagemLoja estado) (imagemBotaoGelo estado) (imagemBotaoResina estado) (imagemBotaoFogo estado) estado
+    , desenhaLoja (imagemLoja estado) (imagemBotaoGelo estado) (imagemBotaoResina estado) (imagemBotaoFogo estado) (imagemBotaoVender estado) estado
     , Translate (-70) (-413) $ Scale 0.2 0.2 $ Text (show $ vidaBase (baseJogo jogo))
     , Translate 70 (-413) $ Scale 0.2 0.2 $ Text (show $ creditosBase (baseJogo jogo))
     , translate 0 415 (imagemBotaoPausa estado)
@@ -99,6 +101,8 @@ desenhaJogo estado jogo = pictures $
     ++ map (\p -> desenhaPortal p (imagemPortal estado)) (portaisJogo jogo)
     ++ [desenhaInimigos (inimigosJogo jogo)  estado]
     ++ map (\t -> desenhaTorre t (escolherImagemTorre estado t)) (torresJogo jogo)
+    ++ [desenhaTorreSelecionada estado | isJust (torreSelecionada estado)]
+    ++ [desenhaRelvaSelecionada estado | isJust (relvaSelecionada estado)]
   where
     escolherImagemTorre :: EstadoJanela -> Torre -> Picture
     escolherImagemTorre estado torre = 
@@ -108,16 +112,50 @@ desenhaJogo estado jogo = pictures $
             Resina  -> imagemTorreResina estado
 
 
+desenhaTorreSelecionada :: EstadoJanela -> Picture
+desenhaTorreSelecionada estado =
+    case torreSelecionada estado of
+        Just torre -> 
+            let (x, y) = posicaoTorre torre
+            in translate x y $ color (makeColor 0 0 0 0.3) $ rectangleSolid 50 76
+        Nothing -> blank
+
+desenhaRelvaSelecionada :: EstadoJanela -> Picture
+desenhaRelvaSelecionada estado =
+    case relvaSelecionada estado of
+        Just (x, y) -> 
+            let jogo = jogoatual estado
+                tile = 50
+                metadeLargura = (fromIntegral (nColunas jogo) * tile) / 2
+                metadeAltura = (fromIntegral (nLinhas jogo) * tile) / 2
+                
+                -- Converte coordenadas de clique para índice da matriz
+                maybeIndice = pixelParaIndice (nColunas jogo) (nLinhas jogo) (x, y)
+                
+                -- Calcula posição central do tile
+                posicaoCentral = case maybeIndice of
+                    Just (r, c) -> 
+                        let centX = fromIntegral c * tile - metadeLargura + tile / 2
+                            centY = metadeAltura - fromIntegral r * tile - tile / 2
+                        in Just (centX, centY)
+                    Nothing -> Nothing
+            in case posicaoCentral of
+                Just (posX, posY) -> 
+                    translate posX posY $ color blue $ rectangleWire tile tile
+                Nothing -> blank
+        Nothing -> blank
+
 desenhaFundoMapa :: Picture -> EstadoJanela -> Picture
 desenhaFundoMapa imgFundo _estado =
     Translate 0 0 imgFundo
 
-desenhaLoja :: Picture -> Picture -> Picture -> Picture -> EstadoJanela -> Picture
-desenhaLoja imgLoja imgBotaoGelo imgBotaoResina imgBotaoFogo _estado = pictures [
+desenhaLoja :: Picture -> Picture -> Picture -> Picture -> Picture -> EstadoJanela -> Picture
+desenhaLoja imgLoja imgBotaoGelo imgBotaoResina imgBotaoFogo imgBotaoVender _estado = pictures [
     translate (-5) 0 imgLoja,
     translate 535 150 imgBotaoGelo,
     translate 535 10 imgBotaoResina,
-    translate 535 (-130) imgBotaoFogo
+    translate 535 (-130) imgBotaoFogo,
+    translate 630 (-230) imgBotaoVender
     ]
     
 desenhaMapa :: [[Terreno]] -> [Picture] -> Picture 

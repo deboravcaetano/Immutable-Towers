@@ -5,6 +5,7 @@ import Desenhar
 import Game
 import EventosLoja
 
+
 render :: EstadoJanela -> Picture
 render estado = desenhar estado
 
@@ -64,25 +65,50 @@ handleInput (EventKey (MouseButton LeftButton) Down _ (x, y)) estadoGeral =
         estadoGeral
     Game -> 
       if estaDentro (x,y) (0,415) dimensaoBotaoPausa then
-        estadoGeral { estadoJanela = Pausa}
+        estadoGeral { estadoJanela = Pausa }
       else 
-      case relvaSelecionada estadoGeral of
-        Just posRelva -> 
-            if estaDentro (x, y) (535 ,150) dimensaoBotaoTorre then
-                (adicionarTorre estadoGeral posRelva Gelo) 
-                    { relvaSelecionada = Nothing }
-            else if estaDentro (x, y) (535, 10) dimensaoBotaoTorre then
-                (adicionarTorre estadoGeral posRelva Resina) 
-                    { relvaSelecionada = Nothing }
-            else if estaDentro (x, y) (535 ,-130) dimensaoBotaoTorre then
-                (adicionarTorre estadoGeral posRelva Fogo) 
-                    { relvaSelecionada = Nothing }
-            else estadoGeral
-            
-        Nothing ->
-            if clicouRelva (x, y) estadoGeral then
-                estadoGeral { relvaSelecionada = Just (x, y) }
-            else estadoGeral
+        case torreSelecionada estadoGeral of
+          Just torreAtual ->  -- torre já selecionada
+            if estaDentro (x, y) (630, -230) dimensaoBotaoVender then
+              venderTorre estadoGeral torreAtual
+            else 
+              case torreClicada estadoGeral (x, y) of
+                Just torreClicada ->
+                  if mesmaTorre torreAtual torreClicada then
+                    estadoGeral { torreSelecionada = Nothing }  -- desseleciona
+                  else
+                    estadoGeral  
+                      { torreSelecionada = Just torreClicada
+                      , relvaSelecionada = Nothing
+                      }
+                Nothing -> estadoGeral  -- clicou em outro lugar
+          
+          Nothing ->  -- nenhuma torre selecionada
+            case torreClicada estadoGeral (x, y) of
+              Just torre -> estadoGeral  
+                { torreSelecionada = Just torre
+                , relvaSelecionada = Nothing
+                }
+              Nothing -> 
+                case relvaSelecionada estadoGeral of
+                  Just posRelva -> 
+                    if estaDentro (x, y) (535, 150) dimensaoBotaoTorre then
+                      (adicionarTorre estadoGeral posRelva Gelo) 
+                        { relvaSelecionada = Nothing }
+                    else if estaDentro (x, y) (535, 10) dimensaoBotaoTorre then
+                      (adicionarTorre estadoGeral posRelva Resina) 
+                        { relvaSelecionada = Nothing }
+                    else if estaDentro (x, y) (535, -130) dimensaoBotaoTorre then
+                      (adicionarTorre estadoGeral posRelva Fogo) 
+                        { relvaSelecionada = Nothing }
+                    else estadoGeral
+                  Nothing ->
+                    if clicouRelva (x, y) estadoGeral then
+                      estadoGeral 
+                        { relvaSelecionada = Just (x, y)
+                        , torreSelecionada = Nothing
+                        }
+                    else estadoGeral
     Perdeu ->
       if estaDentro (x, y) (-101,-133) dimensaoBotaoMenu then
         estadoGeral { estadoJanela = Menu }
@@ -102,6 +128,10 @@ handleInput (EventKey (MouseButton LeftButton) Down _ (x, y)) estadoGeral =
       else 
         estadoGeral
 handleInput _ estadoGeral = estadoGeral
+
+
+mesmaTorre :: Torre -> Torre -> Bool
+mesmaTorre t1 t2 = posicaoTorre t1 == posicaoTorre t2  
 
 
 estaDentro :: (Float, Float) -> (Float, Float) -> (Float, Float) -> Bool
