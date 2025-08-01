@@ -57,6 +57,11 @@ main = do
 
   imgBotaoFindIt <- carregarImgBotaoFindIt
 
+  imgBotaoPausa <- carregarImgBotaoPausa
+
+  imgPausa <- carregarImgPausa
+
+
   let estadoInicial = EstadoJanela
         { estadoJanela = Menu
         , imagemJanelaPrincipal = imgMenu
@@ -76,6 +81,8 @@ main = do
         , imagemBotaoNivel3 = imgBotaoNivel3
         , imagemBotaoMenu = imgBotaoMenu
         , imagemBotaoFindIt = imgBotaoFindIt
+        , imagemBotaoPausa = imgBotaoPausa
+        , imagemPausa = imgPausa
         , imagemBotao1 = imgSetaEsquerda
         , imagemBotao2 = imgSetaDireita
         , imagemRelva = relva    
@@ -108,6 +115,7 @@ main = do
                         else if null (inimigosJogo novoJogo) && all null (map ondasPortal (portaisJogo novoJogo)) then Ganhou
                         else estadoJanela estado
                 in estado { jogoatual = novoJogo, estadoJanela = novaJanela }
+            Pausa -> estado
             _ -> estado
 
   play (InWindow "ImmutableTowers" (1600, 900) (300, 70)) 

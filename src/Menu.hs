@@ -63,6 +63,9 @@ handleInput (EventKey (MouseButton LeftButton) Down _ (x, y)) estadoGeral =
       else 
         estadoGeral
     Game -> 
+      if estaDentro (x,y) (0,415) dimensaoBotaoPausa then
+        estadoGeral { estadoJanela = Pausa}
+      else 
       case relvaSelecionada estadoGeral of
         Just posRelva -> 
             if estaDentro (x, y) (535 ,150) dimensaoBotaoTorre then
@@ -87,6 +90,12 @@ handleInput (EventKey (MouseButton LeftButton) Down _ (x, y)) estadoGeral =
         estadoGeral { estadoJanela = EscolhaNivel } -- ou recomeçar logo o jogo
       else 
         estadoGeral
+    Pausa -> 
+      if estaDentro (x,y) (-125,-80) dimensaoBotaoVoltarAJogar then
+        estadoGeral { estadoJanela = Game}
+      else if estaDentro (x,y) (120,-80) dimensaoBotaoSair then
+        estadoGeral { estadoJanela = EscolhaNivel}
+      else estadoGeral
 
 handleInput _ estadoGeral = estadoGeral
 

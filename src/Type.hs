@@ -3,7 +3,7 @@ import Graphics.Gloss.Interface.Pure.Game
 import System.Random 
 
 
-data Janela = Menu | EscolhaNivel | Goal | TorreFogoInfo | TorreGeloInfo | TorreResinaInfo | Game | Perdeu | Ganhou
+data Janela = Menu | EscolhaNivel | Goal | TorreFogoInfo | TorreGeloInfo | TorreResinaInfo | Game | Perdeu | Ganhou | Pausa
 
 data EstadoJanela = EstadoJanela
   { estadoJanela :: Janela              
@@ -24,6 +24,8 @@ data EstadoJanela = EstadoJanela
   , imagemBotaoNivel3 :: Picture
   , imagemBotaoMenu :: Picture
   , imagemBotaoFindIt :: Picture
+  , imagemBotaoPausa :: Picture
+  , imagemPausa :: Picture
   , imagemBotao1 :: Picture
   , imagemBotao2 :: Picture
   , imagemRelva :: Picture
@@ -207,3 +209,12 @@ dimensaoBotaoMenu = (82, 18)
 
 dimensaoBotaoFindIt :: (Float, Float)
 dimensaoBotaoFindIt = (121, 18)
+
+dimensaoBotaoPausa :: (Float, Float)
+dimensaoBotaoPausa = (133, 30)
+
+dimensaoBotaoVoltarAJogar :: (Float, Float)
+dimensaoBotaoVoltarAJogar = (188, 53)
+
+dimensaoBotaoSair :: (Float, Float)
+dimensaoBotaoSair = (188, 50)

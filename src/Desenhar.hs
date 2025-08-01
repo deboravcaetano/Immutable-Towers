@@ -18,6 +18,7 @@ desenhar estado = case estadoJanela estado of
     Game -> desenhaJogo estado (jogoatual estado)  
     Perdeu -> desenhaPerdeuJanela estado
     Ganhou -> desenhaGanhouJanela estado
+    Pausa -> desenhaPausa estado
 
 
 desenhaMenu :: EstadoJanela -> Picture
@@ -79,6 +80,13 @@ desenhaGanhouJanela estado = pictures [
     translate 0 (-133) (imagemBotaoMenu estado)
     ]
 
+desenhaPausa :: EstadoJanela -> Picture
+desenhaPausa estado = pictures [
+    desenhaJogo estado (jogoatual estado), 
+    color (makeColor 0 0 0 0.9) $ rectangleSolid 1600 9000,
+    translate 0 0 (imagemPausa estado)
+    ]
+
 desenhaJogo :: EstadoJanela -> Jogo -> Picture
 desenhaJogo estado jogo = pictures $
     [ desenhaFundoMapa (imagemFundoMapa estado) estado
@@ -87,6 +95,7 @@ desenhaJogo estado jogo = pictures $
     , desenhaLoja (imagemLoja estado) (imagemBotaoGelo estado) (imagemBotaoResina estado) (imagemBotaoFogo estado) estado
     , Translate (-70) (-413) $ Scale 0.2 0.2 $ Text (show $ vidaBase (baseJogo jogo))
     , Translate 70 (-413) $ Scale 0.2 0.2 $ Text (show $ creditosBase (baseJogo jogo))
+    , translate 0 415 (imagemBotaoPausa estado)
     ]
     ++ map (\p -> desenhaPortal p (imagemPortal estado)) (portaisJogo jogo)
     ++ [desenhaInimigos (inimigosJogo jogo)  estado]

@@ -87,6 +87,12 @@ carregarImgBotaoMenu = loadBMP "assets/Botoes/BotaoMenu.bmp"
 carregarImgBotaoFindIt :: IO Picture
 carregarImgBotaoFindIt = loadBMP "assets/Botoes/BotaoFindIt.bmp"
 
+carregarImgBotaoContinuar :: IO Picture
+carregarImgBotaoContinuar = loadBMP "assets/Botoes/BotaoPausa.bmp"
+
+carregarImgBotaoPausa :: IO Picture
+carregarImgBotaoPausa = loadBMP "assets/Botoes/BotaoPausa.bmp"
+
 carregarImgTorreResina :: IO Picture
 carregarImgTorreResina = loadBMP "assets/Torres/TorreResina.bmp"
 
@@ -95,6 +101,15 @@ carregarImgTorreGelo = loadBMP "assets/Torres/TorreGelo.bmp"
 
 carregarImgTorreFogo :: IO Picture
 carregarImgTorreFogo = loadBMP "assets/Torres/TorreFogo.bmp"
+
+carregarImgPausa :: IO Picture
+carregarImgPausa = loadBMP "assets/Fundos/PausaJogo.bmp"
+
+carregarImgBotaoSair :: IO Picture
+carregarImgBotaoSair = loadBMP "assets/Botoes/BotaoSair.bmp"
+
+carregarImgBotaoVoltarAJogar :: IO Picture
+carregarImgBotaoVoltarAJogar = loadBMP "assets/Botoes/BotaoVoltarAJogar.bmp"
 
 carregarImgsFlora :: IO [[Picture]]
 carregarImgsFlora = do
