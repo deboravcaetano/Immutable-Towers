@@ -47,10 +47,6 @@ data EstadoJanela = EstadoJanela
   , imagemTorreResina :: Picture 
   , imagensFlora :: [[Picture]]
   , imagensStella :: [[Picture]]
-  --, imagensInimigo3 :: [Picture]
-  --, imagensInimigo4 :: [Picture]
-  --, imagensInimigo5 :: [Picture]
-  --, imagensInimigo6 :: [Picture] 
   }
 
 data Portal = Portal {

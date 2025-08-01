@@ -98,9 +98,9 @@ portal1 = Portal (-325, 225) [onda1, onda2] True
         , entradaOnda = 20.0  -- Inicia após 20 segundos
         }
 
-inimigo1 = Inimigo {posicaoInimigo = (-325, 225), vidaInimigo = 100, butimInimigo = 10, direcaoInimigo = Sul, velocidadeInimigo = 50.0, ataqueInimigo = 0, tipoInimigo = Flora, projeteisInimigo = []}
-inimigo2 = Inimigo {posicaoInimigo = (-325, 225), vidaInimigo = 90, butimInimigo = 10, direcaoInimigo = Sul, velocidadeInimigo = 20.0, ataqueInimigo = 0, tipoInimigo = Stella, projeteisInimigo = []}
-inimigo3 = Inimigo {posicaoInimigo = (-325, 225), vidaInimigo = 90, butimInimigo = 10 ,direcaoInimigo = Sul, velocidadeInimigo = 30.0,ataqueInimigo = 0, tipoInimigo = Stella, projeteisInimigo = []}
+inimigo1 = Inimigo {posicaoInimigo = (-325, 225), vidaInimigo = 100, butimInimigo = 10, direcaoInimigo = Sul, velocidadeInimigo = 50.0, ataqueInimigo = 10, tipoInimigo = Flora, projeteisInimigo = []}
+inimigo2 = Inimigo {posicaoInimigo = (-325, 225), vidaInimigo = 90, butimInimigo = 10, direcaoInimigo = Sul, velocidadeInimigo = 20.0, ataqueInimigo = 10, tipoInimigo = Stella, projeteisInimigo = []}
+inimigo3 = Inimigo {posicaoInimigo = (-325, 225), vidaInimigo = 90, butimInimigo = 10 ,direcaoInimigo = Sul, velocidadeInimigo = 30.0, ataqueInimigo = 10, tipoInimigo = Stella, projeteisInimigo = []}
 
 
 {-

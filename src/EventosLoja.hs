@@ -73,9 +73,9 @@ adicionarTorre estado posicao tipo =
     in if creditosAtuais >= custo
         then
             let (dano, alcance, rajada, ciclo, duracao, reducao) = case tipo of
-                    Fogo   -> (10, 70.8, 1, 1.5, Finita 2.0, 0.0)
+                    Fogo   -> (10, 70.8, 2, 1.5, Finita 2.0, 0.0)
                     Resina -> (10, 70.8, 2, 2.0, Finita 1.8, 0.3)
-                    Gelo   -> (10, 70.8, 3, 3.0, Finita 1.5, 0.0)
+                    Gelo   -> (10, 70.8, 1, 3.0, Finita 1.0, 0.0)
 
                 novaTorre = Torre {
                     posicaoTorre = posCentral,
