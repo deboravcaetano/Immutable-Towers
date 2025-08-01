@@ -67,6 +67,7 @@ main = do
         , imagemFundoResina = imgResinTowerInfo
         , imagemFundoMapa = imgFundoMapa
         , imagemJanelaPerdeu = imgJanelaPerdeu
+        , imagemJanelaGanhou = imgFundoMapa
         , imagemBotaoJogar = imgBotaoJogar
         , imagemBotaoRegras = imgBotaoRegras
         , imagemBotaoVoltar = imgBotaoVoltar
@@ -103,8 +104,8 @@ main = do
                 let jogoAntigo = jogoatual estado
                     novoJogo = atualizarJogo delta jogoAntigo estado
                     novaJanela =
-                        if vidaBase (baseJogo novoJogo) <= 0.0
-                        then Perdeu
+                        if vidaBase (baseJogo novoJogo) <= 0.0 then Perdeu
+                        else if null (inimigosJogo novoJogo) && all null (map ondasPortal (portaisJogo novoJogo)) then Ganhou
                         else estadoJanela estado
                 in estado { jogoatual = novoJogo, estadoJanela = novaJanela }
             _ -> estado
@@ -116,7 +117,6 @@ main = do
        render
        handleInput
        atualizar 
-
 
 
 

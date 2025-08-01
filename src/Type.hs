@@ -3,7 +3,7 @@ import Graphics.Gloss.Interface.Pure.Game
 import System.Random 
 
 
-data Janela = Menu | EscolhaNivel | Goal | TorreFogoInfo | TorreGeloInfo | TorreResinaInfo | Game | Perdeu
+data Janela = Menu | EscolhaNivel | Goal | TorreFogoInfo | TorreGeloInfo | TorreResinaInfo | Game | Perdeu | Ganhou
 
 data EstadoJanela = EstadoJanela
   { estadoJanela :: Janela              
@@ -14,7 +14,8 @@ data EstadoJanela = EstadoJanela
   , imagemFundoGelo :: Picture 
   , imagemFundoResina :: Picture 
   , imagemFundoMapa :: Picture  
-  , imagemJanelaPerdeu :: Picture   
+  , imagemJanelaPerdeu :: Picture 
+  , imagemJanelaGanhou :: Picture  
   , imagemBotaoJogar :: Picture          
   , imagemBotaoRegras :: Picture        
   , imagemBotaoVoltar :: Picture        
