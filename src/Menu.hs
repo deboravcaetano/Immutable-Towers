@@ -20,7 +20,7 @@ handleInput (EventKey (MouseButton LeftButton) Down _ (x, y)) estadoGeral =
       else
         estadoGeral
     EscolhaNivel ->
-      if estaDentro (x, y) (0, -410) dimensaoBotaoVoltar then
+      if estaDentro (x, y) (10, -210) (201.6,21.6) then
         estadoGeral { estadoJanela = Menu }
       else if estaDentro (x, y) (10, 0) dimensaoBotaoNivel1 then
         estadoGeral { estadoJanela = Game, jogoatual = iniciarJogo 1 }

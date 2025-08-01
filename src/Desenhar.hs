@@ -61,7 +61,7 @@ desenhaEscolhaNivel estado = pictures [
     translate 10 0 (imagemBotaoNivel1 estado),
     translate 10 (-35) (imagemBotaoNivel2 estado),
     translate 10 (-70) (imagemBotaoNivel3 estado),
-    translate 0 (-410) (imagemBotaoVoltar estado)
+    translate 10 (-210) $ scale 0.6 0.6  (imagemBotaoVoltar estado)
     ]
 
 
@@ -71,8 +71,8 @@ desenhaJogo estado jogo = pictures $
     , desenhaMapa (mapaJogo jogo) [imagemRelva estado, imagemTerra estado, imagemAgua estado, imagemAguaTerra estado]
     , desenhaBase (baseJogo jogo) (imagemBase estado)
     , desenhaLoja (imagemLoja estado) (imagemBotaoGelo estado) (imagemBotaoResina estado) (imagemBotaoFogo estado) estado
-    , Translate (-70) (-410) $ Scale 0.2 0.2 $ Text (show $ vidaBase (baseJogo jogo))
-    , Translate 70 (-410) $ Scale 0.2 0.2 $ Text (show $ creditosBase (baseJogo jogo))
+    , Translate (-70) (-413) $ Scale 0.2 0.2 $ Text (show $ vidaBase (baseJogo jogo))
+    , Translate 70 (-413) $ Scale 0.2 0.2 $ Text (show $ creditosBase (baseJogo jogo))
     ]
     ++ map (\p -> desenhaPortal p (imagemPortal estado)) (portaisJogo jogo)
     ++ [desenhaInimigos (inimigosJogo jogo)  estado]
