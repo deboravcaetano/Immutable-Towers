@@ -21,6 +21,8 @@ data EstadoJanela = EstadoJanela
   , imagemBotaoNivel1 :: Picture         
   , imagemBotaoNivel2 :: Picture        
   , imagemBotaoNivel3 :: Picture
+  , imagemBotaoMenu :: Picture
+  , imagemBotaoFindIt :: Picture
   , imagemBotao1 :: Picture
   , imagemBotao2 :: Picture
   , imagemRelva :: Picture
@@ -198,3 +200,9 @@ dimensaoBotaoSetaDir = (80, 87)
 
 dimensaoBotaoTorre :: (Float, Float)
 dimensaoBotaoTorre = (92, 136)
+
+dimensaoBotaoMenu :: (Float, Float)
+dimensaoBotaoMenu = (82, 18)
+
+dimensaoBotaoFindIt :: (Float, Float)
+dimensaoBotaoFindIt = (121, 18)

@@ -80,6 +80,14 @@ handleInput (EventKey (MouseButton LeftButton) Down _ (x, y)) estadoGeral =
             if clicouRelva (x, y) estadoGeral then
                 estadoGeral { relvaSelecionada = Just (x, y) }
             else estadoGeral
+    Perdeu ->
+      if estaDentro (x, y) (-101,-133) dimensaoBotaoMenu then
+        estadoGeral { estadoJanela = Menu }
+      else if estaDentro (x, y) (97,-133)  dimensaoBotaoFindIt then
+        estadoGeral { estadoJanela = EscolhaNivel } -- ou recomeçar logo o jogo
+      else 
+        estadoGeral
+
 handleInput _ estadoGeral = estadoGeral
 
 

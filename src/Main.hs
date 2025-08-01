@@ -53,6 +53,10 @@ main = do
 
   imgJanelaPerdeu <- carregarImgJanelaPerdeu
 
+  imgBotaoMenu <- carregarImgBotaoMenu
+
+  imgBotaoFindIt <- carregarImgBotaoFindIt
+
   let estadoInicial = EstadoJanela
         { estadoJanela = Menu
         , imagemJanelaPrincipal = imgMenu
@@ -69,6 +73,8 @@ main = do
         , imagemBotaoNivel1 = imgBotaoNivel1
         , imagemBotaoNivel2 = imgBotaoNivel2
         , imagemBotaoNivel3 = imgBotaoNivel3
+        , imagemBotaoMenu = imgBotaoMenu
+        , imagemBotaoFindIt = imgBotaoFindIt
         , imagemBotao1 = imgSetaEsquerda
         , imagemBotao2 = imgSetaDireita
         , imagemRelva = relva    

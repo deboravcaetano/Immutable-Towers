@@ -81,6 +81,12 @@ carregarImgBotaoTorreGelo = loadBMP "assets/Botoes/TorreGeloBotao.bmp"
 carregarImgBotaoTorreResina :: IO Picture
 carregarImgBotaoTorreResina = loadBMP "assets/Botoes/TorreResinaBotao.bmp"
 
+carregarImgBotaoMenu :: IO Picture
+carregarImgBotaoMenu = loadBMP "assets/Botoes/BotaoMenu.bmp"
+
+carregarImgBotaoFindIt :: IO Picture
+carregarImgBotaoFindIt = loadBMP "assets/Botoes/BotaoFindIt.bmp"
+
 carregarImgTorreResina :: IO Picture
 carregarImgTorreResina = loadBMP "assets/Torres/TorreResina.bmp"
 

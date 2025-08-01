@@ -67,9 +67,10 @@ desenhaEscolhaNivel estado = pictures [
 
 desenhaPerdeuJanela :: EstadoJanela -> Picture
 desenhaPerdeuJanela estado = pictures [
-    imagemJanelaPerdeu estado
+    imagemJanelaPerdeu estado,
+    translate (-101) (-133) (imagemBotaoMenu estado),
+    translate 97 (-133) (imagemBotaoFindIt estado)
     ]
-
 
 desenhaJogo :: EstadoJanela -> Jogo -> Picture
 desenhaJogo estado jogo = pictures $
