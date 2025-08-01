@@ -113,7 +113,7 @@ data Projetil = Projetil {
     duracaoProjetil :: Duracao,
     reducaoVelocidade :: Float  -- (0 para fogo/gelo)
   }
-  deriving (Show)
+  deriving (Show, Eq)
 
 
 data Direcao = Norte | Sul | Este | Oeste deriving (Eq, Show)
@@ -135,7 +135,7 @@ data Inimigo = Inimigo {
     projeteisInimigo :: [Projetil],
     tipoInimigo :: TipoInimigo
   }
-  deriving (Show)
+  deriving (Show, Eq )
 
 
 data TipoInimigo = Flora | Stella  deriving (Show,Eq)

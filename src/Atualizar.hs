@@ -74,18 +74,19 @@ atualizarTorres delta (t:ts) inimigos =
 
 atualizarTorre :: Float -> [Inimigo] -> Torre -> (Torre, [Inimigo])
 atualizarTorre delta inimigos torre
-    | tempoTorre torre > 0 = (torre { tempoTorre = tempoTorre torre - delta }, inimigos)
+    | tempoTorre torre > 0 = 
+        (torre { tempoTorre = tempoTorre torre - delta }, inimigos)
+        
     | otherwise = 
-        let alvos = inimigosNoAlcance torre inimigos 
-            idsAlvos = map (\inimigo -> (posicaoInimigo inimigo, vidaInimigo inimigo)) alvos
-            novosInimigos = map (atualizarInimigoSeAlvo idsAlvos torre) inimigos
+        let alvos = take (rajadaTorre torre) $  
+                   inimigosNoAlcance torre inimigos
+                   
+            novosInimigos = map (\inimigo -> 
+                if inimigo `elem` alvos  
+                    then atingeInimigo torre inimigo
+                    else inimigo
+                ) inimigos
         in (torre { tempoTorre = cicloTorre torre }, novosInimigos)
-  where
-    atualizarInimigoSeAlvo :: [((Float, Float), Float)] -> Torre -> Inimigo -> Inimigo
-    atualizarInimigoSeAlvo alvos torre inimigo
-        | any (\(pos, vida) -> pos == posicaoInimigo inimigo && vida == vidaInimigo inimigo) alvos =
-            atingeInimigo torre inimigo
-        | otherwise = inimigo
 
 
 atualizarProjeteisInimigos :: Float -> [Inimigo] -> [Inimigo]

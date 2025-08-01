@@ -88,13 +88,17 @@ main = do
         }
 
   let atualizar :: Float -> EstadoJanela -> EstadoJanela
-      atualizar delta estado = 
-          case estadoJanela estado of
-              Game -> 
-                  let jogoAntigo = jogoatual estado
-                      novoJogo = atualizarJogo delta jogoAntigo estado
-                  in estado { jogoatual = novoJogo }
-              _ -> estado
+      atualizar delta estado =
+        case estadoJanela estado of
+            Game ->
+                let jogoAntigo = jogoatual estado
+                    novoJogo = atualizarJogo delta jogoAntigo estado
+                    novaJanela =
+                        if vidaBase (baseJogo novoJogo) <= 0.0
+                        then Menu
+                        else estadoJanela estado
+                in estado { jogoatual = novoJogo, estadoJanela = novaJanela }
+            _ -> estado
 
   play (InWindow "ImmutableTowers" (1600, 900) (300, 70)) 
        white
