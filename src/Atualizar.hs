@@ -3,6 +3,7 @@ import Type
 import Movimentacao
 import Ataque
 import Data.List
+import Data.List (partition)
 
 
 atualizarInimigos :: [Inimigo] -> Float -> EstadoJanela -> [Inimigo]
@@ -93,19 +94,23 @@ atualizarProjeteisInimigos delta = map (atualizarProjeteisInimigo delta)
 
 atualizarJogo :: Float -> Jogo -> EstadoJanela -> Jogo
 atualizarJogo delta jogo estado =
-    let (portaisAtualizados, inimigosNovos) = atualizarPortais (portaisJogo jogo) delta
-        (torresAtualizadas, inimigosAtualizados) = atualizarTorres delta (torresJogo jogo) (inimigosJogo jogo)
-        todosInimigos = inimigosAtualizados ++ inimigosNovos
-        inimigosComProjeteis = atualizarProjeteisInimigos delta todosInimigos
-        inimigosMovidos = atualizarInimigos inimigosComProjeteis delta estado
-        
+  let (portaisAtualizados, inimigosNovos) = atualizarPortais (portaisJogo jogo) delta
+      (torresAtualizadas, inimigosAtualizados) = atualizarTorres delta (torresJogo jogo) (inimigosJogo jogo)
+      todosInimigos = inimigosAtualizados ++ inimigosNovos
+      inimigosComProjeteis = atualizarProjeteisInimigos delta todosInimigos
+      inimigosMovidos = atualizarInimigos inimigosComProjeteis delta estado
+      
 
-        inimigosComDano = map (aplicarDanoProjeteis delta) inimigosMovidos
-    in jogo { 
-        portaisJogo = portaisAtualizados,
-        torresJogo = torresAtualizadas,
-        inimigosJogo = inimigosComDano  
-    }
+      (novaBase, inimigosQueSobram) = verificarColisoesBase (baseJogo jogo) inimigosMovidos
+      
+      inimigosComDano = map (aplicarDanoProjeteis delta) inimigosQueSobram
+  in jogo { 
+      baseJogo = novaBase,  -- base atualizada com dano
+      portaisJogo = portaisAtualizados,
+      torresJogo = torresAtualizadas,
+      inimigosJogo = inimigosComDano  
+  }
+
 
 -- Função auxiliar para aplicar dano de projéteis
 aplicarDanoProjeteis :: Float -> Inimigo -> Inimigo
@@ -114,3 +119,15 @@ aplicarDanoProjeteis delta inimigo =
         vidaNova = vidaInimigo inimigo - dano
     in inimigo { vidaInimigo = max 0 vidaNova }
     
+
+verificarColisoesBase :: Base -> [Inimigo] -> (Base, [Inimigo])
+verificarColisoesBase base inimigos =
+  let (colidiram, restantes) = partition (colidiuComBase base) inimigos -- partition divide em dois, os que verificam a condição e os que não verificam
+      danoTotal = sum $ map ataqueInimigo colidiram
+      novaBase = base { vidaBase = vidaBase base - danoTotal }
+  in (novaBase, restantes)
+
+
+colidiuComBase :: Base -> Inimigo -> Bool
+colidiuComBase base inimigo = 
+  distancia (posicaoInimigo inimigo) (posicaoBase base) < 50

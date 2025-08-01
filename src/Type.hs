@@ -128,7 +128,7 @@ data Inimigo = Inimigo {
     -- | Velocidade do inimigo.
     velocidadeInimigo :: Float,
     -- | Dano causado pelo inimigo na base do jogador.
-    --ataqueInimigo :: Float,
+    ataqueInimigo :: Float,
     -- | Créditos que o jogador recebe ao derrotar o inimigo.
     --butimInimigo :: Creditos,
     -- | Efeitos secundários ativos no inimigo.
