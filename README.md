@@ -48,6 +48,8 @@ You can pause the game by pressing the **PAUSE** button.
 
 ## Context
 
+All images made with PixelArt, Gimp and Canva.
+
 This was originally a project for LI1 class, but I didn't like how it turned out, it wasn't finished.
 So, this summer (2025) I decided to **improve** and **complete** this project.
 
