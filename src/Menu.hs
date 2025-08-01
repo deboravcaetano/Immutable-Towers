@@ -16,7 +16,7 @@ handleInput (EventKey (MouseButton LeftButton) Down _ (x, y)) estadoGeral =
       if estaDentro (x, y) (-25, -180) dimensaoBotaoJogar then
         estadoGeral { estadoJanela = EscolhaNivel }
       else if estaDentro (x, y) (750, 383) dimensaoBotaoRegras then
-        estadoGeral { estadoJanela = Goal }
+        estadoGeral { estadoJanela = TorreResinaInfo }
       else
         estadoGeral
     EscolhaNivel ->
@@ -33,45 +33,33 @@ handleInput (EventKey (MouseButton LeftButton) Down _ (x, y)) estadoGeral =
     Goal ->
       if estaDentro (x, y) (-740,-390) dimensaoBotaoVoltar then
         estadoGeral { estadoJanela = Menu }
-      else if estaDentro (x, y) (-220, 290) dimensaoBotaoAbaFechada then
-        estadoGeral { estadoJanela = TorreFogoInfo }
-      else if estaDentro (x, y) (-20, 290) dimensaoBotaoAbaFechada then
-        estadoGeral { estadoJanela = TorreGeloInfo } 
-      else if estaDentro (x, y) (180, 290) dimensaoBotaoAbaFechada then
-        estadoGeral { estadoJanela = TorreResinaInfo }
+      else if estaDentro (x, y) (-483,-20) dimensaoBotaoSetaEsq then
+        estadoGeral { estadoJanela = TorreGeloInfo }
       else 
         estadoGeral
     TorreFogoInfo ->
       if estaDentro (x, y) (-740,-390) dimensaoBotaoVoltar then
         estadoGeral { estadoJanela = Menu }
-      else if estaDentro (x, y) (-420,290) dimensaoBotaoAbaFechada then
-        estadoGeral { estadoJanela = Goal }
-      else if estaDentro (x, y) (-20, 290) dimensaoBotaoAbaFechada then
-        estadoGeral { estadoJanela = TorreGeloInfo } 
-      else if estaDentro (x, y) (180, 290) dimensaoBotaoAbaFechada then
+      else if estaDentro (x, y) (-483,-20) dimensaoBotaoSetaEsq then
         estadoGeral { estadoJanela = TorreResinaInfo }
+      else if estaDentro (x, y) (488, -20) dimensaoBotaoSetaDir then
+        estadoGeral { estadoJanela = TorreGeloInfo } 
       else 
         estadoGeral
     TorreGeloInfo ->
       if estaDentro (x, y) (-740,-390) dimensaoBotaoVoltar then
         estadoGeral { estadoJanela = Menu }
-      else if estaDentro (x, y) (-420,290) dimensaoBotaoAbaFechada then
-        estadoGeral { estadoJanela = Goal }
-      else if estaDentro (x, y) (-220, 290) dimensaoBotaoAbaFechada then
-        estadoGeral { estadoJanela = TorreFogoInfo } 
-      else if estaDentro (x, y) (180, 290) dimensaoBotaoAbaFechada then
-        estadoGeral { estadoJanela = TorreResinaInfo }
+      else if estaDentro (x, y) (-483,-20) dimensaoBotaoSetaEsq then
+        estadoGeral { estadoJanela = TorreFogoInfo }
+      else if estaDentro (x, y) (488, -20) dimensaoBotaoSetaDir then
+        estadoGeral { estadoJanela = Goal } 
       else 
         estadoGeral
     TorreResinaInfo ->
       if estaDentro (x, y) (-740,-390) dimensaoBotaoVoltar then
         estadoGeral { estadoJanela = Menu }
-      else if estaDentro (x, y) (-420,300) dimensaoBotaoAbaFechada then
-        estadoGeral { estadoJanela = Goal }
-      else if estaDentro (x, y) (-220, 290) dimensaoBotaoAbaFechada then
-        estadoGeral { estadoJanela = TorreFogoInfo } 
-      else if estaDentro (x, y) (20, 290) dimensaoBotaoAbaFechada then
-        estadoGeral { estadoJanela = TorreGeloInfo }
+      else if estaDentro (x, y) (488,-20) dimensaoBotaoSetaDir then
+        estadoGeral { estadoJanela = TorreFogoInfo }
       else 
         estadoGeral
     Game -> 

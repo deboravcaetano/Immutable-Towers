@@ -57,11 +57,11 @@ carregarImgBase = loadBMP "assets/Base/Base.bmp"
 carregarImgPortal :: IO Picture
 carregarImgPortal = loadBMP "assets/Portal/Portal.bmp"
 
-carregarImgAbaAberta:: IO Picture
-carregarImgAbaAberta = loadBMP "assets/Botoes/BotaoAbaAberta.bmp"
+carregarImgSetaEsq:: IO Picture
+carregarImgSetaEsq = loadBMP "assets/Botoes/BotaoSetaEsquerda.bmp"
 
-carregarImgAbaFechada:: IO Picture
-carregarImgAbaFechada = loadBMP "assets/Botoes/BotaoAbaFechada.bmp"
+carregarImgSetaDir :: IO Picture
+carregarImgSetaDir = loadBMP "assets/Botoes/BotaoSetaDireita.bmp"
 
 carregarImgFundoMapa:: IO Picture
 carregarImgFundoMapa = loadBMP "assets/Fundos/FundoMapa.bmp"

@@ -22,9 +22,6 @@ data EstadoJanela = EstadoJanela
   , imagemBotaoNivel3 :: Picture
   , imagemBotao1 :: Picture
   , imagemBotao2 :: Picture
-  , imagemBotao3 :: Picture
-  , imagemBotao4 :: Picture
-  , imagemBotao5 :: Picture
   , imagemRelva :: Picture
   , imagemTerra :: Picture
   , imagemAgua :: Picture  
@@ -191,11 +188,11 @@ dimensaoBotaoNivel3 = (90, 104)
 dimensaoBotaoRegras :: (Float, Float)
 dimensaoBotaoRegras = (77, 100)
 
-dimensaoBotaoAbaAberta :: (Float, Float)
-dimensaoBotaoAbaAberta = (169, 43)
+dimensaoBotaoSetaEsq :: (Float, Float)
+dimensaoBotaoSetaEsq = (80, 87)
 
-dimensaoBotaoAbaFechada :: (Float, Float)
-dimensaoBotaoAbaFechada = (169, 26)
+dimensaoBotaoSetaDir :: (Float, Float)
+dimensaoBotaoSetaDir = (80, 87)
 
 dimensaoBotaoTorre :: (Float, Float)
 dimensaoBotaoTorre = (92, 136)

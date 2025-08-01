@@ -54,7 +54,7 @@ criarTorre tipo =
     alcanceTorre = alcance,
     rajadaTorre = rajada,
     cicloTorre = ciclo ,
-    tempoTorre = 10
+    tempoTorre = 0
 
 }
 

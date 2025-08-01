@@ -33,8 +33,8 @@ main = do
   imgBase <- carregarImgBase
   imgPortal <- carregarImgPortal
     
-  imgAbaAberta <- carregarImgAbaAberta
-  imgAbaFechada <- carregarImgAbaFechada
+  imgSetaEsquerda <- carregarImgSetaEsq
+  imgSetaDireita <- carregarImgSetaDir
 
   imgFundoMapa <- carregarImgFundoMapa
 
@@ -66,11 +66,8 @@ main = do
         , imagemBotaoNivel1 = imgBotaoNivel1
         , imagemBotaoNivel2 = imgBotaoNivel2
         , imagemBotaoNivel3 = imgBotaoNivel3
-        , imagemBotao1 = imgAbaAberta
-        , imagemBotao2 = imgAbaFechada
-        , imagemBotao3 = imgAbaFechada
-        , imagemBotao4 = imgAbaFechada
-        , imagemBotao5 = imgAbaFechada
+        , imagemBotao1 = imgSetaEsquerda
+        , imagemBotao2 = imgSetaDireita
         , imagemRelva = relva    
         , imagemTerra = terra    
         , imagemAgua = agua  

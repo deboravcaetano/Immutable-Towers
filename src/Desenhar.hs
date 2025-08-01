@@ -29,44 +29,30 @@ desenhaGoal :: EstadoJanela -> Picture
 desenhaGoal estado = pictures [
     imagemFundoGoal estado,
     translate (-740) (-390) (imagemBotaoVoltar estado),
-    translate (-420) 300 (imagemBotao1 estado),
-    translate (-220) 290 (imagemBotao2 estado),
-    translate (-20) 290 (imagemBotao3 estado),
-    translate 180 290 (imagemBotao4 estado),
-    translate 380 290 (imagemBotao5 estado)
+    translate (-483) (-20) (imagemBotao1 estado)
     ]
 
 desenhaFogoInfo :: EstadoJanela -> Picture
 desenhaFogoInfo estado = pictures [
     imagemFundoFogo estado,
     translate (-740) (-390) (imagemBotaoVoltar estado),
-    translate (-420) 290 (imagemBotao2 estado),
-    translate (-220) 300 (imagemBotao1 estado),
-    translate (-20) 290 (imagemBotao3 estado),
-    translate 180 290 (imagemBotao4 estado),
-    translate 380 290 (imagemBotao5 estado)
+    translate (-483) (-20) (imagemBotao1 estado),
+    translate 488 (-20) (imagemBotao2 estado)
     ]
 
 desenhaGeloInfo :: EstadoJanela -> Picture
 desenhaGeloInfo estado = pictures [
     imagemFundoGelo estado,
     translate (-740) (-390) (imagemBotaoVoltar estado),
-    translate (-420) 290 (imagemBotao2 estado),
-    translate (-220) 290 (imagemBotao3 estado),
-    translate (-20) 300 (imagemBotao1 estado),
-    translate 180 290 (imagemBotao4 estado),
-    translate 380 290 (imagemBotao5 estado)
+    translate (-483) (-20) (imagemBotao1 estado),
+    translate 488 (-20) (imagemBotao2 estado)
     ]
 
 desenhaResinaInfo :: EstadoJanela -> Picture
 desenhaResinaInfo estado = pictures [
     imagemFundoResina estado,
     translate (-740) (-390) (imagemBotaoVoltar estado),
-    translate (-420) 290 (imagemBotao2 estado),
-    translate (-220) 290 (imagemBotao3 estado),
-    translate (-20) 290 (imagemBotao4 estado),
-    translate 180 300 (imagemBotao1 estado),
-    translate 380 290 (imagemBotao5 estado)
+    translate 488 (-20) (imagemBotao2 estado)
     ]
 
 desenhaEscolhaNivel :: EstadoJanela -> Picture
@@ -85,8 +71,8 @@ desenhaJogo estado jogo = pictures $
     , desenhaMapa (mapaJogo jogo) [imagemRelva estado, imagemTerra estado, imagemAgua estado, imagemAguaTerra estado]
     , desenhaBase (baseJogo jogo) (imagemBase estado)
     , desenhaLoja (imagemLoja estado) (imagemBotaoGelo estado) (imagemBotaoResina estado) (imagemBotaoFogo estado) estado
-    , Translate (-70) (-418) $ Scale 0.2 0.2 $ Text (show $ vidaBase (baseJogo jogo))
-    , Translate 103 (-418) $ Scale 0.2 0.2 $ Text (show $ creditosBase (baseJogo jogo))
+    , Translate (-70) (-410) $ Scale 0.2 0.2 $ Text (show $ vidaBase (baseJogo jogo))
+    , Translate 103 (-410) $ Scale 0.2 0.2 $ Text (show $ creditosBase (baseJogo jogo))
     ]
     ++ map (\p -> desenhaPortal p (imagemPortal estado)) (portaisJogo jogo)
     ++ [desenhaInimigos (inimigosJogo jogo)  estado]
