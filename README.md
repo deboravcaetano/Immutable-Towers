@@ -21,20 +21,23 @@ Pressing play this is what the game will show you.
 ### Game
 Choosing one of the three kingdoms...
 
-<img width="1601" height="902" alt="image" src="https://github.com/user-attachments/assets/031c31de-8443-48da-a4c6-189a3e0aba91" />
+<img width="1601" height="902" alt="image" src="https://github.com/user-attachments/assets/79b319f8-34b0-4ebb-bdd0-fe8e2b126584" />
+
 
 You can place a tower by clicking on a grass tile and buying a tower from the game store...
 
-<img width="1601" height="902" alt="image" src="https://github.com/user-attachments/assets/cfcef591-5077-47cf-a627-f0ffe09f4259" />
-<img width="1601" height="902" alt="image" src="https://github.com/user-attachments/assets/69c2ba79-e410-43a6-96e0-f1d52a2fc7dc" />
+<img width="1601" height="902" alt="image" src="https://github.com/user-attachments/assets/854c1f0f-3c8e-4b89-b189-8c4b309f90cc" />
+<img width="1601" height="902" alt="image" src="https://github.com/user-attachments/assets/9a922b3c-9c77-4559-9df5-64cd03894bd9" />
+
 And sell it too, by clicking on the tower and clicking on the **SELL** button to gain 75% of its price.
 
-<img width="1601" height="902" alt="image" src="https://github.com/user-attachments/assets/d2abba45-9390-4c9b-843b-1076cbb257ce" />
+<img width="1601" height="902" alt="image" src="https://github.com/user-attachments/assets/1602610a-5499-4b14-8ddb-da2ca427fadc" />
 
 ### Pause
 You can pause the game by pressing the **PAUSE** button.
 
-<img width="1601" height="902" alt="image" src="https://github.com/user-attachments/assets/faa7dfca-a9c6-41cb-894c-a22484f90083" />
+<img width="1601" height="902" alt="image" src="https://github.com/user-attachments/assets/2a8549cc-b8bf-4628-a4f5-691f864b5b27" />
+
 
 
 ### WIN 
