@@ -76,8 +76,7 @@ desenhaPerdeuJanela estado = pictures [
 
 desenhaGanhouJanela :: EstadoJanela -> Picture
 desenhaGanhouJanela estado = pictures [
-    imagemJanelaGanhou estado,
-    translate 0 (-133) (imagemBotaoMenu estado)
+    imagemJanelaGanhou estado
     ]
 
 desenhaPausa :: EstadoJanela -> Picture

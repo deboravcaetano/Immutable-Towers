@@ -96,7 +96,11 @@ handleInput (EventKey (MouseButton LeftButton) Down _ (x, y)) estadoGeral =
       else if estaDentro (x,y) (120,-80) dimensaoBotaoSair then
         estadoGeral { estadoJanela = EscolhaNivel}
       else estadoGeral
-
+    Ganhou -> 
+      if estaDentro (x, y) (0 ,-104) dimensaoBotaoVoltarAJogar then
+        estadoGeral { estadoJanela = Menu }
+      else 
+        estadoGeral
 handleInput _ estadoGeral = estadoGeral
 
 

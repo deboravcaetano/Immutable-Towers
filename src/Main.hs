@@ -61,6 +61,8 @@ main = do
 
   imgPausa <- carregarImgPausa
 
+  imgJanelaGanhou <- carregarImgJanelaGanhou
+
 
   let estadoInicial = EstadoJanela
         { estadoJanela = Menu
@@ -72,7 +74,7 @@ main = do
         , imagemFundoResina = imgResinTowerInfo
         , imagemFundoMapa = imgFundoMapa
         , imagemJanelaPerdeu = imgJanelaPerdeu
-        , imagemJanelaGanhou = imgFundoMapa
+        , imagemJanelaGanhou = imgJanelaGanhou
         , imagemBotaoJogar = imgBotaoJogar
         , imagemBotaoRegras = imgBotaoRegras
         , imagemBotaoVoltar = imgBotaoVoltar

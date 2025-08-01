@@ -69,6 +69,9 @@ carregarImgFundoMapa = loadBMP "assets/Fundos/FundoMapa.bmp"
 carregarImgJanelaPerdeu :: IO Picture
 carregarImgJanelaPerdeu = loadBMP "assets/Fundos/FundoJanelaPerdeu.bmp"
 
+carregarImgJanelaGanhou :: IO Picture
+carregarImgJanelaGanhou = loadBMP "assets/Fundos/FundoJanelaGanhou.bmp"
+
 carregarImgLoja :: IO Picture
 carregarImgLoja = loadBMP "assets/Loja/Loja.bmp"
 
@@ -105,11 +108,6 @@ carregarImgTorreFogo = loadBMP "assets/Torres/TorreFogo.bmp"
 carregarImgPausa :: IO Picture
 carregarImgPausa = loadBMP "assets/Fundos/PausaJogo.bmp"
 
-carregarImgBotaoSair :: IO Picture
-carregarImgBotaoSair = loadBMP "assets/Botoes/BotaoSair.bmp"
-
-carregarImgBotaoVoltarAJogar :: IO Picture
-carregarImgBotaoVoltarAJogar = loadBMP "assets/Botoes/BotaoVoltarAJogar.bmp"
 
 carregarImgsFlora :: IO [[Picture]]
 carregarImgsFlora = do
