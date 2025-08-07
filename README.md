@@ -60,5 +60,7 @@ All images made with PixelArt, Gimp and Canva.
 This was originally a project for LI1 class, but I didn't like how it turned out, it wasn't finished.
 So, this summer (2025) I decided to **improve** and **complete** this project.
 
+There are some values that need to be changed but the logical part is working.
+
 ## Made by :butterfly:
 Débora Luana Pinto Caetano (a112332)
