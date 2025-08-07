@@ -25,12 +25,15 @@ Choosing one of the three kingdoms...
 
 You can place a tower by clicking on a grass tile and buying a tower from the game store...
 
-<img width="1601" height="902" alt="image" src="https://github.com/user-attachments/assets/854c1f0f-3c8e-4b89-b189-8c4b309f90cc" />
-<img width="1601" height="902" alt="image" src="https://github.com/user-attachments/assets/9a922b3c-9c77-4559-9df5-64cd03894bd9" />
+<img width="1599" height="897" alt="image" src="https://github.com/user-attachments/assets/0c1e5e10-07b0-49fa-81d2-03a08c48899b" />
+<img width="1599" height="897" alt="image" src="https://github.com/user-attachments/assets/bbcf4515-d735-4a88-8f91-7796f752f9ef" />
+
 
 And sell it too, by clicking on the tower and clicking on the **SELL** button to gain 75% of its price.
 
-<img width="1601" height="902" alt="image" src="https://github.com/user-attachments/assets/1602610a-5499-4b14-8ddb-da2ca427fadc" />
+<img width="1599" height="897" alt="image" src="https://github.com/user-attachments/assets/b21bde6b-b8c3-44cf-8eb5-1064eb34968e" />
+<img width="1599" height="897" alt="image" src="https://github.com/user-attachments/assets/ee4439aa-c16f-4b27-be50-d5846f65871b" />
+
 
 ### Pause
 You can pause the game by pressing the **PAUSE** button.
