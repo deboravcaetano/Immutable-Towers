@@ -26,9 +26,9 @@ handleInput (EventKey (MouseButton LeftButton) Down _ (x, y)) estadoGeral =
       else if estaDentro (x, y) (10, 0) dimensaoBotaoNivel1 then
         estadoGeral { estadoJanela = Game, jogoatual = iniciarJogo 1 }
       else if estaDentro (x, y) (10, -30) dimensaoBotaoNivel2 then
-        estadoGeral { estadoJanela = Menu }
+        estadoGeral { estadoJanela = Game, jogoatual = iniciarJogo 2 }
       else if estaDentro (x, y) (10, -70) dimensaoBotaoNivel3 then
-        estadoGeral { estadoJanela = Menu }
+        estadoGeral { estadoJanela = Game, jogoatual = iniciarJogo 3 }
       else
         estadoGeral
     Goal ->

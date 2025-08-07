@@ -117,7 +117,7 @@ desenhaTorreSelecionada estado =
     case torreSelecionada estado of
         Just torre -> 
             let (x, y) = posicaoTorre torre
-            in translate x y $ color (makeColor 0 0 0 0.3) $ rectangleSolid 50 76
+            in translate x (y - 13) $ color (makeColor 0 0 0 0.4) $ rectangleSolid 50 50 -- por causa do ajuste em EventosLoja.hs
         Nothing -> blank
 
 desenhaRelvaSelecionada :: EstadoJanela -> Picture

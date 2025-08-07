@@ -34,6 +34,34 @@ iniciarJogo nivel = case nivel of
         , nLinhas = 14
         , nColunas = 14
         }
+    2 -> Jogo
+        { baseJogo = Base {vidaBase = 100 , posicaoBase = (75.0, -300.0) , creditosBase = 500}
+        , portaisJogo = [portal2]
+        , torresJogo = []
+        , mapaJogo = mapaNivel2
+        , inimigosJogo = []
+        ,lojaJogo = [ 
+        (100, criarTorre Fogo), 
+        (150, criarTorre Gelo), 
+        (200, criarTorre Resina)
+        ]
+        , nLinhas = 14
+        , nColunas = 14
+        }
+    3 -> Jogo
+        { baseJogo = Base {vidaBase = 100 , posicaoBase = (0.0, 0.0) , creditosBase = 500}
+        , portaisJogo = [portal3]
+        , torresJogo = []
+        , mapaJogo = mapaNivel3
+        , inimigosJogo = []
+        ,lojaJogo = [ 
+        (100, criarTorre Fogo), 
+        (150, criarTorre Gelo), 
+        (200, criarTorre Resina)
+        ]
+        , nLinhas = 14
+        , nColunas = 14
+        }
     _ -> iniciarJogo 1
 
 
@@ -103,15 +131,89 @@ inimigo2 = Inimigo {posicaoInimigo = (-325, 225), vidaInimigo = 90, butimInimigo
 inimigo3 = Inimigo {posicaoInimigo = (-325, 225), vidaInimigo = 90, butimInimigo = 10 ,direcaoInimigo = Sul, velocidadeInimigo = 30.0, ataqueInimigo = 10, tipoInimigo = Stella, projeteisInimigo = []}
 
 
-{-
-terminouJogo :: Jogo -> Bool
-terminouJogo jogo = ganhouJogo jogo || perdeuJogo jogo
+
+mapaNivel2 =
+    [[a , a , a , a , a , a , r , r , r , r , r , r , t , r],
+     [a , a , a , a , a , r , r , r , r , r , r , r , t , r],
+     [a , a , a , a , a , at , r , r , r , r , r , t , t , r],
+     [a , a , a , a , a , t , t , t , t , t , t , t , r , r],
+     [a , a , r , r , r , t , r , r , r , r , r , r , r , r],
+     [r , r , r , r , r , t , t , t , r , r , r , r , r , r],
+     [r , r , r , r , r , r , r , t , r , r , r , r , r , r],
+     [r , r , r , r , r , r , t , t , r , r , r , r , r , r],
+     [r , r , t , t , t , t , t , r , r , r , r , r , r , r],
+     [r , r , t , r , r , r , r , r , r , r , r , r , r , r],
+     [r , r , t , r , r , r , r , r , r , r , r , r , r , r],
+     [r , r , t , t , t , t , t , t , r , r , r , r , r , r],
+     [r , r , r , r , r , r , r , t , r , r , r , r , r , r],
+     [r , r , r , r , r , r , r , t , t , r , r , r , r , r]
+     ]
+    where
+        t = Terra
+        r = Relva
+        a = Agua
+        at = AguaTerra
+
+portal2 :: Portal
+portal2 = Portal (275, 325) [onda1, onda2] True
+  where
+    onda1 = Onda 
+        { inimigosOnda = [inimigo4, inimigo5,inimigo6]
+        , cicloOnda = 3.0
+        , tempoOnda = 0.0
+        , entradaOnda = 0.0  -- Começa imediatamente
+        }
+    
+    onda2 = Onda 
+        { inimigosOnda = [inimigo5, inimigo6]
+        , cicloOnda = 2.0
+        , tempoOnda = 0.0
+        , entradaOnda = 20.0  -- Inicia após 20 segundos
+        }
+
+inimigo4 = Inimigo {posicaoInimigo = (275, 325) , vidaInimigo = 100, butimInimigo = 10, direcaoInimigo = Sul, velocidadeInimigo = 50.0, ataqueInimigo = 10, tipoInimigo = Flora, projeteisInimigo = []}
+inimigo5 = Inimigo {posicaoInimigo = (275, 325) , vidaInimigo = 90, butimInimigo = 10, direcaoInimigo = Sul, velocidadeInimigo = 20.0, ataqueInimigo = 10, tipoInimigo = Flora, projeteisInimigo = []}
+inimigo6 = Inimigo {posicaoInimigo = (275, 325) , vidaInimigo = 90, butimInimigo = 10 ,direcaoInimigo = Sul, velocidadeInimigo = 30.0, ataqueInimigo = 10, tipoInimigo = Stella, projeteisInimigo = []}
+
+mapaNivel3 =
+    [[r , r , r , r , r , r , r , r , r , r , r , r , t , r],
+     [r , r , r , r , r , r , r , r , r , r , r , r , t , r],
+     [r , r , r , t , t , t , t , t , t , t , t , t , t , r],
+     [r , r , t , t , r , r , r , r , r , r , r , r , r , r],
+     [r , t , t , r , r , r , r , r , r , r , r , r , r , r],
+     [r , t , r , t , t , t , t , t , t , t , t , t , t , t],
+     [r , t , r , t , r , r , r , r , r , r , r , r , r , t],
+     [r , t , r , t , r , r , r , t , t , t , t , t , t , t],
+     [r , t , r , t , r , r , r , r , r , r , r , r , r , r],
+     [r , t , r , t , t , t , t , t , t , t , t , t , t , r],
+     [r , t , t , r , r , r , r , r , r , r , r , r , t , r],
+     [r , r , t , t , t , t , t , t , t , t , t , t , t , r],
+     [r , r , r , r , r , r , r , r , r , r , r , r , r , r],
+     [r , r , r , r , r , r , r , r , r , r , r , r , r , r]
+     ]
+    where
+        t = Terra
+        r = Relva
 
 
-ganhouJogo :: Jogo -> Bool
-ganhouJogo jogo = null (inimigosJogo jogo) && vidaBase (baseJogo jogo) > 0
+portal3 :: Portal
+portal3 = Portal (275, 325) [onda1, onda2] True
+  where
+    onda1 = Onda 
+        { inimigosOnda = [inimigo7, inimigo8,inimigo9]
+        , cicloOnda = 3.0
+        , tempoOnda = 0.0
+        , entradaOnda = 0.0  -- Começa imediatamente
+        }
+    
+    onda2 = Onda 
+        { inimigosOnda = [inimigo7, inimigo9]
+        , cicloOnda = 2.0
+        , tempoOnda = 0.0
+        , entradaOnda = 20.0  -- Inicia após 20 segundos
+        }
 
 
-perdeuJogo :: Jogo -> Bool
-perdeuJogo jogo = vidaBase (baseJogo jogo) <= 0
--}
+inimigo7 = Inimigo {posicaoInimigo = (275, 325) , vidaInimigo = 100, butimInimigo = 10, direcaoInimigo = Sul, velocidadeInimigo = 50.0, ataqueInimigo = 10, tipoInimigo = Flora, projeteisInimigo = []}
+inimigo8 = Inimigo {posicaoInimigo = (275, 325) , vidaInimigo = 90, butimInimigo = 10, direcaoInimigo = Sul, velocidadeInimigo = 20.0, ataqueInimigo = 10, tipoInimigo = Flora, projeteisInimigo = []}
+inimigo9 = Inimigo {posicaoInimigo = (275, 325) , vidaInimigo = 90, butimInimigo = 10 ,direcaoInimigo = Sul, velocidadeInimigo = 30.0, ataqueInimigo = 10, tipoInimigo = Stella, projeteisInimigo = []}
