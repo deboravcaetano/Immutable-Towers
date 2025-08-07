@@ -54,8 +54,6 @@ You can pause the game by pressing the **PAUSE** button.
 
 ## Execute
 
-The project uses the CUnit library to test the functions.
-
 ```bash
 ghc -isrc src/Main.hs -o jogo
 ```
