@@ -52,6 +52,17 @@ You can pause the game by pressing the **PAUSE** button.
 ### LOSS
 <img width="1601" height="902" alt="image" src="https://github.com/user-attachments/assets/1a0f8ae4-e2ab-4d19-99d2-28862feafb02" />
 
+## Execute
+
+The project uses the CUnit library to test the functions.
+
+```bash
+ghc -isrc src/Main.hs -o jogo
+```
+
+```bash
+./jogo
+```
 
 ## Context
 
