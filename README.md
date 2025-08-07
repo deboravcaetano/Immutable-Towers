@@ -21,19 +21,19 @@ Pressing play this is what the game will show you.
 ### Game
 Choosing one of the three kingdoms...
 
-<img width="1601" height="902" alt="image" src="https://github.com/user-attachments/assets/bff709d6-d43c-4ade-a077-57e63cdc7516" />
+<img width="1599" height="897" alt="image" src="https://github.com/user-attachments/assets/9024956b-d003-446b-bc67-de19b364b746" />
+
 
 You can place a tower by clicking on a grass tile and buying a tower from the game store...
 
-<img width="1599" height="897" alt="image" src="https://github.com/user-attachments/assets/cd586e54-a133-4e83-a588-a9d46e5b4fc2" />
-
-<img width="1599" height="897" alt="image" src="https://github.com/user-attachments/assets/bbcf4515-d735-4a88-8f91-7796f752f9ef" />
+<img width="1599" height="897" alt="image" src="https://github.com/user-attachments/assets/fbee5a28-c2b8-4413-a188-7be840647d7b" />
+<img width="1599" height="897" alt="image" src="https://github.com/user-attachments/assets/b11d79df-1862-41e4-bea8-75737543d638" />
 
 
 And sell it too, by clicking on the tower and clicking on the **SELL** button to gain 75% of its price.
 
-<img width="1599" height="897" alt="image" src="https://github.com/user-attachments/assets/b21bde6b-b8c3-44cf-8eb5-1064eb34968e" />
-<img width="1599" height="897" alt="image" src="https://github.com/user-attachments/assets/ee4439aa-c16f-4b27-be50-d5846f65871b" />
+<img width="1599" height="897" alt="image" src="https://github.com/user-attachments/assets/8c13ee2c-02c0-415a-af84-f1ff54a82b76" />
+<img width="1599" height="897" alt="image" src="https://github.com/user-attachments/assets/8ec280c6-b176-4895-8126-fed9c7e7cdf1" />
 
 
 ### Pause
