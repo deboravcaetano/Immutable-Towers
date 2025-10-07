@@ -44,7 +44,7 @@ You can pause the game by pressing the **PAUSE** button.
 ### ENEMIES
 
 <img width="1221" height="685" alt="image" src="https://github.com/user-attachments/assets/39c77abc-195c-4b9a-82b0-5d3671a11443" />
-(These are the ones that I have **for** **now**... )
+(These are the ones that I have for now.... )
 
 ### WIN 
 <img width="1601" height="902" alt="image" src="https://github.com/user-attachments/assets/c5e0736e-8558-419f-be25-b33dcca215db" />
